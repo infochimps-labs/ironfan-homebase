@@ -3,15 +3,14 @@
 # username     - selects your client key and user-specific overrides
 # homebase     - default location for clusters, cookbooks and so forth
 #
-organization        ENV['CHEF_ORGANIZATION']
-username            ENV['CHEF_USER']
-homebase            File.expand_path(ENV['CHEF_HOMEBASE'])
+username            ENV['CHEF_USER'] || ENV['USER']
+homebase            ENV['CHEF_HOMEBASE'] ? File.expand_path(ENV['CHEF_HOMEBASE']) : File.expand_path("..", File.dirname(__FILE__))
 
-unless organization && username && homebase
-  Chef::Log.warn %Q{Please set these environment variables:\n\n* CHEF_ORGANIZATION (got '#{organization}') chef server organization name\n* CHEF_USER         (got '#{username}') chef server username\n* CHEF_HOMEBASE     (got '#{homebase}') folder holding cookbooks/, roles/, etc dirs\n\n}
-  # add a line like this to your ~/.bashrc or whatever: export CHEF_ORGANIZATION=cocina CHEF_USER=chimpy CHEF_HOMEBASE=~/homebase
-  raise("One of the CHEF_ORGANIZATION, CHEF_USER, or CHEF_HOMEBASE environment variables is missing.")
-end
+#
+# Additional settings and overrides
+#
+
+def load_if_exists(file) ; load(file) if File.exists?(file) ; end
 
 #
 # Clusters, cookbooks and roles
@@ -38,12 +37,9 @@ end
 log_level               :info
 log_location            STDOUT
 node_name               username
-chef_server_url         "https://api.opscode.com/organizations/#{organization}"
 client_key              "#{credentials_path}/#{username}.pem"
 cache_type              'BasicFile'
 cache_options           :path => "/tmp/chef-checksums-#{username}"
-validation_key          "#{credentials_path}/#{organization}-validator.pem"
-validation_client_name  "#{organization}-validator"
 
 #
 # Configure client bootstrapping
@@ -51,13 +47,14 @@ validation_client_name  "#{organization}-validator"
 bootstrap_runs_chef_client true
 bootstrap_chef_version  "~> 0.10.4"
 
-#
-# Additional settings and overrides
-#
-
-def load_if_exists(file) ; load(file) if File.exists?(file) ; end
-
 # Organization-sepecific settings -- Chef::Config[:ec2_image_info] and so forth
+#
+# This must do at least these things:
+#
+# * define Chef::Config.chef_server
+# * define Chef::Config.organization
+#
+#
 load_if_exists "#{credentials_path}/knife-org.rb"
 # User-specific knife info or credentials
 load_if_exists "#{credentials_path}/knife-user-#{username}.rb"
