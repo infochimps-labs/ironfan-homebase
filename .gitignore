@@ -46,7 +46,6 @@ Gemfile.lock
 
 .rake_test_cache
 metadata.json
-.chef
 *.pem
 .rvmrc
 .vagrant
@@ -55,12 +54,12 @@ vagrants/iso/*
 vagrants/boxes/*
 
 vendor/internal
+vendor/cluster_chef
+vendor/ironfan-knife
+
 knife/*-credentials
 knife-user-*.rb
 knife/checksums/*
-vendor/cluster_chef
 knife/plugins
-site-cookbooks/*
-zabbix_integration
 
-credentials
+.chef
