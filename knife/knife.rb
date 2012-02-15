@@ -13,8 +13,6 @@ unless organization && username && homebase
   raise("One of the CHEF_ORGANIZATION, CHEF_USER, or CHEF_HOMEBASE environment variables is missing.")
 end
 
-$LOAD_PATH.unshift(File.join(homebase, "vendor/cluster_chef/lib")) if File.exists?(File.join(homebase, "vendor/cluster_chef/lib"))
-
 #
 # Clusters, cookbooks and roles
 #
@@ -26,7 +24,7 @@ role_path           [ "#{homebase}/roles"     ]
 # Keys and cloud-specific settings.
 # Be sure all your .pem files are non-readable (mode 0600)
 #
-credentials_path    File.expand_path(File.dirname(__FILE__))
+credentials_path    File.expand_path("credentials", File.dirname(__FILE__))
 client_key_dir      "#{credentials_path}/client_keys"
 ec2_key_dir         "#{credentials_path}/ec2_keys"
 
