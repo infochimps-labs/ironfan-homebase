@@ -149,3 +149,12 @@ Yikes! It's long. Luckily we are badasses. Comments and assitance welcome.
 * https://github.com/imeyer/chef-handler-graphite/wiki
 * https://github.com/jtimberman/chef-handler-updated-resources/blob/master/lib/chef/handler/updated_resources.rb
 * http://wiki.opscode.com/display/chef/Distributing+Chef+Handlers
+
+
+## CentOS
+
+runit is awesome but not available on CentOS 6
+
+better off using  start/stop daemon than the lsb 
+
+* abstract away the start/stop

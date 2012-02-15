@@ -1,0 +1,1 @@
+../vendor/ironfan-pantry/roles/elasticsearch_client.rb

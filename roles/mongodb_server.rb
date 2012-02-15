@@ -1,0 +1,1 @@
+../vendor/ironfan-pantry/roles/mongodb_server.rb

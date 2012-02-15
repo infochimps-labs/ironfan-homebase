@@ -1,0 +1,1 @@
+../vendor/ironfan-pantry/roles/zabbix_server.rb

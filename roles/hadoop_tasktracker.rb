@@ -1,0 +1,1 @@
+../vendor/ironfan-pantry/roles/hadoop_tasktracker.rb

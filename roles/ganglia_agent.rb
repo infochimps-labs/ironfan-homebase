@@ -1,0 +1,1 @@
+../vendor/ironfan-pantry/roles/ganglia_agent.rb
