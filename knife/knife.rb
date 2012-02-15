@@ -19,14 +19,14 @@ $LOAD_PATH.unshift(File.join(homebase, "vendor/cluster_chef/lib")) if File.exist
 # Clusters, cookbooks and roles
 #
 cluster_path        [ "#{homebase}/clusters"  ]
-cookbook_path       [ "#{homebase}/cookbooks", "#{homebase}/site-cookbooks" ]
+cookbook_path       [ "#{homebase}/cookbooks" ]
 role_path           [ "#{homebase}/roles"     ]
 
 #
 # Keys and cloud-specific settings.
 # Be sure all your .pem files are non-readable (mode 0600)
 #
-credentials_path    File.expand_path("#{organization}-credentials", File.dirname(__FILE__))
+credentials_path    File.expand_path(File.dirname(__FILE__))
 client_key_dir      "#{credentials_path}/client_keys"
 ec2_key_dir         "#{credentials_path}/ec2_keys"
 

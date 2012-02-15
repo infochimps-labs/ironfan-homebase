@@ -13,7 +13,7 @@ group :development do
 
   gem 'guard'
   gem 'guard-process'
-  gem 'guard-chef'
+  gem 'guard-chef',    :git => 'git@github.com:infochimps/guard-chef.git'
 end
 
 group :support do
