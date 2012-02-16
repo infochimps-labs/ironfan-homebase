@@ -17,5 +17,3 @@ Clone the repo. It will produce the directory we will call `homebase` from now o
 
 Detailed instructions will now be in the file [`notes/INSTALL.md`]() **@sya please make this a link to wiki page**
 
-
-
