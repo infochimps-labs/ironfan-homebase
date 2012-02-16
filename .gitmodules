@@ -6,4 +6,4 @@
 	url = https://github.com/infochimps-labs/opscode_cookbooks
 [submodule "notes"]
 	path = notes
-	url = git@github.com:infochimps-labs/ironfan.wiki.git
+	url = https://github.com/infochimps-labs/ironfan.wiki.git
