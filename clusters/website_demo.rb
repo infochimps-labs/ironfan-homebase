@@ -1,11 +1,11 @@
-ClusterChef.cluster 'webserver_demo' do
+Ironfan.cluster 'webserver_demo' do
   cloud :ec2 do
     defaults
     availability_zones ['us-east-1d']
     flavor              't1.micro'  # change to something larger for serious use
     backing             'ebs'
     image_name          'natty'
-    bootstrap_distro    'ubuntu10.04-cluster_chef'
+    bootstrap_distro    'ubuntu10.04-ironfan'
     chef_client_script  'client.rb'
     mount_ephemerals(:tags => { :scratch_dirs => true })
   end

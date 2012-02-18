@@ -11,7 +11,7 @@
 # Once you see 'nodes=1' on jobtracker (host:50030) & namenode (host:50070)
 # control panels, you're good to launch the rest of the cluster.
 #
-ClusterChef::ComputeBuilder.class_eval do
+Ironfan::ComputeBuilder.class_eval do
   HADOOP_COMPONENTS = Mash.new({
     :nn => :hadoop_namenode, :jt => :hadoop_jobtracker, :nn2 => :hadoop_secondarynn, :tt => :hadoop_tasktracker, :dn => :hadoop_datanode,
     :hm => :hbase_master,    :hm2 => :hbase_master,     :rs => :hbase_regionserver,  :hbsg => :hbase_stargate,   :hbth => :hbase_thrift,
@@ -40,14 +40,14 @@ end
 #
 # if you're testing, these recipes *will* work on a t1.micro. just don't use it for anything.
 #
-ClusterChef.cluster 'hbase_demo' do
+Ironfan.cluster 'hbase_demo' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
     flavor              'm1.large'
     backing             'ebs'
-    image_name          'cluster_chef-natty'
-    bootstrap_distro    'ubuntu10.04-cluster_chef'
+    image_name          'ironfan-natty'
+    bootstrap_distro    'ubuntu10.04-ironfan'
     mount_ephemerals(:tags => { :hadoop_scratch => true })
   end
 
@@ -62,7 +62,7 @@ ClusterChef.cluster 'hbase_demo' do
   role                  :volumes
   recipe                'volumes::resize'
   role                  :package_set, :last
-  role                  :dashboard,   :last
+  role                  :minidash,   :last
 
   role                  :org_base
   role                  :org_final, :last

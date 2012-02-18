@@ -26,10 +26,10 @@ client_key_dir      "#{credentials_path}/client_keys"
 ec2_key_dir         "#{credentials_path}/ec2_keys"
 
 #
-# Load the vendored cluster_chef lib if present
+# Load the vendored ironfan lib if present
 #
-if File.exists?("#{homebase}/vendor/cluster_chef/lib")
-  $LOAD_PATH.unshift("#{homebase}/vendor/cluster_chef/lib")
+if File.exists?("#{homebase}/vendor/ironfan/lib")
+  $LOAD_PATH.unshift("#{homebase}/vendor/ironfan/lib")
 end
 
 log_level               :info

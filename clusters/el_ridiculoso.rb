@@ -5,14 +5,14 @@
 # Maybe you're wondering what would happen if you installed everything in sight
 # on the same node. Here's your chance to find out.
 #
-ClusterChef.cluster 'el_ridiculoso' do
+Ironfan.cluster 'el_ridiculoso' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
     flavor              'c1.xlarge'
     backing             'ebs'
-    image_name          'cluster_chef-natty'
-    bootstrap_distro    'ubuntu10.04-cluster_chef'
+    image_name          'ironfan-natty'
+    bootstrap_distro    'ubuntu10.04-ironfan'
     chef_client_script  'client.rb'
     mount_ephemerals(:tags => { :hadoop_scratch => true })
   end
@@ -26,7 +26,7 @@ ClusterChef.cluster 'el_ridiculoso' do
 
   role                  :volumes
   role                  :package_set, :last
-  role                  :dashboard,   :last
+  role                  :minidash,   :last
 
   role                  :org_base
   role                  :org_final, :last
@@ -114,7 +114,7 @@ ClusterChef.cluster 'el_ridiculoso' do
   facet(:grande).facet_role.override_attributes({
       :cassandra      => {
         :server       => { :run_state => :stop  }, },
-      :dashpot        => {
+      :minidash        => {
         :dashboard    => { :run_state => :stop  }, },
       :elasticsearch  => {
         :server       => { :run_state => :stop  }, },

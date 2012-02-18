@@ -5,7 +5,7 @@
 # The script /tmp/burn_ami_prep.sh will help finalize the machine -- then, just
 # stop it and invoke 'Create Image (EBS AMI)'.
 #
-ClusterChef.cluster 'burninator' do
+Ironfan.cluster 'burninator' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
@@ -13,7 +13,7 @@ ClusterChef.cluster 'burninator' do
     flavor              'c1.xlarge'
     backing             'ebs'
     # image_name is per-facet here
-    bootstrap_distro    'ubuntu10.04-cluster_chef'
+    bootstrap_distro    'ubuntu10.04-ironfan'
     chef_client_script  'client.rb'
     mount_ephemerals
   end
@@ -74,7 +74,7 @@ ClusterChef.cluster 'burninator' do
     instances     1
     # Once the AMI is burned, add a new entry in your knife configuration -- see
     # knife/example-credentials/knife-org.rb. Fill in its name here:
-    cloud.image_name    'cluster_chef-natty'
+    cloud.image_name    'ironfan-natty'
   end
 
 end

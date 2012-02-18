@@ -5,14 +5,14 @@
 # zookeeper doesn't guarantee availability; and you should NEVER run an even
 # number of ZKs (http://hbase.apache.org/book/zookeeper.html).
 #
-ClusterChef.cluster 'zookeeper_demo' do
+Ironfan.cluster 'zookeeper_demo' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
     flavor              'm1.large'
     backing             'ebs'
-    image_name          'cluster_chef-natty'
-    bootstrap_distro    'ubuntu10.04-cluster_chef'
+    image_name          'ironfan-natty'
+    bootstrap_distro    'ubuntu10.04-ironfan'
     mount_ephemerals(:tags => { :zookeeper_journal => true, :zookeeper_scratch => true, :zookeeper_data => false, })
   end
 
@@ -26,7 +26,7 @@ ClusterChef.cluster 'zookeeper_demo' do
 
   role                  :volumes
   role                  :package_set, :last
-  role                  :dashboard,   :last
+  role                  :minidash,   :last
 
   role                  :org_base
   role                  :org_final, :last

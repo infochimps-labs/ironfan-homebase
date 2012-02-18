@@ -1,11 +1,11 @@
-ClusterChef.cluster 'elasticsearch_demo' do
+Ironfan.cluster 'elasticsearch_demo' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
     flavor              'm1.xlarge'
     backing             'ebs'
-    image_name          'cluster_chef-natty'
-    bootstrap_distro    'ubuntu10.04-cluster_chef'
+    image_name          'ironfan-natty'
+    bootstrap_distro    'ubuntu10.04-ironfan'
     chef_client_script  'client.rb'
     mount_ephemerals(:tags => { :elasticsearch_scratch => true })
   end
@@ -19,7 +19,7 @@ ClusterChef.cluster 'elasticsearch_demo' do
 
   role                  :volumes
   role                  :package_set, :last
-  role                  :dashboard,   :last
+  role                  :minidash,   :last
 
   role                  :org_base
   role                  :org_final, :last

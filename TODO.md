@@ -19,13 +19,13 @@ Yikes! It's long. Luckily we are badasses. Comments and assitance welcome.
 ## Docco
 (Selene)
 
-* Clean up README file in homebase, silverware and cluster_chef
+* Clean up README file in homebase, silverware and ironfan
 * Clear description of metadiscovery
 * organize homebase/notes (and decide where it goes). There’s some cruft in there that should leave
 * make sure README files in cookbooks aren’t wildly inaccurate
 * Carry out setup directions, ensure they work:
-* cluster_chef if you’re using our homebase
-* cluster_chef if you’re using opscode’s homebase
+* ironfan if you’re using our homebase
+* ironfan if you’re using opscode’s homebase
 * local vagrant environment 
 * hadoop cluster bootstrapping
 * `ironfan install` checks everything out
@@ -39,17 +39,17 @@ Yikes! It's long. Luckily we are badasses. Comments and assitance welcome.
 * in something somewhere: “WARN: Missing gem ‘right_aws’, ‘fog’, ‘rvm’”
 * chef client/server cookbook: set chef user UID / GID; client can set log directory
 * apt has a dashboard at http://{hostname}:3142/report
-* cluster_chef#101: fog can fail to create tags
-* cluster_chef#98: flume master should not announce as zookeeper
-* cluster_chef#93: not quite so opinionated about keypairs
-* cluster_chef#91: probably fixed -- regions
-* cluster_chef#87: probably fixed -- can create ebs volumes at launch with no snapshot
-* cluster_chef#86: patch available -- security groups with mixed case
-* cluster_chef#81: probably fixed -- cassandra cookbook
-* cluster_chef#76: knife cluster kick should work even if service not running
-* cluster_chef#67: probably fixed
-* cluster_chef#48: bootstrap with elastic_ip
-* cluster_chef#10: cookbook checklist
+* ironfan#101: fog can fail to create tags
+* ironfan#98: flume master should not announce as zookeeper
+* ironfan#93: not quite so opinionated about keypairs
+* ironfan#91: probably fixed -- regions
+* ironfan#87: probably fixed -- can create ebs volumes at launch with no snapshot
+* ironfan#86: patch available -- security groups with mixed case
+* ironfan#81: probably fixed -- cassandra cookbook
+* ironfan#76: knife cluster kick should work even if service not running
+* ironfan#67: probably fixed
+* ironfan#48: bootstrap with elastic_ip
+* ironfan#10: cookbook checklist
 * can use knife ssh as me@ or as ubuntu@
 * knife command to set/remove permanent on a node + disableApiTermination on box. knife cluster kill refuses to delete nodes with permanent set. knife cluster sync sets permanent on if permanent(true), removes if permanent(false), ignores if permanent nil or unset. 
 * rip out `cookbook_munger`
@@ -57,7 +57,7 @@ Yikes! It's long. Luckily we are badasses. Comments and assitance welcome.
 
 ## Really Want
 
-* unify the hashlike underpinning to be same across silverware & cluster_chef. Make sure we love (or accept) all the differences between it and Gorrillib’s, and between it and Chef’s.
+* unify the hashlike underpinning to be same across silverware & ironfan. Make sure we love (or accept) all the differences between it and Gorrillib’s, and between it and Chef’s.
 * Route 53
 * Keys are transmitted in databags, using a helper, and not in node attributes
 * easy to create a dummy node (load balancer, external resource, etc)
@@ -118,7 +118,7 @@ Yikes! It's long. Luckily we are badasses. Comments and assitance welcome.
         provides_service  |            |                  |
         # Need thinkin':
         big_package  	  |            |                  |
-        cluster_chef      |            |                  |
+        ironfan      |            |                  |
 
 
 ## Things that are probably straightforward to fix as soon as we know how

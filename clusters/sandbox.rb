@@ -1,14 +1,14 @@
 #
 # Sandbox cluster -- use this for general development
 #
-ClusterChef.cluster 'sandbox' do
+Ironfan.cluster 'sandbox' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
     flavor              't1.micro'
     backing             'ebs'
-    image_name          'cluster_chef-natty'
-    bootstrap_distro    'ubuntu10.04-cluster_chef'
+    image_name          'ironfan-natty'
+    bootstrap_distro    'ubuntu10.04-ironfan'
     chef_client_script  'client.rb'
     mount_ephemerals
   end
@@ -22,7 +22,7 @@ ClusterChef.cluster 'sandbox' do
 
   role                  :volumes
   role                  :package_set, :last
-  role                  :dashboard,   :last
+  role                  :minidash,   :last
 
   role                  :org_base
   role                  :org_final, :last

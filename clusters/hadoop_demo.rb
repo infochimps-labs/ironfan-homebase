@@ -4,14 +4,14 @@
 #
 # if you're testing, these recipes *will* work on a t1.micro. just don't use it for anything.
 #
-ClusterChef.cluster 'hadoop_demo' do
+Ironfan.cluster 'hadoop_demo' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
     flavor              'm1.large'
     backing             'ebs'
-    image_name          'cluster_chef-natty'
-    bootstrap_distro    'ubuntu10.04-cluster_chef'
+    image_name          'ironfan-natty'
+    bootstrap_distro    'ubuntu10.04-ironfan'
     mount_ephemerals(:tags => {
         :hadoop_scratch => true,
         :hadoop_data    => true,  # remove this if you use the volume at bottom
@@ -28,7 +28,7 @@ ClusterChef.cluster 'hadoop_demo' do
 
   role                  :volumes
   role                  :package_set, :last
-  role                  :dashboard,   :last
+  role                  :minidash,   :last
 
   role                  :org_base
   role                  :org_final, :last
