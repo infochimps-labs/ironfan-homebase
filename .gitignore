@@ -63,3 +63,4 @@ knife/checksums/*
 knife/plugins
 
 .chef
+vendor/ironfan-enterprise
