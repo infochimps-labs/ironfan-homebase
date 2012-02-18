@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 gem 'chef',          "= 0.10.8"
-gem 'ironfan',  "~> 3.0.14"
+gem 'ironfan',       "~> 3.1.0.rc1"
 
 group :development do
   gem 'rake'

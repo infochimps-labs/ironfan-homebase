@@ -1,1 +1,1 @@
-../vendor/ironfan-pantry/roles/dashboard.rb
+../vendor/ironfan-pantry/roles/minidash.rb
