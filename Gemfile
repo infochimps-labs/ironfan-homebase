@@ -1,19 +1,40 @@
 source "http://rubygems.org"
 
-gem 'chef',          "= 0.10.8"
-gem 'ironfan',       "~> 3.1.0.rc1"
+#
+# Chef
+#
+
+gem 'chef',            "= 0.10.8"
+gem 'ironfan',         "~> 3.1.0.rc1"
+
+gem 'vagrant',    "~> 0.9.7"
+gem 'veewee',     "~> 0.2.3"
+
+#
+# Test drivers
+#
+
+group :test do
+  gem 'rake'
+  gem 'bundler',       "~> 1"
+  gem 'rspec',         "~> 2.5"
+  gem 'cucumber',      "~> 1.1"
+end
+
+#
+# Development
+#
 
 group :development do
-  gem 'rake'
-  gem 'bundler',     "~> 1"
-  gem 'rspec',       "~> 2.5"
-  gem 'yard',        "~> 0.6"
+  gem 'yard',          "~> 0.6"
+  gem 'jeweler'
 
   gem 'ruby_gntp'
 
-  gem 'guard'
-  gem 'guard-process'
+  gem 'guard',         "~> 1"
+  gem 'guard-process', "~> 1"
   gem 'guard-chef',    :git => 'git@github.com:infochimps/guard-chef.git'
+  gem 'guard-cucumber'
 end
 
 group :support do
