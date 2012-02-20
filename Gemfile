@@ -5,7 +5,7 @@ source "http://rubygems.org"
 #
 
 gem 'chef',            "= 0.10.8"
-gem 'ironfan',         "~> 3.1.0.rc1"
+gem 'ironfan',         "~> 3.1.1"
 
 gem 'vagrant',    "~> 0.9.7"
 gem 'veewee',     "~> 0.2.3"
