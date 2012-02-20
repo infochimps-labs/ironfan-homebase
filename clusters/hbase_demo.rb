@@ -74,7 +74,7 @@ Ironfan.cluster 'hbase_demo' do
   role                  :jruby
   role                  :pig
   recipe                'hadoop_cluster::config_files', :last
-  recipe                'hbase::config',                :last
+  recipe                'hbase::config_files',          :last
 
   [:nn, :jt, :nn2, :tt, :dn, :hm, :hm2, :rs, :hbth, :hbsg, :zk ]
 

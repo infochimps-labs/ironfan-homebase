@@ -30,7 +30,7 @@ Ironfan.cluster 'elasticsearch_demo' do
     recipe              'volumes::build_raid', :first
     recipe              'tuning'
     #
-    recipe              'elasticsearch::default'
+    recipe              'elasticsearch'
     recipe              'elasticsearch::install_from_release'
     recipe              'elasticsearch::install_plugins'
     recipe              'elasticsearch::server'

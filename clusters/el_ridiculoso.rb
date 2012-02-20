@@ -27,6 +27,7 @@ Ironfan.cluster 'el_ridiculoso' do
   role                  :volumes
   role                  :package_set
   role                  :minidash,   :last
+  # role                :set_hostname
 
   role                  :org_base
   role                  :org_final, :last
@@ -42,41 +43,48 @@ Ironfan.cluster 'el_ridiculoso' do
     module_function
     def master_processes
       role                :cassandra_server
-      # role                :elasticsearch_data_esnode
-      # role                :elasticsearch_http_esnode
-      role                :zookeeper_server
+      role                :elasticsearch_data_esnode
+      role                :elasticsearch_http_esnode
       role                :flume_master
       role                :ganglia_master
-      role                :hadoop_namenode
+      role                :graphite_server
       role                :hadoop_jobtracker
+      role                :hadoop_namenode
       role                :hadoop_secondarynn
       role                :hbase_master
+      # role              :jenkins_server
+      role                :mongodb_server
+      role                :mysql_server
       role                :redis_server
-      # role                :statsd_server
-      # role                :mongodb_server
-      # role                :mysql_server
-      # role                :graphite_server
-      # role                :resque_server
+      role                :resque_server
+      role                :statsd_server
+      # role              :zabbix_server
+      # role              :zabbix_web
+      role                :zookeeper_server
       # These run stuff even though they shouldn't
       recipe              'apache2'
-      recipe              'nginx'
+      # recipe              'nginx'
     end
 
     def worker_processes
-      role                :hadoop_datanode
-      role                :hadoop_tasktracker
       role                :flume_agent
       role                :ganglia_agent
+      role                :hadoop_datanode
+      role                :hadoop_tasktracker
       role                :hbase_regionserver
       role                :hbase_stargate
+      role                :hbase_thrift
+      # role              :jenkins_worker
     end
 
     def client_processes
-      role                :mysql_client
-      role                :redis_client
       role                :cassandra_client
       role                :elasticsearch_client
+      role                :hbase_client
+      role                :mysql_client
       role                :nfs_client
+      role                :redis_client
+      role                :zookeeper_client
     end
 
     def simple_installs
@@ -110,10 +118,10 @@ Ironfan.cluster 'el_ridiculoso' do
     extend ElRidiculoso
     instances           1
 
-    # master_processes
-    # worker_processes
-    # client_processes
-    # simple_installs
+    master_processes
+    worker_processes
+    client_processes
+    simple_installs
   end
 
   facet :jefe do
@@ -135,14 +143,8 @@ Ironfan.cluster 'el_ridiculoso' do
   end
 
   cluster_role.override_attributes({
-      :hadoop => {
-        :java_heap_size_max    => 128,
-      },
-    })
-
-  cluster_role.override_attributes({
       :apache         => {
-        :server       => { :run_state => :stop  }, },
+        :server       => { :run_state => [:stop, :disable] }, },
       :cassandra      => { :run_state => :stop  },
       :chef           => {
         :client       => { :run_state => :stop  },
@@ -150,7 +152,7 @@ Ironfan.cluster 'el_ridiculoso' do
       :elasticsearch  => { :run_state => :stop  },
       :flume          => {
         :master       => { :run_state => :stop  },
-        :node         => { :run_state => :stop  }, },
+        :agent        => { :run_state => :stop  }, },
       :ganglia        => {
         :agent        => { :run_state => :stop  },
         :server       => { :run_state => :stop  }, },
@@ -159,6 +161,7 @@ Ironfan.cluster 'el_ridiculoso' do
         :whisper      => { :run_state => :stop  },
         :dashboard    => { :run_state => :stop  }, },
       :hadoop         => {
+        :java_heap_size_max => 128,
         :namenode     => { :run_state => :stop  },
         :secondarynn  => { :run_state => :stop  },
         :jobtracker   => { :run_state => :stop  },
