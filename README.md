@@ -1,15 +1,15 @@
-# Ironfan Homebase: master plans for a scalable architecture
+# Ironfan Homebase: Master Plans for a Scalable Architecture
 
-The Infochimps Ironfan project is an expressive toolset for constructing scalable, resilient architectures. It works in the cloud, in the data center, and on your laptop, and it makes your system diagram visible and inevitable.
+The Infochimps Ironfan project is an expressive toolset for constructing scalable, resilient architectures. It works in the cloud, in the data center, and on your laptop, and it makes your system diagram visible and inevitable. What do we mean by inevitable you ask?  Glad you asked.  By inevitable we mean that with the information you provide about your system, it can, without additional intervention, attend to your system by directing it in how to attend to itself automatically. ...**SYAFLAG:errr way better explanation needed here, but do want to explain "inevitable"**
 
 The Ironfan repository is the central home for orchestrating your architecture. It unifies:
-
-* cookbooks, roles and environments
+	
+* cookbooks, roles, and environments
 * cluster descriptions
-* your chef and cloud credentials
+* your Chef and cloud credentials
 * pantries (collections of cookbooks, roles and so forth)
 
-To get started with Ironfan, clone the [homebase repo](https://github.com/infochimps-labs/ironfan-homebase) and follow the [installation instructions](https://github.com/infochimps-labs/ironfan/wiki/install). Please file all issues on [ironfan issues](https://github.com/infochimps-labs/ironfan/issues).
+To get started with Ironfan, clone the [ironfan-homebase repo](https://github.com/infochimps-labs/ironfan-homebase) and follow the [installation instructions](https://github.com/infochimps-labs/ironfan/wiki/install). Please file all issues on [Ironfan issues](https://github.com/infochimps-labs/ironfan/issues).
 
 ## Index
 
@@ -28,12 +28,15 @@ __________________________________________________________________________
 
 ## Getting started
 
-Before you start, you may wish to fork this repo, as you'll be personalizing it for your use.
+Before you start, fork this repo, as you'll be personalizing it for your use.
 
 Clone the repo and all of its submodules:
 
         git clone https://github.com/infochimps-labs/ironfan-homebase homebase
         cd homebase
+		git submodule foreach git checkout master
         git submodule update --init
 
 Now follow the detailed install notes in [`homebase/notes/INSTALL.md`](https://github.com/infochimps-labs/ironfan/wiki/install).
+
+In the Install page You'll notice the Git clone instructions again, we just want to make sure you're on the right track.  
