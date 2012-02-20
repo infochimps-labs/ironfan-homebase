@@ -39,7 +39,7 @@ Ironfan.cluster 'hadoop_demo' do
   role                  :tuning
   role                  :jruby
   role                  :pig
-  recipe                'hadoop_cluster::cluster_conf', :last
+  recipe                'hadoop_cluster::config_files', :last
 
   facet :master do
     instances           1
@@ -75,7 +75,7 @@ Ironfan.cluster 'hadoop_demo' do
   # Launch the cluster with all of the below set to 'stop'.
   #
   # After initial bootstrap,
-  # * set the run_state to 'start' in the lines below
+  # * set the run_state to :start in the lines below
   # * run `knife cluster sync hadoop_demo-master` to push those values up to chef
   # * run `knife cluster kick hadoop_demo-master` to re-converge
   #

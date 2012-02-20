@@ -4,7 +4,7 @@
 # run `/etc/hadoop/boostrap_hadoop_namenode.sh`.
 #
 # After initial bootstrap,
-# * set the run_state to 'start' in the lines below
+# * set the run_state to :start in the lines below
 # * run `knife cluster sync bonobo-master` to push those values up to chef
 # * run `knife cluster kick bonobo-master` to re-converge
 #
@@ -73,7 +73,7 @@ Ironfan.cluster 'hbase_demo' do
   role                  :tuning
   role                  :jruby
   role                  :pig
-  recipe                'hadoop_cluster::cluster_conf', :last
+  recipe                'hadoop_cluster::config_files', :last
   recipe                'hbase::config',                :last
 
   [:nn, :jt, :nn2, :tt, :dn, :hm, :hm2, :rs, :hbth, :hbsg, :zk ]

@@ -25,7 +25,7 @@ Ironfan.cluster 'el_ridiculoso' do
   role                  :nfs_client
 
   role                  :volumes
-  role                  :package_set, :last
+  role                  :package_set
   role                  :minidash,   :last
 
   role                  :org_base
@@ -34,75 +34,104 @@ Ironfan.cluster 'el_ridiculoso' do
 
   role                  :hadoop
   role                  :hadoop_s3_keys
-  recipe                'hadoop_cluster::cluster_conf', :last
+  recipe                'hadoop_cluster::config_files', :last
   role                  :tuning, :last
+  recipe                'cloud_utils::pickle_node'
 
-  facet :grande do
+  module ElRidiculoso
+    module_function
+    def master_processes
+      role                :cassandra_server
+      # role                :elasticsearch_data_esnode
+      # role                :elasticsearch_http_esnode
+      role                :zookeeper_server
+      role                :flume_master
+      role                :ganglia_master
+      role                :hadoop_namenode
+      role                :hadoop_jobtracker
+      role                :hadoop_secondarynn
+      role                :hbase_master
+      role                :redis_server
+      # role                :statsd_server
+      # role                :mongodb_server
+      # role                :mysql_server
+      # role                :graphite_server
+      # role                :resque_server
+      # These run stuff even though they shouldn't
+      recipe              'apache2'
+      recipe              'nginx'
+    end
+
+    def worker_processes
+      role                :hadoop_datanode
+      role                :hadoop_tasktracker
+      role                :flume_agent
+      role                :ganglia_agent
+      role                :hbase_regionserver
+      role                :hbase_stargate
+    end
+
+    def client_processes
+      role                :mysql_client
+      role                :redis_client
+      role                :cassandra_client
+      role                :elasticsearch_client
+      role                :nfs_client
+    end
+
+    def simple_installs
+      role                :jruby
+      role                :pig
+      recipe              'ant'
+      recipe              'bluepill'
+      recipe              'boost'
+      recipe              'build-essential'
+      recipe              'cron'
+      recipe              'git'
+      recipe              'hive'
+      recipe              'java::sun'
+      recipe              'jpackage'
+      recipe              'jruby'
+      recipe              'nodejs'
+      recipe              'ntp'
+      recipe              'openssh'
+      recipe              'openssl'
+      recipe              'rstats'
+      recipe              'runit'
+      recipe              'thrift'
+      recipe              'xfs'
+      recipe              'xml'
+      recipe              'zabbix'
+      recipe              'zlib'
+    end
+  end
+
+  facet :gordo do
+    extend ElRidiculoso
     instances           1
 
-    role                :cassandra_server
-    role                :elasticsearch_data_esnode
-    role                :elasticsearch_http_esnode
-    role                :zookeeper_server
-    role                :flume_master
-    role                :flume_agent
-    role                :ganglia_master
-    role                :ganglia_agent
-    role                :hadoop_namenode
-    role                :hadoop_datanode
-    role                :hadoop_jobtracker
-    role                :hadoop_secondarynn
-    role                :hadoop_tasktracker
-    role                :hbase_master
-    role                :hbase_regionserver
-    role                :hbase_stargate
-    role                :redis_server
+    # master_processes
+    # worker_processes
+    # client_processes
+    # simple_installs
+  end
 
-    role                :mysql_client
-    role                :redis_client
-    role                :cassandra_client
-    role                :elasticsearch_client
-    role                :nfs_client
-    role                :jruby
-    role                :pig
+  facet :jefe do
+    extend ElRidiculoso
+    instances           1
 
-    #
-    # more shit to install
-    #
-    recipe              'ant'
-    recipe              'bluepill'
-    recipe              'boost'
-    recipe              'build-essential'
-    recipe              'cron'
-    recipe              'git'
-    recipe              'hive'
-    recipe              'java::sun'
-    recipe              'jpackage'
-    recipe              'jruby'
-    recipe              'nodejs'
-    recipe              'ntp'
-    recipe              'openssh'
-    recipe              'openssl'
-    recipe              'rstats'
-    recipe              'runit'
-    recipe              'thrift'
-    recipe              'xfs'
-    recipe              'xml'
-    recipe              'zabbix'
-    recipe              'zlib'
+    master_processes
+    simple_installs
+  end
 
-    #
-    # These run stuff
-    #
-    recipe              'apache2'
-    recipe              'nginx'
+  # Runs worker processes and client packages
+  facet :bobo do
+    extend ElRidiculoso
+    instances           1
 
-    # role                :statsd_server
-    # role                :mongodb_server
-    # role                :mysql_server
-    # role                :graphite_server
-    # role                :resque_server
-
+    worker_processes
+    client_processes
+    simple_installs
   end
 
   cluster_role.override_attributes({
@@ -111,19 +140,20 @@ Ironfan.cluster 'el_ridiculoso' do
       },
     })
 
-  facet(:grande).facet_role.override_attributes({
-      :cassandra      => {
+  cluster_role.override_attributes({
+      :apache         => {
         :server       => { :run_state => :stop  }, },
-      :minidash        => {
-        :dashboard    => { :run_state => :stop  }, },
-      :elasticsearch  => {
+      :cassandra      => { :run_state => :stop  },
+      :chef           => {
+        :client       => { :run_state => :stop  },
         :server       => { :run_state => :stop  }, },
+      :elasticsearch  => { :run_state => :stop  },
       :flume          => {
         :master       => { :run_state => :stop  },
         :node         => { :run_state => :stop  }, },
       :ganglia        => {
-        :server       => { :run_state => :stop },
-        :monitor      => { :run_state => :stop }, },
+        :agent        => { :run_state => :stop  },
+        :server       => { :run_state => :stop  }, },
       :graphite       => {
         :carbon       => { :run_state => :stop  },
         :whisper      => { :run_state => :stop  },
@@ -133,23 +163,34 @@ Ironfan.cluster 'el_ridiculoso' do
         :secondarynn  => { :run_state => :stop  },
         :jobtracker   => { :run_state => :stop  },
         :datanode     => { :run_state => :stop  },
-        :tasktracker  => { :run_state => :stop  }, },
+        :tasktracker  => { :run_state => :stop  },
+        :hdfs_fuse    => { :run_state => :stop  }, },
       :hbase          => {
         :master       => { :run_state => :stop  },
         :regionserver => { :run_state => :stop  },
+        :thrift       => { :run_state => :stop  },
         :stargate     => { :run_state => :stop  }, },
+      :jenkins        => {
+        :server       => { :run_state => :stop  },
+        :worker       => { :run_state => :stop  }, },
+      :minidash       => { :run_state => :stop  },
       :mongodb        => {
         :server       => { :run_state => :stop  }, },
       :mysql          => {
         :server       => { :run_state => :stop  }, },
+      :nginx          => {
+        :server       => { :run_state => :stop  }, },
       :redis          => {
         :server       => { :run_state => :stop  }, },
       :resque         => {
-        :server       => { :run_state => :stop  }, },
-      :statsd         => {
-        :server       => { :run_state => :stop  }, },
+        :redis        => { :run_state => :stop  },
+        :dashboard    => { :run_state => :stop  }, },
+      :statsd         => { :run_state => :stop  },
+      :zabbix         => {
+        :agent        => { :run_state => :stop  },
+        :master       => { :run_state => :stop  }, },
       :zookeeper      => {
         :server       => { :run_state => :stop  }, },
-  })
+    })
 
 end
