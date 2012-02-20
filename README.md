@@ -39,4 +39,4 @@ Clone the repo and all of its submodules:
 
 Now follow the detailed install notes in [`homebase/notes/INSTALL.md`](https://github.com/infochimps-labs/ironfan/wiki/install).
 
-In the Install page You'll notice the Git clone instructions again, we just want to make sure you're on the right track.  
+In the Install notes you'll notice the Git clone instructions again, we just want to make sure you're on the right track.   	 	
