@@ -30,10 +30,8 @@ Ironfan.cluster 'elasticsearch_demo' do
     recipe              'volumes::build_raid', :first
     recipe              'tuning'
     #
-    recipe              'elasticsearch'
-    recipe              'elasticsearch::install_from_release'
-    recipe              'elasticsearch::install_plugins'
-    recipe              'elasticsearch::server'
+    role                :elasticsearch_data_esnode
+    role                :elasticsearch_client
 
     cloud.mount_ephemerals
     raid_group(:md0) do
