@@ -31,8 +31,7 @@ Ironfan.cluster 'sandbox' do
   facet :simple do
     instances           2
     role                :hadoop_s3_keys
-    recipe 'route53::default'
-    recipe 'route53::ec2'
+    role                :set_hostname
   end
 
   facet :raid_demo do

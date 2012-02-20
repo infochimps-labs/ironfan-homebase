@@ -28,8 +28,8 @@ ec2_key_dir         "#{credentials_path}/ec2_keys"
 #
 # Load the vendored ironfan lib if present
 #
-if File.exists?("#{homebase}/vendor/ironfan/lib")
-  $LOAD_PATH.unshift("#{homebase}/vendor/ironfan/lib")
+if File.exists?("#{homebase}/vendor/ironfan-knife/lib")
+  $LOAD_PATH.unshift("#{homebase}/vendor/ironfan-knife/lib")
 end
 
 log_level               :info
