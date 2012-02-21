@@ -1,6 +1,6 @@
 # Ironfan Homebase: Master Plans for a Scalable Architecture
 
-The Infochimps Ironfan project is an expressive toolset for constructing scalable, resilient architectures. It works in the cloud, in the data center, and on your laptop, and it makes your system diagram visible and inevitable. What do we mean by inevitable you ask?  Glad you asked.  By inevitable we mean that with the information you provide about your system, it can, without additional intervention, attend to your system by directing it in how to attend to itself automatically. ...**SYAFLAG:errr way better explanation needed here, but do want to explain "inevitable"**
+The Infochimps Ironfan project is an expressive toolset for constructing scalable, resilient architectures. It works in the cloud, in the data center, and on your laptop, and it makes your system diagram visible and inevitable. Inevitable systems coordinate automatically to interconnect, removing the hassle of manual configuration of connection points (and the associated danger of human error).
 
 The Ironfan repository is the central home for orchestrating your architecture. It unifies:
 	
