@@ -43,8 +43,8 @@ Ironfan.cluster 'el_ridiculoso' do
     module_function
     def master_processes
       role                :cassandra_server
-      role                :elasticsearch_data_esnode
-      role                :elasticsearch_http_esnode
+      role                :elasticsearch_datanode
+      role                :elasticsearch_httpnode
       role                :flume_master
       role                :ganglia_master
       role                :graphite_server

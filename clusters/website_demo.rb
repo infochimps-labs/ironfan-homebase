@@ -57,8 +57,8 @@ Ironfan.cluster 'webserver_demo' do
     instances           1
     role                "nginx"
     role                "redis_server"
-    role                "elasticsearch_data_esnode"
-    role                "elasticsearch_http_esnode"
+    role                "elasticsearch_datanode"
+    role                "elasticsearch_httpnode"
     #
     cloud.flavor        "m1.large"
   end
