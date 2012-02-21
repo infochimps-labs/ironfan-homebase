@@ -2,7 +2,7 @@
 
 The Infochimps Ironfan project is an expressive toolset for constructing scalable, resilient architectures. It works in the cloud, in the data center, and on your laptop, and it makes your system diagram visible and inevitable. Inevitable systems coordinate automatically to interconnect, removing the hassle of manual configuration of connection points (and the associated danger of human error).
 
-The Ironfan repository is the central home for orchestrating your architecture. It unifies:
+The Ironfan Homebase repository is the central home for orchestrating your architecture. It unifies:
 	
 * cookbooks, roles, and environments
 * cluster descriptions
