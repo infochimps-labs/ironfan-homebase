@@ -10,7 +10,9 @@ The Ironfan Homebase repository is the central home for orchestrating your archi
 * Your Chef and cloud credentials
 * Pantries (collections of cookbooks, roles and so forth)
 
-To get started with Ironfan, clone the [ironfan-homebase repo](https://github.com/infochimps-labs/ironfan-homebase) and follow the [Installation Instructions](https://github.com/infochimps-labs/ironfan/wiki/install). Please file all issues on [Ironfan issues](https://github.com/infochimps-labs/ironfan/issues).
+## Getting Started
+
+To jump right into using Ironfan, follow our [Installation Instructions](https://github.com/infochimps-labs/ironfan/wiki/INSTALL). For an explanatory tour, check out our [Hadoop Walkthrough](https://github.com/infochimps-labs/ironfan/wiki/INSTALL).  Please file all issues on [Ironfan Issues](https://github.com/infochimps-labs/ironfan/issues).
 
 ## Index
 
@@ -28,19 +30,3 @@ ironfan-homebase works together with the full Ironfan toolset:
 * [ironfan wiki](https://github.com/infochimps-labs/ironfan/wiki): High-level documentation and install instructions.
 * [ironfan issues](https://github.com/infochimps-labs/ironfan/issues): Bugs or questions and feature requests for *any* part of the Ironfan toolset.
 * [ironfan gem docs](http://rdoc.info/gems/ironfan): Rdoc docs for Ironfan.
-__________________________________________________________________________
-
-## Getting started
-
-Before you start, fork this repo, as you'll be personalizing it for your use.
-
-Clone the repo and all of its submodules:
-
-        git clone https://github.com/infochimps-labs/ironfan-homebase homebase
-        cd homebase
-		git submodule foreach git checkout master
-        git submodule update --init
-
-Now follow the detailed install notes in [`homebase/notes/INSTALL.md`](https://github.com/infochimps-labs/ironfan/wiki/install).
-
-In the Install notes you'll notice the Git clone instructions again, we just want to make sure you're on the right track.   	 	
