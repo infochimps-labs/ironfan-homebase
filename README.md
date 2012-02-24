@@ -18,15 +18,18 @@ To jump right into using Ironfan, follow our [Installation Instructions](https:/
 
 ironfan-homebase works together with the full Ironfan toolset:
 
-###Core Tools:
+###Tools:
 
 * [ironfan-homebase](https://github.com/infochimps-labs/ironfan-homebase): Centralizes the cookbooks, roles and clusters. A solid foundation for any Chef user.
-* [ironfan gem](https://github.com/infochimps-labs/ironfan): The core Ironfan models, and Knife plugins to orchestrate machines and coordinate truth among your homebase, cloud and chef server. It comes with [ironfan-homebase](https://github.com/infochimps-labs/ironfan-homebase).
+* [ironfan gem](https://github.com/infochimps-labs/ironfan): The core Ironfan models, and Knife plugins to orchestrate machines and coordinate truth among your homebase, cloud and chef server.
 * [ironfan-pantry](https://github.com/infochimps-labs/ironfan-pantry): Our collection of industrial-strength, cloud-ready recipes for Hadoop, HBase, Cassandra, Elasticsearch, Zabbix and more. 
-* [silverware cookbook](https://github.com/infochimps-labs/ironfan-pantry/tree/master/cookbooks/silverware): Helps you coordinate discovery of services ("list all the machines for `awesome_webapp`, that I might load balance them") and aspects ("list all components that write logs, that I might logrotate them, or that I might monitor the free space on their volumes"). Found within the [ironfan-pantry](https://github.com/infochimps-labs/ironfan-pantry).
+* [silverware cookbook](https://github.com/infochimps-labs/ironfan-pantry/tree/master/cookbooks/silverware): Helps you coordinate discovery of services ("list all the machines for `awesome_webapp`, that I might load balance them") and aspects ("list all components that write logs, that I might logrotate them, or that I might monitor the free space on their volumes"). 
 
-###Core Documentation:
+###Documentation:
 
+* [Index of wiki pages](https://github.com/infochimps-labs/ironfan/wiki/_pages)
 * [ironfan wiki](https://github.com/infochimps-labs/ironfan/wiki): High-level documentation and install instructions.
 * [ironfan issues](https://github.com/infochimps-labs/ironfan/issues): Bugs or questions and feature requests for *any* part of the Ironfan toolset.
 * [ironfan gem docs](http://rdoc.info/gems/ironfan): Rdoc docs for Ironfan.
+* [Ironfan Screencast](http://bit.ly/ironfan-hadoop-in-20-minutes) -- build a Hadoop cluster from scratch in 20 minutes.
+* Ironfan powers the [Infochimps Platform](http://www.infochimps.com/how-it-works), our scalable enterprise big data platform. Ironfan Enterprise adds zero-configuration logging, monitoring and a compelling UI.
