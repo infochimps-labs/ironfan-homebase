@@ -40,7 +40,6 @@ pkg
 .rvmrc
 .vendor
 .bundle
-Gemfile.lock
 
 ## PROJECT::SPECIFIC
 

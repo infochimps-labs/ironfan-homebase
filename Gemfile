@@ -5,10 +5,12 @@ source "http://rubygems.org"
 #
 
 gem 'chef',            "= 0.10.8"
-gem 'ironfan',         "~> 3.1.1"
+gem 'ironfan',         "~> 3.1.3"
 
-gem 'vagrant',    "~> 0.9.7"
-gem 'veewee',     "~> 0.2.3"
+# # vagrant and chef are being dicks about the version net-ssh should have.
+# # to use the knife vagrant stuff you will have to munge the chef gemspec
+# gem 'vagrant',         "~> 0.9.7"
+# gem 'veewee',          "~> 0.2.3"
 
 #
 # Test drivers
