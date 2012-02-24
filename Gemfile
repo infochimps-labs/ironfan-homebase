@@ -5,7 +5,7 @@ source "http://rubygems.org"
 #
 
 gem 'chef',            "= 0.10.8"
-gem 'ironfan',         "~> 3.1.3"
+gem 'ironfan',         "~> 3.1.4"
 
 # # vagrant and chef are being dicks about the version net-ssh should have.
 # # to use the knife vagrant stuff you will have to munge the chef gemspec
@@ -20,6 +20,7 @@ group :test do
   gem 'rake'
   gem 'bundler',       "~> 1"
   gem 'rspec',         "~> 2.5"
+  gem 'redcarpet',   "~> 2"
   gem 'cucumber',      "~> 1.1"
 end
 

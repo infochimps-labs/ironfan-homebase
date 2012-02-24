@@ -52,18 +52,18 @@ Ironfan.cluster 'el_ridiculoso' do
       role                :hadoop_namenode
       role                :hadoop_secondarynn
       role                :hbase_master
-      # role              :jenkins_server
+      role              :jenkins_server
       role                :mongodb_server
       role                :mysql_server
       role                :redis_server
       role                :resque_server
       role                :statsd_server
-      # role              :zabbix_server
-      # role              :zabbix_web
+      role              :zabbix_server
+      role              :zabbix_web
       role                :zookeeper_server
-      # These run stuff even though they shouldn't
+      # The default recipes for these run stuff even though it's impolite
       recipe              'apache2'
-      # recipe              'nginx'
+      recipe              'nginx'
     end
 
     def worker_processes
@@ -74,7 +74,7 @@ Ironfan.cluster 'el_ridiculoso' do
       role                :hbase_regionserver
       role                :hbase_stargate
       role                :hbase_thrift
-      # role              :jenkins_worker
+      role              :jenkins_worker
     end
 
     def client_processes
