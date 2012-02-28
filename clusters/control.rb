@@ -27,11 +27,8 @@ Ironfan.cluster 'control' do
   role                  :org_users
   role                  :org_final,      :last
 
-  role                  :log_integration
-
   facet :nfs do
     role                :nfs_server
-    role                :zabbix_agent
     facet_role do
       override_attributes({
           :nfs => { :exports => { '/home' => { :name => 'home', :nfs_options => '*.internal(rw,no_root_squash,no_subtree_check)' }}},

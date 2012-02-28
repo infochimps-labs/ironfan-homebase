@@ -42,33 +42,13 @@ Ironfan.cluster 'hb' do
   role                  :package_set,   :last
   role                  :minidash,      :last
 
-  role                  :tuning
-  role                  :jruby
-  role                  :pig
-
-  facet :alpha do
-    instances 1
-    role                  :hadoop_namenode
-    role                  :hbase_master
-  end
-  facet :beta do
-    instances 1
-    role                  :hadoop_secondarynn
-    role                  :hadoop_jobtracker
-    role                  :hbase_master
-  end
-  facet :worker do
-    instances 4
-    role                  :hadoop_datanode
-    role                  :hadoop_tasktracker
-    role                  :hbase_regionserver
-    role                  :hbase_stargate
-    role                  :hbase_thrift
-  end
-
   role                  :org_base
   role                  :org_users
   role                  :org_final,      :last
+
+  role                  :tuning
+  role                  :jruby
+  role                  :pig
 
   role                  :hadoop
   role                  :hadoop_s3_keys

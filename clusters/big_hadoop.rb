@@ -1,10 +1,7 @@
 #
+# Production cluster -- no persistent HDFS
 #
-# * persistent HDFS --
-#
-# if you're testing, these recipes *will* work on a t1.micro. just don't use it for anything.
-#
-Ironfan.cluster 'hadoop_demo' do
+Ironfan.cluster 'big_hadoop' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
@@ -12,34 +9,38 @@ Ironfan.cluster 'hadoop_demo' do
     backing             'ebs'
     image_name          'ironfan-natty'
     bootstrap_distro    'ubuntu10.04-ironfan'
+    chef_client_script  'client.rb'
     mount_ephemerals(:tags => {
         :hadoop_scratch => true,
-        :hadoop_data    => true,  # remove this if you use the volume at bottom
+        :hadoop_data    => true,
       })
   end
 
-  # # uncomment if you want to set your environment.
-  # environment           :prod
+  environment           :dev
 
   role                  :systemwide
   role                  :chef_client
   role                  :ssh
   role                  :nfs_client
+  role                  :set_hostname
 
   role                  :volumes
-  role                  :package_set, :last
-  role                  :minidash,   :last
+  role                  :package_set,   :last
+  role                  :minidash,      :last
 
   role                  :org_base
-  role                  :org_final, :last
   role                  :org_users
+  role                  :org_final,     :last
 
-  role                  :hadoop
-  role                  :hadoop_s3_keys
   role                  :tuning
   role                  :jruby
   role                  :pig
+
+  role                  :hadoop
+  role                  :hadoop_s3_keys
+  role                  :hbase_client
   recipe                'hadoop_cluster::config_files', :last
+  recipe                'hbase::config_files',          :last
 
   facet :master do
     instances           1
@@ -51,23 +52,14 @@ Ironfan.cluster 'hadoop_demo' do
   end
 
   facet :worker do
-    instances           4
+    instances           2
     role                :hadoop_datanode
     role                :hadoop_tasktracker
   end
 
   cluster_role.override_attributes({
       :hadoop => {
-        # # adjust these
-        # :java_heap_size_max  => 1400,
-        # :namenode            => { :java_heap_size_max => 1000, },
-        # :secondarynn         => { :java_heap_size_max => 1000, },
-        # :jobtracker          => { :java_heap_size_max => 3072, },
-        # :datanode            => { :java_heap_size_max => 1400, },
-        # :tasktracker         => { :java_heap_size_max => 1400, },
-        # # if you decommission nodes for elasticity, crank this up
-        # :balancer            => { :max_bandwidth => (50 * 1024 * 1024) },
-        # # make mid-flight data much smaller -- useful esp. with ec2 network constraints
+        :tasktracker => { :java_heap_size_max => 1400, },
         :compress_mapout_codec => 'org.apache.hadoop.io.compress.SnappyCodec',
       }
     })
@@ -91,23 +83,5 @@ Ironfan.cluster 'hadoop_demo' do
         :tasktracker => { :run_state => :stop,  },
       },
     })
-
-  # #
-  # # Attach persistent storage to each node, and use it for all hadoop data_dirs.
-  # #
-  # # Modify the snapshot ID and attached volume size to suit
-  # #
-  # volume(:ebs1) do
-  #   defaults
-  #   size                200
-  #   keep                true
-  #   device              '/dev/sdj' # note: will appear as /dev/xvdj on natty
-  #   mount_point         '/data/ebs1'
-  #   attachable          :ebs
-  #   snapshot_name       :blank_xfs
-  #   resizable           true
-  #   tags( :hadoop_data => true, :persistent => true, :local => false, :bulk => true, :fallback => false )
-  #   create_at_launch    true
-  # end
 
 end

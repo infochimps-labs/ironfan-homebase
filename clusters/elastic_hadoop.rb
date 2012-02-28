@@ -1,8 +1,5 @@
 #
-#
-# * persistent HDFS --
-#
-# if you're testing, these recipes *will* work on a t1.micro. just don't use it for anything.
+# Science cluster -- persistent HDFS
 #
 Ironfan.cluster 'elastic_hadoop' do
   cloud(:ec2) do
@@ -12,34 +9,35 @@ Ironfan.cluster 'elastic_hadoop' do
     backing             'ebs'
     image_name          'ironfan-natty'
     bootstrap_distro    'ubuntu10.04-ironfan'
-    mount_ephemerals(:tags => {
-        :hadoop_scratch => true,
-        :hadoop_data    => true,  # remove this if you use the volume at bottom
-      })
+    chef_client_script  'client.rb'
+    mount_ephemerals(:tags => { :hadoop_scratch => true, })
   end
 
-  # # uncomment if you want to set your environment.
-  # environment           :prod
+  environment           :dev
 
   role                  :systemwide
   role                  :chef_client
   role                  :ssh
   role                  :nfs_client
+  role                  :set_hostname
 
   role                  :volumes
-  role                  :package_set, :last
-  role                  :minidash,   :last
+  role                  :package_set,   :last
+  role                  :minidash,      :last
 
   role                  :org_base
-  role                  :org_final, :last
   role                  :org_users
+  role                  :org_final,     :last
 
-  role                  :hadoop
-  role                  :hadoop_s3_keys
   role                  :tuning
   role                  :jruby
   role                  :pig
+
+  role                  :hadoop
+  role                  :hadoop_s3_keys
+  role                  :hbase_client
   recipe                'hadoop_cluster::config_files', :last
+  recipe                'hbase::config_files',          :last
 
   facet :master do
     instances           1
@@ -51,22 +49,19 @@ Ironfan.cluster 'elastic_hadoop' do
   end
 
   facet :worker do
-    instances           4
+    instances           2
     role                :hadoop_datanode
     role                :hadoop_tasktracker
   end
 
   cluster_role.override_attributes({
-      :discovers => {
-        :hbase       => { :master    => 'hb'     }, },
       :hadoop => {
-        :namenode    => { :run_state => :start,  },
-        :secondarynn => { :run_state => :start,  },
-        :jobtracker  => { :run_state => :start,  },
-        :datanode    => { :run_state => :start,  },
-        :tasktracker => { :run_state => :start,  },
+        :tasktracker => { :java_heap_size_max => 1400, },
+        # lets you rapidly decommission nodes for elasticity
+        :balancer    => { :max_bandwidth => (50 * 1024 * 1024) },
+        # make mid-flight data much smaller -- useful esp. with ec2 network constraints
         :compress_mapout_codec => 'org.apache.hadoop.io.compress.SnappyCodec',
-      }
+      },
     })
 
   # Launch the cluster with all of the below set to 'stop'.
@@ -82,29 +77,27 @@ Ironfan.cluster 'elastic_hadoop' do
   facet(:master).facet_role.override_attributes({
       :hadoop => {
         :namenode    => { :run_state => :stop, },
-        :secondarynn => { :run_state => :stop,  },
-        :jobtracker  => { :run_state => :stop,  },
-        :datanode    => { :run_state => :stop,  },
-        :tasktracker => { :run_state => :stop,  },
+        :secondarynn => { :run_state => :stop, },
+        :jobtracker  => { :run_state => :stop, },
+        :datanode    => { :run_state => :stop, },
+        :tasktracker => { :run_state => :stop, },
       },
     })
 
-  # #
-  # # Attach persistent storage to each node, and use it for all hadoop data_dirs.
-  # #
-  # # Modify the snapshot ID and attached volume size to suit
-  # #
-  # volume(:ebs1) do
-  #   defaults
-  #   size                200
-  #   keep                true
-  #   device              '/dev/sdj' # note: will appear as /dev/xvdj on natty
-  #   mount_point         '/data/ebs1'
-  #   attachable          :ebs
-  #   snapshot_name       :blank_xfs
-  #   resizable           true
-  #   tags( :hadoop_data => true, :persistent => true, :local => false, :bulk => true, :fallback => false )
-  #   create_at_launch    true
-  # end
+  #
+  # Attach persistent storage to each node, and use it for all hadoop data_dirs.
+  #
+  volume(:ebs1) do
+    defaults
+    size                200
+    keep                true
+    device              '/dev/sdj' # note: will appear as /dev/xvdj on modern ubuntus
+    mount_point         '/data/ebs1'
+    attachable          :ebs
+    snapshot_name       :blank_xfs
+    resizable           true
+    create_at_launch    true
+    tags( :hadoop_data => true, :zookeeper_data => true, :persistent => true, :local => false, :bulk => true, :fallback => false )
+  end
 
 end
