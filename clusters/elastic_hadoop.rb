@@ -60,11 +60,11 @@ Ironfan.cluster 'elastic_hadoop' do
       :discovers => {
         :hbase       => { :master    => 'hb'     }, },
       :hadoop => {
-        :namenode    => { :run_state => :stop,  },
-        :secondarynn => { :run_state => :stop,  },
-        :jobtracker  => { :run_state => :stop,  },
-        :datanode    => { :run_state => :stop,  },
-        :tasktracker => { :run_state => :stop,  },
+        :namenode    => { :run_state => :start,  },
+        :secondarynn => { :run_state => :start,  },
+        :jobtracker  => { :run_state => :start,  },
+        :datanode    => { :run_state => :start,  },
+        :tasktracker => { :run_state => :start,  },
         :compress_mapout_codec => 'org.apache.hadoop.io.compress.SnappyCodec',
       }
     })
