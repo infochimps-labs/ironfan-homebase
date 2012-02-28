@@ -11,28 +11,6 @@
 # Once you see 'nodes=1' on jobtracker (host:50030) & namenode (host:50070)
 # control panels, you're good to launch the rest of the cluster.
 #
-Ironfan::ComputeBuilder.class_eval do
-  HADOOP_COMPONENTS = Mash.new({
-    :nn => :hadoop_namenode, :jt => :hadoop_jobtracker, :nn2 => :hadoop_secondarynn, :tt => :hadoop_tasktracker, :dn => :hadoop_datanode,
-    :hm => :hbase_master,    :hm2 => :hbase_master,     :rs => :hbase_regionserver,  :hbsg => :hbase_stargate,   :hbth => :hbase_thrift,
-    :zk => :zookeeper_server,
-    }) unless defined?(HADOOP_COMPONENTS)
-
-  def hbase_facet(*components, &block)
-    if components.first.is_a?(String)
-      name = components.shift
-    else
-      name = components.map(&:to_s).sort.join('_')
-    end
-    facet(name) do
-      components.each do |component|
-        role(HADOOP_COMPONENTS[component])
-      end
-    end
-    facet(name, &block) if block
-  end
-end
-
 
 #
 #
@@ -64,25 +42,38 @@ Ironfan.cluster 'hbase_demo' do
   role                  :package_set, :last
   role                  :minidash,   :last
 
+  role                  :tuning
+  role                  :jruby
+  role                  :pig
+
+  facet :alpha do
+    instances 1
+    role                  :hadoop_namenode
+    role                  :hbase_master
+  end
+  facet :beta do
+    instances 1
+    role                  :hadoop_secondarynn
+    role                  :hadoop_jobtracker
+    role                  :hbase_master
+  end
+  facet :worker do
+    instances 4
+    role                  :hadoop_datanode
+    role                  :hadoop_tasktracker
+    role                  :hbase_regionserver
+    role                  :hbase_stargate
+    role                  :hbase_thrift
+  end
+
   role                  :org_base
   role                  :org_final, :last
   role                  :org_users
 
   role                  :hadoop
   role                  :hadoop_s3_keys
-  role                  :tuning
-  role                  :jruby
-  role                  :pig
   recipe                'hadoop_cluster::config_files', :last
   recipe                'hbase::config_files',          :last
-
-  [:nn, :jt, :nn2, :tt, :dn, :hm, :hm2, :rs, :hbth, :hbsg, :zk ]
-
-  hbase_facet('alpha', :nn,  :hm ) do
-    instances 1
-  end
-  hbase_facet('beta',   :nn2, :hm2, :jt                ){ instances 1 }
-  hbase_facet('worker', :rs,  :dn,  :tt, :hbsg, :hbth  ){ instances 4 }
 
   # This line, and the 'discovers' setting in the cluster_role,
   # enable the hbase to use an external zookeeper cluster
