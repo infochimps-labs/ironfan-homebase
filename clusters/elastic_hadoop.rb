@@ -4,7 +4,7 @@
 #
 # if you're testing, these recipes *will* work on a t1.micro. just don't use it for anything.
 #
-Ironfan.cluster 'hadoop_demo' do
+Ironfan.cluster 'elastic_hadoop' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
@@ -60,16 +60,11 @@ Ironfan.cluster 'hadoop_demo' do
       :discovers => {
         :hbase       => { :master    => 'hb'     }, },
       :hadoop => {
-        # # adjust these
-        # :java_heap_size_max  => 1400,
-        # :namenode            => { :java_heap_size_max => 1000, },
-        # :secondarynn         => { :java_heap_size_max => 1000, },
-        # :jobtracker          => { :java_heap_size_max => 3072, },
-        # :datanode            => { :java_heap_size_max => 1400, },
-        # :tasktracker         => { :java_heap_size_max => 1400, },
-        # # if you decommission nodes for elasticity, crank this up
-        # :balancer            => { :max_bandwidth => (50 * 1024 * 1024) },
-        # # make mid-flight data much smaller -- useful esp. with ec2 network constraints
+        :namenode    => { :run_state => :stop,  },
+        :secondarynn => { :run_state => :stop,  },
+        :jobtracker  => { :run_state => :stop,  },
+        :datanode    => { :run_state => :stop,  },
+        :tasktracker => { :run_state => :stop,  },
         :compress_mapout_codec => 'org.apache.hadoop.io.compress.SnappyCodec',
       }
     })

@@ -36,7 +36,7 @@ Ironfan.cluster 'web' do
     end
     # Rote nodes among A/B testing groups
     (0..instances).each do |idx|
-      server(idx).chef_node.normal[:split_testing] = ( (idx % 2 == 0) ? 'A' : 'B' )
+      server(idx).chef_node.normal[:split_testing] = ( (idx % 2 == 0) ? 'A' : 'B' ) if server(idx).chef_node
     end
   end
 
@@ -58,7 +58,7 @@ Ironfan.cluster 'web' do
       resizable         true
       create_at_launch  true
       tags( :persistent => true, :local => false, :bulk => false, :fallback => false )
-    end!
+    end
   end
 
   facet :esnode do
