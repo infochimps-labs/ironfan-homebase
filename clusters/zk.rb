@@ -5,38 +5,39 @@
 # zookeeper doesn't guarantee availability; and you should NEVER run an even
 # number of ZKs (http://hbase.apache.org/book/zookeeper.html).
 #
-Ironfan.cluster 'zookeeper_demo' do
+Ironfan.cluster 'zk' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
-    flavor              'm1.large'
+    flavor              't1.micro'  # change to something larger for serious use
     backing             'ebs'
     image_name          'ironfan-natty'
     bootstrap_distro    'ubuntu10.04-ironfan'
+    chef_client_script  'client.rb'
     mount_ephemerals(:tags => { :zookeeper_journal => true, :zookeeper_scratch => true, :zookeeper_data => false, })
   end
 
-  # uncomment if you want to set your environment.
-  environment           :prod
+  environment           :dev
 
   role                  :systemwide
   role                  :chef_client
   role                  :ssh
   role                  :nfs_client
+  role                  :set_hostname
 
   role                  :volumes
   role                  :package_set, :last
   role                  :minidash,   :last
 
   role                  :org_base
-  role                  :org_final, :last
   role                  :org_users
+  role                  :org_final, :last
 
   role                  :tuning
   role                  :jruby
 
   facet :zookeeper do
-    instances           3
+    instances           1
     role                :zookeeper_server
   end
 
@@ -60,8 +61,8 @@ Ironfan.cluster 'zookeeper_demo' do
     attachable          :ebs
     snapshot_name       :blank_xfs
     resizable           true
-    tags( :zookeeper_data => true, :zookeeper_journal => false, :persistent => true, :local => false, :bulk => true, :fallback => false )
     create_at_launch    true
+    tags( :zookeeper_data => true, :zookeeper_journal => false, :persistent => true, :local => false, :bulk => true, :fallback => false )
   end
 
 end

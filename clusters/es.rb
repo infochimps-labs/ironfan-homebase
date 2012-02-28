@@ -1,8 +1,8 @@
-Ironfan.cluster 'elasticsearch_demo' do
+Ironfan.cluster 'es' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
-    flavor              'm1.xlarge'
+    flavor              't1.micro'
     backing             'ebs'
     image_name          'ironfan-natty'
     bootstrap_distro    'ubuntu10.04-ironfan'
@@ -10,20 +10,21 @@ Ironfan.cluster 'elasticsearch_demo' do
     mount_ephemerals(:tags => { :elasticsearch_scratch => true }) if (Chef::Config.cloud == 'ec2')
   end
 
-  environment           :prod
+  environment           :dev
 
   role                  :systemwide
   role                  :chef_client
   role                  :ssh
   role                  :nfs_client
+  role                  :set_hostname
 
   role                  :volumes
   role                  :package_set, :last
   role                  :minidash,    :last
 
   role                  :org_base
-  role                  :org_final,   :last
   role                  :org_users
+  role                  :org_final,   :last
 
   facet :elasticsearch do
     instances           1

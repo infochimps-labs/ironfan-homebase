@@ -30,6 +30,22 @@ Ironfan.cluster 'burninator' do
   # clear them out
   volume(:root).keep    true
 
+
+  facet :raid_demo do
+    instances           1
+    cloud.flavor        'm1.large'
+    recipe              'volumes::build_raid', :first
+
+    cloud.mount_ephemerals
+    raid_group(:md0) do
+      defaults
+      device            '/dev/md0'
+      mount_point       '/raid0'
+      level             0
+      sub_volumes       [:ephemeral0, :ephemeral1] # , :ephemeral2, :ephemeral3]
+    end
+  end
+
   #
   # A throwaway facet for AMI generation
   #

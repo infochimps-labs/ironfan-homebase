@@ -18,7 +18,7 @@
 #
 # if you're testing, these recipes *will* work on a t1.micro. just don't use it for anything.
 #
-Ironfan.cluster 'hbase_demo' do
+Ironfan.cluster 'hb' do
   cloud(:ec2) do
     defaults
     availability_zones ['us-east-1d']
@@ -26,21 +26,21 @@ Ironfan.cluster 'hbase_demo' do
     backing             'ebs'
     image_name          'ironfan-natty'
     bootstrap_distro    'ubuntu10.04-ironfan'
-    mount_ephemerals(:tags => { :hadoop_scratch => true })
+    chef_client_script  'client.rb'
+    mount_ephemerals(:tags => { :hbase_scratch => true, :hadoop_scratch => true })
   end
 
-  # uncomment if you want to set your environment.
-  environment           'prod'
+  environment           :dev
 
   role                  :systemwide
   role                  :chef_client
   role                  :ssh
   role                  :nfs_client
+  role                  :set_hostname
 
   role                  :volumes
-  recipe                'volumes::resize'
-  role                  :package_set, :last
-  role                  :minidash,   :last
+  role                  :package_set,   :last
+  role                  :minidash,      :last
 
   role                  :tuning
   role                  :jruby
@@ -67,22 +67,42 @@ Ironfan.cluster 'hbase_demo' do
   end
 
   role                  :org_base
-  role                  :org_final, :last
   role                  :org_users
+  role                  :org_final,      :last
 
   role                  :hadoop
   role                  :hadoop_s3_keys
   recipe                'hadoop_cluster::config_files', :last
   recipe                'hbase::config_files',          :last
 
+  facet :alpha do
+    instances 1
+    role                  :hadoop_namenode
+    role                  :hbase_master
+  end
+  facet :beta do
+    instances 1
+    role                  :hadoop_secondarynn
+    role                  :hadoop_jobtracker
+    role                  :hbase_master
+  end
+  facet :worker do
+    instances 4
+    role                  :hadoop_datanode
+    role                  :hadoop_tasktracker
+    role                  :hbase_regionserver
+    role                  :hbase_stargate
+    role                  :hbase_thrift
+  end
+
   # This line, and the 'discovers' setting in the cluster_role,
   # enable the hbase to use an external zookeeper cluster
-  self.cloud.security_group(self.name).authorized_by_group("zookeeper_demo")
+  self.cloud.security_group(self.name).authorized_by_group("zk")
 
   cluster_role.override_attributes({
       # Look for the zookeeper nodes in the dedicated zookeeper cluster
       :discovers => {
-        :zookeeper =>   { :server    => :zookeeper_demo } },
+        :zookeeper =>   { :server    => 'zk' }, },
       #
       :hadoop => {
         :namenode    => { :run_state => :start,  },
@@ -90,16 +110,6 @@ Ironfan.cluster 'hbase_demo' do
         :datanode    => { :run_state => :start,  },
         :jobtracker  => { :run_state => :stop,   },
         :tasktracker => { :run_state => :stop,   },
-        # # adjust these
-        # :java_heap_size_max  => 1400,
-        # :namenode            => { :java_heap_size_max => 1000, },
-        # :secondarynn         => { :java_heap_size_max => 1000, },
-        # :jobtracker          => { :java_heap_size_max => 3072, },
-        # :datanode            => { :java_heap_size_max => 1400, },
-        # :tasktracker         => { :java_heap_size_max => 1400, },
-        # # if you decommission nodes for elasticity, crank this up
-        # :balancer            => { :max_bandwidth => (50 * 1024 * 1024) },
-        # # make mid-flight data much smaller -- useful esp. with ec2 network constraints
         :compress_mapout_codec => 'org.apache.hadoop.io.compress.SnappyCodec',
       },
       :hbase          => {
@@ -113,22 +123,17 @@ Ironfan.cluster 'hbase_demo' do
   #
   # Attach persistent storage to each node, and use it for all hadoop data_dirs.
   #
-  # Modify the snapshot ID and attached volume size to suit.
-  # If you use the blank_xfs generic snapshot, make sure to include above
-  #     recipe 'volumes::resize'
-  #
-  #
   volume(:ebs1) do
     defaults
     size                200
     keep                true
-    device              '/dev/sdj' # note: will appear as /dev/xvdj on natty
+    device              '/dev/sdj' # note: will appear as /dev/xvdj on modern ubuntus
     mount_point         '/data/ebs1'
     attachable          :ebs
-    resizable           true
     snapshot_name       :blank_xfs
-    tags( :hadoop_data => true, :zookeeper_data => true, :persistent => true, :local => false, :bulk => true, :fallback => false )
-    create_at_launch    true # if no volume is tagged for that node, it will be created
+    resizable           true
+    create_at_launch    true
+    tags( :hbase_data => true, :hadoop_data => true, :zookeeper_data => true, :persistent => true, :local => false, :bulk => true, :fallback => false )
   end
 
 end
