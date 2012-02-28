@@ -33,22 +33,21 @@ Ironfan.cluster 'sandbox' do
     instances           2
   end
 
+  facet :raid_demo do
+    instances           1
+    cloud.flavor        'm1.large'
+    recipe              'volumes::build_raid', :first
+
+    cloud.mount_ephemerals
+    raid_group(:md0) do
+      defaults
+      device            '/dev/md0'
+      mount_point       '/raid0'
+      level             0
+      sub_volumes       [:ephemeral0, :ephemeral1] # , :ephemeral2, :ephemeral3]
+    end
+  end
+
   cluster_role.override_attributes({
     })
-
-  #
-  # Modify the snapshot ID and attached volume size to suit
-  #
-  volume(:ebs1) do
-    defaults
-    size                10
-    keep                true
-    device              '/dev/sdk' # note: will appear as /dev/xvdk on modern ubuntus
-    mount_point         '/data/ebs1'
-    attachable          :ebs
-    snapshot_name       :blank_xfs
-    resizable           true
-    create_at_launch    true
-    tags( :persistent => true, :local => false, :bulk => true, :fallback => false )
-  end
 end

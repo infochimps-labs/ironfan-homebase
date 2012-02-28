@@ -57,6 +57,8 @@ Ironfan.cluster 'hadoop_demo' do
   end
 
   cluster_role.override_attributes({
+      :discovers => {
+        :hbase       => { :master    => 'hb'     }, },
       :hadoop => {
         # # adjust these
         # :java_heap_size_max  => 1400,
