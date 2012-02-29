@@ -20,7 +20,6 @@ Ironfan.cluster 'burninator' do
 
   environment           :dev
 
-  role                  :systemwide
   role                  :chef_client
   role                  :ssh
 
@@ -45,6 +44,7 @@ Ironfan.cluster 'burninator' do
     recipe              'ant'
     recipe              'boost'
     recipe              'build-essential'
+    recipe              'emacs'
     recipe              'git'
     recipe              'java::sun'
     recipe              'jpackage'
@@ -60,6 +60,7 @@ Ironfan.cluster 'burninator' do
     recipe              'xfs'
     recipe              'xml'
     recipe              'zlib'
+    recipe              'zsh'
 
     facet_role.override_attributes({
         :package_set => { :install => %w[ base dev sysadmin text python emacs ] },

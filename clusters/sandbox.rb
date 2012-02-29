@@ -30,7 +30,7 @@ Ironfan.cluster 'sandbox' do
   role                  :org_final,     :last
 
   facet :simple do
-    instances           2
+    instances           1
   end
 
   facet :raid_demo do
