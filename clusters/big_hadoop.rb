@@ -60,8 +60,9 @@ Ironfan.cluster 'big_hadoop' do
   cluster_role.override_attributes({
       :hadoop => {
         :tasktracker => { :java_heap_size_max => 1400, },
+        # make mid-flight data much smaller -- useful esp. with ec2 network constraints
         :compress_mapout_codec => 'org.apache.hadoop.io.compress.SnappyCodec',
-      }
+      },
     })
 
   # Launch the cluster with all of the below set to 'stop'.
