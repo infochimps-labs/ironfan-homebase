@@ -1,7 +1,7 @@
 # Ironfan-Homebase: Master Plans for a Scalable Architecture
 
-Ironfan, the foundation of The Infochimps Platform, is an expressive toolset for constructing scalable, resilient architectures. It works in the cloud, in the data center, and on your laptop, and it makes your system diagram visible and inevitable. Inevitable systems coordinate automatically to interconnect, removing the hassle of manual configuration of connection points (and the associated danger of human error).
-For more information about how Ironfan and The Infochimps Platform work together, visit the [How it Works Infochimps Platform](http://blog.infochimps.com/2012/02/22/infochimps-platform/) page.
+Ironfan, the foundation of the Infochimps Platform, is an expressive toolset for constructing scalable, resilient architectures. It works in the cloud, in the data center, and on your laptop, and it makes your system diagram visible and inevitable. Inevitable systems coordinate automatically to interconnect, removing the hassle of manual configuration of connection points (and the associated danger of human error).
+For more information about Ironfan and the Infochimps Platform, visit [infochimps.com](http://www.infochimps.com/).
 
 The Ironfan Homebase repository is the central home for orchestrating your architecture. It unifies:
 
