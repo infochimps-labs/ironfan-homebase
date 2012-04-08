@@ -64,3 +64,4 @@ knife/plugins
 .chef
 vendor/ironfan-enterprise
 vagrants/*
+Gemfile.lock
