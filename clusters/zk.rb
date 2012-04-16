@@ -8,6 +8,7 @@
 Ironfan.cluster 'zk' do
   cloud(:ec2) do
     defaults
+    permanent           true
     availability_zones ['us-east-1d']
     flavor              't1.micro'  # change to something larger for serious use
     backing             'ebs'
@@ -26,15 +27,16 @@ Ironfan.cluster 'zk' do
   role                  :set_hostname
 
   role                  :volumes
-  role                  :package_set, :last
-  role                  :minidash,   :last
+  role                  :package_set,   :last
+  role                  :minidash,      :last
 
   role                  :org_base
   role                  :org_users
-  role                  :org_final, :last
+  role                  :org_final,     :last
 
-  role                  :tuning
   role                  :jruby
+
+  role                  :tuning,        :last
 
   facet :zookeeper do
     instances           1
