@@ -4,6 +4,7 @@
 Ironfan.cluster 'sandbox' do
   cloud(:ec2) do
     defaults
+    permanent           false
     availability_zones ['us-east-1d']
     flavor              't1.micro'
     backing             'ebs'
@@ -29,6 +30,8 @@ Ironfan.cluster 'sandbox' do
   role                  :org_users
   role                  :org_final,     :last
 
+  role                  :tuning,        :last
+
   facet :simple do
     instances           1
   end
@@ -44,7 +47,7 @@ Ironfan.cluster 'sandbox' do
       device            '/dev/md0'
       mount_point       '/raid0'
       level             0
-      sub_volumes       [:ephemeral0, :ephemeral1] # , :ephemeral2, :ephemeral3]
+      sub_volumes       [:ephemeral0, :ephemeral1]
     end
   end
 

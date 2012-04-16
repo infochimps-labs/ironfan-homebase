@@ -64,4 +64,5 @@ knife/plugins
 .chef
 vendor/ironfan-enterprise
 vagrants/*
+.rbenv-version
 Gemfile.lock

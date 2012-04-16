@@ -23,94 +23,98 @@ Ironfan.cluster 'el_ridiculoso' do
   role                  :chef_client
   role                  :ssh
   role                  :nfs_client
+  role                  :set_hostname
 
   role                  :volumes
-  role                  :package_set
-  role                  :minidash,   :last
-  # role                :set_hostname
+  role                  :package_set,   :last
+  role                  :minidash,      :last
 
   role                  :org_base
-  role                  :org_final, :last
   role                  :org_users
+  role                  :org_final,     :last
 
   role                  :hadoop
   role                  :hadoop_s3_keys
   recipe                'hadoop_cluster::config_files', :last
-  role                  :tuning, :last
-  recipe                'cloud_utils::pickle_node'
+  role                  :hbase_client,     :last
+  role                  :zookeeper_client, :last
+
+  # role                :log_integration
+  # role                :zabbix_agent,  :last
+  recipe                'cloud_utils::pickle_node', :last
 
   module ElRidiculoso
     module_function
     def master_processes
-      role                :cassandra_server
-      role                :elasticsearch_datanode
-      role                :elasticsearch_httpnode
-      role                :flume_master
-      role                :ganglia_master
-      role                :graphite_server
-      role                :hadoop_jobtracker
-      role                :hadoop_namenode
-      role                :hadoop_secondarynn
-      role                :hbase_master
+      role              :cassandra_server
+      role              :elasticsearch_datanode
+      role              :elasticsearch_httpnode
+      role              :flume_master
+      role              :ganglia_master
+      role              :graphite_server
+      role              :hadoop_jobtracker
+      role              :hadoop_namenode
+      role              :hadoop_secondarynn
+      role              :hbase_master
       role              :jenkins_server
-      role                :mongodb_server
-      role                :mysql_server
-      role                :redis_server
-      role                :resque_server
-      role                :statsd_server
+      role              :mongodb_server
+      role              :mysql_server
+      role              :redis_server
+      role              :resque_server
+      role              :statsd_server
       role              :zabbix_server
       role              :zabbix_web
-      role                :zookeeper_server
+      role              :zookeeper_server
       # The default recipes for these run stuff even though it's impolite
       recipe              'apache2'
       recipe              'nginx'
     end
 
     def worker_processes
-      role                :flume_agent
-      role                :ganglia_agent
-      role                :hadoop_datanode
-      role                :hadoop_tasktracker
-      role                :hbase_regionserver
-      role                :hbase_stargate
-      role                :hbase_thrift
+      role              :flume_agent
+      role              :ganglia_agent
+      role              :hadoop_datanode
+      role              :hadoop_tasktracker
+      role              :hbase_regionserver
+      role              :hbase_stargate
+      role              :hbase_thrift
       role              :jenkins_worker
     end
 
     def client_processes
-      role                :cassandra_client
-      role                :elasticsearch_client
-      role                :hbase_client
-      role                :mysql_client
-      role                :nfs_client
-      role                :redis_client
-      role                :zookeeper_client
+      role              :cassandra_client
+      role              :elasticsearch_client
+      role              :hbase_client
+      role              :mysql_client
+      role              :nfs_client
+      role              :redis_client
+      role              :zookeeper_client
     end
 
     def simple_installs
-      role                :jruby
-      role                :pig
-      recipe              'ant'
-      recipe              'bluepill'
-      recipe              'boost'
-      recipe              'build-essential'
-      recipe              'cron'
-      recipe              'git'
-      recipe              'hive'
-      recipe              'java::sun'
-      recipe              'jpackage'
-      recipe              'jruby'
-      recipe              'nodejs'
-      recipe              'ntp'
-      recipe              'openssh'
-      recipe              'openssl'
-      recipe              'rstats'
-      recipe              'runit'
-      recipe              'thrift'
-      recipe              'xfs'
-      recipe              'xml'
-      recipe              'zabbix'
-      recipe              'zlib'
+      role              :jruby
+      role              :pig
+      recipe            'ant'
+      recipe            'bluepill'
+      recipe            'boost'
+      recipe            'build-essential'
+      recipe            'cron'
+      recipe            'git'
+      recipe            'hive'
+      recipe            'java::sun'
+      recipe            'jpackage'
+      recipe            'jruby'
+      recipe            'nodejs'
+      recipe            'ntp'
+      recipe            'openssh'
+      recipe            'openssl'
+      recipe            'rstats'
+      recipe            'runit'
+      recipe            'thrift'
+      recipe            'xfs'
+      recipe            'xml'
+      recipe            'zabbix'
+      recipe            'zlib'
     end
   end
 
