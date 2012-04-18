@@ -36,7 +36,7 @@ group :development do
 
   gem 'guard',         "~> 1"
   gem 'guard-process', "~> 1"
-  gem 'guard-chef',    :git => 'git@github.com:infochimps/guard-chef.git'
+  gem 'guard-chef',    :git => 'git@github.com:infochimps-forks/guard-chef.git'
   gem 'guard-cucumber'
 end
 
