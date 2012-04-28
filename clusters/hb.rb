@@ -73,14 +73,14 @@ Ironfan.cluster 'hb' do
 
   # # total size of the JVM heap (regionserver) (default 2000m)
   # cluster_overrides[:hbase][:regionserver][:java_heap_size_max] = "4000m"
-
+  #
   # # hbase.hregion.memstore.mslab.enabled (default false) -- Experimental: Enables the
   # #   MemStore-Local Allocation Buffer, a feature which works to prevent heap fragmentation
   # #   under heavy write loads. This can reduce the frequency of stop-the-world GC pauses on
   # #   large heaps.
   # cluster_overrides[:hbase][:memstore] ||= {}
   # cluster_overrides[:hbase][:memstore][:mslab_enabled]          = true
-
+  #
   # # Setting this to 0 entirely removes the limit on concurrent connections. This is necessary
   # #   to overcome https://issues.apache.org/jira/browse/HBASE-4684 in HBase 0.90.4
   # cluster_overrides[:zookeeper][:max_client_connections]        = 0

@@ -3,13 +3,15 @@
 #
 # !!Important setup steps!!:
 #
-# Launch the cluster with the hadoop daemon run states set to 'stop' -- see the
-# section most of the way down the page.
+# 1. Launch the cluster with the hadoop daemon run states set to 'stop' -- see the
+#    section most of the way down the page.
 #
-# After initial bootstrap,
-# * set the run_state to :start in the lines below
-# * run `knife cluster sync` to push those values up to chef
-# * run `knife cluster kick` to re-converge
+# 2. ssh to the machine and run `sudo bash /etc/hadoop/conf/bootstrap_hadoop_namenode.sh`
+#
+# 3. After initial bootstrap,
+#    - set the run_state to :start in the lines below
+#    - run `knife cluster sync` to push those values up to chef
+#    - run `knife cluster kick` to re-converge
 #
 # As soon as you see 'nodes=1' on jobtracker (host:50030) & namenode (host:50070)
 # control panels, you're good to launch the rest of the cluster.
@@ -85,17 +87,17 @@ Ironfan.cluster 'elastic_hadoop' do
   #
   facet(:master).facet_role.override_attributes({
       :hadoop => {
-        :namenode     => { :run_state => :stop,  },
-        :secondarynn  => { :run_state => :stop,  },
-        :jobtracker   => { :run_state => :stop,  },
-        :datanode     => { :run_state => :stop,  },
-        :tasktracker  => { :run_state => :stop,  },
+        :namenode     => { :run_state => :start,  },
+        :secondarynn  => { :run_state => :start,  },
+        :jobtracker   => { :run_state => :start,  },
+        :datanode     => { :run_state => :start,  },
+        :tasktracker  => { :run_state => :start,  },
       },
     })
 
   volume(:ebs1) do
     defaults
-    size                10
+    size                100
     keep                true
     device              '/dev/sdj' # note: will appear as /dev/xvdj on modern ubuntus
     mount_point         '/data/ebs1'

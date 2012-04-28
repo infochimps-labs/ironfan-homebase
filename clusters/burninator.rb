@@ -63,8 +63,9 @@ Ironfan.cluster 'burninator' do
     recipe              'zsh'
 
     facet_role.override_attributes({
+        :java        => { :install_flavor => 'sun' }, # use sun java typically
         :package_set => { :install => %w[ base dev sysadmin text python emacs ] },
-        :apt    => { :cloudera => { :force_distro => 'maverick',  }, },
+        :apt         => { :cloudera => { :force_distro => 'maverick',  }, },
       })
   end
 
@@ -76,6 +77,9 @@ Ironfan.cluster 'burninator' do
     # Once the AMI is burned, add a new entry in your knife configuration -- see
     # knife/example-credentials/knife-org.rb. Fill in its name here:
     cloud.image_name    'ironfan-natty'
+
+    # just so there's something in the runlist.
+    recipe              'motd'
   end
 
 end

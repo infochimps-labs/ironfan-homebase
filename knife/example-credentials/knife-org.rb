@@ -42,6 +42,9 @@ Chef::Config.instance_eval do
   #   "#{homebase}/vendor/internal/cookbooks",
   #   ]
 
+  # # set the `knife cluster proxy` to capture traffic to the set_hostname (see the route53 cookbook):
+  # Chef::Config[:cluster_proxy_patterns] = ["*internal.YOUR-ROUTE53-DOMAIN.com*"]
+
   # ===========================================================================
   #
   # Amazon EC2 Settings
