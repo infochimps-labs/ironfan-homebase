@@ -120,8 +120,8 @@ Chef::Config.instance_eval do
   #
   # For example, 'cocina-elasticsearch-6' would be '33.33.33.46'
   #
-  # host_network_base = '33.33.33'
-  # host_network_ip_mapping = {
+  # knife[:host_network_base] = '33.33.33'
+  # knife[:host_network_ip_mapping] = {
   #   :chef_server   => 20,
   #   :sandbox       => 30,
   #   :elasticsearch => 40,
