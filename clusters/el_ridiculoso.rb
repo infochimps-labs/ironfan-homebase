@@ -56,14 +56,14 @@ Ironfan.cluster 'el_ridiculoso' do
       role              :hadoop_namenode
       role              :hadoop_secondarynn
       role              :hbase_master
-      role              :jenkins_server
+#      role              :jenkins_server
       role              :mongodb_server
       role              :mysql_server
       role              :redis_server
       role              :resque_server
       role              :statsd_server
       role              :zabbix_server
-      role              :zabbix_web
+      #role              :zabbix_web
       role              :zookeeper_server
       # The default recipes for these run stuff even though it's impolite
       recipe              'apache2'
@@ -145,6 +145,20 @@ Ironfan.cluster 'el_ridiculoso' do
     client_processes
     simple_installs
   end
+
+  facet :pequeno do
+    role :jruby
+    role :pig
+    role :elasticsearch_server
+    role :elasticsearch_client
+    role :hadoop_namenode
+    role :hadoop_sencondarynn
+    role :hadoop_jobtracker
+    role :hadoop_datanode
+    role :hadoop_tasktracker
+    role :tuning, :last
+  end
+
 
   cluster_role.override_attributes({
       :apache         => {
