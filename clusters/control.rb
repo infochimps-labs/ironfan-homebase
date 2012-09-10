@@ -17,10 +17,10 @@ Ironfan.cluster 'control' do
   environment           :dev
 
   role                  :systemwide
-  cloud(:ec2).security_group "systemwide"
+  cloud(:ec2).security_group :systemwide
   role                  :chef_client
   role                  :ssh
-  cloud(:ec2).security_group('ssh') { authorize_port_range 22..22 }
+  cloud(:ec2).security_group(:ssh).authorize_port_range 22..22
   role                  :set_hostname
 
   role                  :volumes
@@ -33,7 +33,7 @@ Ironfan.cluster 'control' do
 
   facet :nfs do
     role                :nfs_server
-    cloud(:ec2).security_group("nfs_server")  { authorized_by_group "nfs_client" }
+    cloud(:ec2).security_group(:nfs_server).authorized_by_group :nfs_client
 
     facet_role do
       override_attributes({
