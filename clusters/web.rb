@@ -14,9 +14,12 @@ Ironfan.cluster 'web' do
   environment           :dev
 
   role                  :systemwide
+  cloud(:ec2).security_group "systemwide"
   role                  :chef_client
   role                  :ssh
+  cloud(:ec2).security_group('ssh') { authorize_port_range 22..22 }
   role                  :nfs_client
+  cloud(:ec2).security_group "nfs_client"
   role                  :set_hostname
 
   role                  :volumes
@@ -31,10 +34,18 @@ Ironfan.cluster 'web' do
     instances           6
     role                :nginx
     role                :redis_client
+    cloud(:ec2).security_group("web-redis_server") do
+      authorized_by_group("web-redis_client")
+    end
     role                :mysql_client
     role                :elasticsearch_client
     role                :awesome_website
     role                :web_server      # this triggers opening appropriate ports
+    cloud(:ec2).security_group("web-web_server") do
+      authorize_port_range  80..80
+      authorize_port_range 443..443
+    end
+
     # Rotate nodes among availability zones
     azs = ['us-east-1d', 'us-east-1b', 'us-east-1c']
     (0...instances).each do |idx|
@@ -73,6 +84,7 @@ Ironfan.cluster 'web' do
     #
     role                :nginx
     role                :redis_server
+    cloud(:ec2).security_group("web-redis_client")
     role                :elasticsearch_datanode
     role                :elasticsearch_httpnode
   end

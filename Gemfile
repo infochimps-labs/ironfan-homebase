@@ -5,7 +5,7 @@ source "http://rubygems.org"
 #
 
 gem 'chef',            "= 0.10.8"
-gem 'ironfan',         "~> 3.1.7"
+gem 'ironfan',         "~> 4.0"
 
 # Everything in the world is being a stupid dick about JSON versions. Pin it to
 # the one that doesn't seem to angrify everyone.

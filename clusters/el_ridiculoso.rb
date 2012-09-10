@@ -20,9 +20,12 @@ Ironfan.cluster 'el_ridiculoso' do
   environment           :dev
 
   role                  :systemwide
+  cloud(:ec2).security_group "systemwide"
   role                  :chef_client
   role                  :ssh
+  cloud(:ec2).security_group('ssh') { authorize_port_range 22..22 }
   role                  :nfs_client
+  cloud(:ec2).security_group "nfs_client"
   role                  :set_hostname
 
   role                  :volumes
@@ -60,6 +63,10 @@ Ironfan.cluster 'el_ridiculoso' do
       role              :mongodb_server
       role              :mysql_server
       role              :redis_server
+      cloud(:ec2).security_group("#{self.cluster_name}-redis_server") do
+        authorized_by_group("#{self.cluster_name}-redis_client")
+      end
+
       role              :resque_server
       role              :statsd_server
       role              :zabbix_server
@@ -88,6 +95,7 @@ Ironfan.cluster 'el_ridiculoso' do
       role              :mysql_client
       role              :nfs_client
       role              :redis_client
+      cloud(:ec2).security_group("#{self.cluster_name}-redis_client")
       role              :zookeeper_client
     end
 

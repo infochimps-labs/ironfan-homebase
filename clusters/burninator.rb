@@ -22,6 +22,7 @@ Ironfan.cluster 'burninator' do
 
   role                  :chef_client
   role                  :ssh
+  cloud(:ec2).security_group('ssh') { authorize_port_range 22..22 }
 
   # It's handy to have the root volumes not go away with the machine.
   # It also means you can find yourself with a whole ton of stray 8GB
