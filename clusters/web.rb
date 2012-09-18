@@ -1,6 +1,5 @@
 Ironfan.cluster 'web' do
   cloud :ec2 do
-    defaults
     # permanent         true
     availability_zones ['us-east-1d']
     flavor              't1.micro'  # change to something larger for serious use
@@ -49,23 +48,23 @@ Ironfan.cluster 'web' do
     # Rotate nodes among availability zones
     azs = ['us-east-1d', 'us-east-1b', 'us-east-1c']
     (0...instances).each do |idx|
-      server(idx).cloud.availability_zones [azs[ idx % azs.length ]]
+      server(idx).cloud(:ec2).availability_zones [azs[ idx % azs.length ]]
     end
-    # Rote nodes among A/B testing groups
-    (0..instances).each do |idx|
-      server(idx).chef_node.normal[:split_testing] = ( (idx % 2 == 0) ? 'A' : 'B' ) if server(idx).chef_node
-    end
+    Chef::Log.warn "Can't pull this trick in v4.x (how do we manipulate individual nodes from Ironfan core?)"
+    # # Rote nodes among A/B testing groups
+    # (0..instances).each do |idx|
+    #  server(idx).chef_node.normal[:split_testing] = ( (idx % 2 == 0) ? 'A' : 'B' ) if server(idx).chef_node
+    # end
   end
 
   facet :dbnode do
     instances           2
     # burly master, wussy workers
-    cloud.flavor        'm1.large'
-    server(0).cloud.flavor 'c1.xlarge'
+    cloud(:ec2).flavor        'm1.large'
+    server(0).cloud(:ec2).flavor 'c1.xlarge'
     #
     role                :mysql_server
     volume(:data) do
-      defaults
       size              50
       keep              true
       device            '/dev/sdi' # note: will appear as /dev/xvdi on modern ubuntus
@@ -80,7 +79,7 @@ Ironfan.cluster 'web' do
 
   facet :esnode do
     instances           1
-    cloud.flavor        "m1.large"
+    cloud(:ec2).flavor        "m1.large"
     #
     role                :nginx
     role                :redis_server

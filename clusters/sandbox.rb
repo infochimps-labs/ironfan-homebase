@@ -3,7 +3,6 @@
 #
 Ironfan.cluster 'sandbox' do
   cloud(:ec2) do
-    defaults
     permanent           false
     availability_zones ['us-east-1d']
     flavor              't1.micro'
@@ -41,12 +40,11 @@ Ironfan.cluster 'sandbox' do
 
   facet :raid_demo do
     instances           1
-    cloud.flavor        'm1.large'
+    cloud(:ec2).flavor        'm1.large'
     recipe              'volumes::build_raid', :first
 
-    cloud.mount_ephemerals
+    cloud(:ec2).mount_ephemerals
     raid_group(:md0) do
-      defaults
       device            '/dev/md0'
       mount_point       '/raid0'
       level             0

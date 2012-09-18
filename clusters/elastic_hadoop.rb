@@ -18,7 +18,6 @@
 #
 Ironfan.cluster 'elastic_hadoop' do
   cloud(:ec2) do
-    defaults
     permanent           false
     availability_zones ['us-east-1d']
     flavor              'm1.large'
@@ -99,7 +98,6 @@ Ironfan.cluster 'elastic_hadoop' do
     })
 
   volume(:ebs1) do
-    defaults
     size                100
     keep                true
     device              '/dev/sdj' # note: will appear as /dev/xvdj on modern ubuntus

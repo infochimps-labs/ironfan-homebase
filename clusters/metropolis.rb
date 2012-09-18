@@ -3,7 +3,6 @@
 #
 Ironfan.cluster 'metropolis' do
   cloud(:ec2) do
-    defaults
     permanent           false
     availability_zones ['us-east-1d']
     flavor              't1.micro'
@@ -46,7 +45,6 @@ Ironfan.cluster 'metropolis' do
     })
 
   volume(:ebs1) do
-    defaults
     size                10
     keep                true
     device              '/dev/sdj' # note: will appear as /dev/xvdj on modern ubuntus

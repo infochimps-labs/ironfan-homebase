@@ -1,6 +1,5 @@
 Ironfan.cluster 'es' do
   cloud(:ec2) do
-    defaults
     # permanent           true
     availability_zones ['us-east-1d']
     flavor              't1.micro'
@@ -50,7 +49,6 @@ Ironfan.cluster 'es' do
       })
 
     raid_group(:md0) do
-      defaults
       device            '/dev/md0'
       mount_point       '/raid0'
       level             0

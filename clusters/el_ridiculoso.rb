@@ -7,7 +7,6 @@
 #
 Ironfan.cluster 'el_ridiculoso' do
   cloud(:ec2) do
-    defaults
     availability_zones ['us-east-1d']
     flavor              'c1.xlarge'
     backing             'ebs'
@@ -63,8 +62,9 @@ Ironfan.cluster 'el_ridiculoso' do
       role              :mongodb_server
       role              :mysql_server
       role              :redis_server
-      cloud(:ec2).security_group("#{self.cluster_name}-redis_server") do
-        authorized_by_group("#{self.cluster_name}-redis_client")
+      cluster_name =    self.cluster_name
+      cloud(:ec2).security_group("#{cluster_name}-redis_server") do
+        authorized_by_group("#{cluster_name}-redis_client")
       end
 
       role              :resque_server
@@ -95,7 +95,8 @@ Ironfan.cluster 'el_ridiculoso' do
       role              :mysql_client
       role              :nfs_client
       role              :redis_client
-      cloud(:ec2).security_group("#{self.cluster_name}-redis_client")
+      cluster_name =    self.cluster_name
+      cloud(:ec2).security_group("#{cluster_name}-redis_client")
       role              :zookeeper_client
     end
 

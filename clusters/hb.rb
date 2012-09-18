@@ -21,7 +21,6 @@
 #
 Ironfan.cluster 'hb' do
   cloud(:ec2) do
-    defaults
     # permanent         true
     availability_zones ['us-east-1d']
     flavor              'm1.large'
@@ -136,7 +135,7 @@ Ironfan.cluster 'hb' do
 
   # This line, and the 'discovers' setting in the cluster_role,
   # enable the hbase to use an external zookeeper cluster
-  self.cloud.security_group(self.name) do
+  self.cloud(:ec2).security_group(self.name) do
     authorized_by_group(zookeeper_cluster_name)
     authorize_group(flume_cluster_name)
     authorize_group(science_cluster_name)
@@ -146,7 +145,6 @@ Ironfan.cluster 'hb' do
   # Attach persistent storage to each node, and use it for all hadoop data_dirs.
   #
   volume(:ebs1) do
-    defaults
     size                10
     keep                true
     device              '/dev/sdj' # note: will appear as /dev/xvdj on modern ubuntus

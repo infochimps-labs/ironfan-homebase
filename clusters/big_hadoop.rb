@@ -16,7 +16,6 @@
 #
 Ironfan.cluster 'big_hadoop' do
   cloud(:ec2) do
-    defaults
     permanent           false
     availability_zones ['us-east-1d']
     flavor              'm1.large'

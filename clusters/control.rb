@@ -3,7 +3,6 @@
 #
 Ironfan.cluster 'control' do
   cloud(:ec2) do
-    defaults
     permanent           true
     availability_zones ['us-east-1d']
     flavor              't1.micro'
@@ -43,7 +42,6 @@ Ironfan.cluster 'control' do
     end
 
     volume(:home_vol) do
-      defaults
       size              20
       keep              true
       device            '/dev/sdh' # note: will appear as /dev/xvdh on modern ubuntus

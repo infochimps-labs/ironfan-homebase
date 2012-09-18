@@ -7,7 +7,6 @@
 #
 Ironfan.cluster 'burninator' do
   cloud(:ec2) do
-    defaults
     availability_zones ['us-east-1d']
     # use a c1.xlarge so the AMI knows about all ephemeral drives
     flavor              'c1.xlarge'
@@ -36,7 +35,7 @@ Ironfan.cluster 'burninator' do
   facet :trogdor do
     instances           1
 
-    cloud.image_name    'natty'  # Leave set at vanilla natty
+    cloud(:ec2).image_name    'natty'  # Leave set at vanilla natty
 
     recipe              'cloud_utils::burn_ami_prep'
 
@@ -77,7 +76,7 @@ Ironfan.cluster 'burninator' do
     instances     1
     # Once the AMI is burned, add a new entry in your knife configuration -- see
     # knife/example-credentials/knife-org.rb. Fill in its name here:
-    cloud.image_name    'ironfan-natty'
+    cloud(:ec2).image_name    'ironfan-natty'
 
     # just so there's something in the runlist.
     recipe              'motd'

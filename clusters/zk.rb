@@ -7,7 +7,6 @@
 #
 Ironfan.cluster 'zk' do
   cloud(:ec2) do
-    defaults
     permanent           true
     availability_zones ['us-east-1d']
     flavor              't1.micro'  # change to something larger for serious use
@@ -58,7 +57,6 @@ Ironfan.cluster 'zk' do
   # Modify the snapshot ID and attached volume size to suit
   #
   volume(:ebs1) do
-    defaults
     size                10
     keep                true
     device              '/dev/sdk' # note: will appear as /dev/xvdk on natty
