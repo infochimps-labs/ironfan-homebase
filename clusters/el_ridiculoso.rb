@@ -47,6 +47,9 @@ Ironfan.cluster 'el_ridiculoso' do
 
   module ElRidiculoso
     module_function
+    def redis_server()  "#{cluster_name}-redis_server";    end
+    def redis_client()  "#{cluster_name}-redis_client";    end
+
     def master_processes
       role              :cassandra_server
       role              :elasticsearch_datanode
@@ -62,10 +65,7 @@ Ironfan.cluster 'el_ridiculoso' do
       role              :mongodb_server
       role              :mysql_server
       role              :redis_server
-      cluster_name =    self.cluster_name
-      cloud(:ec2).security_group("#{cluster_name}-redis_server") do
-        authorized_by_group("#{cluster_name}-redis_client")
-      end
+      cloud(:ec2).security_group(redis_server).authorized_by_group(redis_client)
 
       role              :resque_server
       role              :statsd_server
@@ -96,7 +96,7 @@ Ironfan.cluster 'el_ridiculoso' do
       role              :nfs_client
       role              :redis_client
       cluster_name =    self.cluster_name
-      cloud(:ec2).security_group("#{cluster_name}-redis_client")
+      cloud(:ec2).security_group(redis_client)
       role              :zookeeper_client
     end
 

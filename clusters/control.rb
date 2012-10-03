@@ -32,7 +32,7 @@ Ironfan.cluster 'control' do
 
   facet :nfs do
     role                :nfs_server
-    cloud(:ec2).security_group(:nfs_server).authorized_by_group :nfs_client
+    cloud(:ec2).security_group(:nfs_server).authorize_group :nfs_client
 
     facet_role do
       override_attributes({

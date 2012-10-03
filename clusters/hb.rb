@@ -135,7 +135,7 @@ Ironfan.cluster 'hb' do
 
   # This line, and the 'discovers' setting in the cluster_role,
   # enable the hbase to use an external zookeeper cluster
-  self.cloud(:ec2).security_group(self.name) do
+  cloud(:ec2).security_group(self.name) do
     authorized_by_group(zookeeper_cluster_name)
     authorize_group(flume_cluster_name)
     authorize_group(science_cluster_name)

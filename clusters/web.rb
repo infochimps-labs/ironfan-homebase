@@ -29,18 +29,18 @@ Ironfan.cluster 'web' do
   role                  :org_users
   role                  :org_final,     :last
 
+  redis_server = "#{cluster_name}-redis_server"
+  redis_client = "#{cluster_name}-redis_client"
   facet :webnode do
     instances           6
     role                :nginx
     role                :redis_client
-    cloud(:ec2).security_group("web-redis_server") do
-      authorized_by_group("web-redis_client")
-    end
+    cloud(:ec2).security_group(redis_server).authorized_by_group(redis_client)
     role                :mysql_client
     role                :elasticsearch_client
     role                :awesome_website
     role                :web_server      # this triggers opening appropriate ports
-    cloud(:ec2).security_group("web-web_server") do
+    cloud(:ec2).security_group(full_name) do
       authorize_port_range  80..80
       authorize_port_range 443..443
     end
@@ -83,7 +83,7 @@ Ironfan.cluster 'web' do
     #
     role                :nginx
     role                :redis_server
-    cloud(:ec2).security_group("web-redis_client")
+    cloud(:ec2).security_group(redis_client)
     role                :elasticsearch_datanode
     role                :elasticsearch_httpnode
   end
