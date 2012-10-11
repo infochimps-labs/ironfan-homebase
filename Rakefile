@@ -29,8 +29,8 @@ rescue Bundler::BundlerError => e
 end
 require 'chef'
 require 'json'
-require 'rspec'
-require 'rspec/core/rake_task'
+# require 'rspec'
+# require 'rspec/core/rake_task'
 require 'yard'
 
 # Load constants from rake config file.
@@ -111,16 +111,16 @@ end
 # ---------------------------------------------------------------------------
 #
 # RSpec -- testing
-#
-RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = FileList['spec/**/*_spec.rb']
-end
-
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
-  spec.rcov_opts = %w[ --exclude .rvm --no-comments --text-summary]
-end
+# #
+# RSpec::Core::RakeTask.new(:spec) do |spec|
+#   spec.pattern = FileList['spec/**/*_spec.rb']
+# end
+# 
+# RSpec::Core::RakeTask.new(:rcov) do |spec|
+#   spec.pattern = 'spec/**/*_spec.rb'
+#   spec.rcov = true
+#   spec.rcov_opts = %w[ --exclude .rvm --no-comments --text-summary]
+# end
 
 # ---------------------------------------------------------------------------
 #
