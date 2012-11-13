@@ -1,7 +1,7 @@
-USE_LOCAL       = false                                 if USE_LOCAL.nil?
-LOCAL_PATH      = "vendor"                              if LOCAL_PATH.nil?
-OPSCODE_REPO    = 'infochimps-labs/opscode_cookbooks'   if OPSCODE_REPO.nil?
-PANTRY_REPO     = 'infochimps-labs/ironfan-pantry'      if PANTRY_REPO.nil?
+USE_LOCAL       = false                                 unless defined? USE_LOCAL
+LOCAL_PATH      = "vendor"                              unless defined? LOCAL_PATH
+OPSCODE_REPO    = 'infochimps-labs/opscode_cookbooks'   unless defined? OPSCODE_REPO
+PANTRY_REPO     = 'infochimps-labs/ironfan-pantry'      unless defined? PANTRY_REPO
 
 def github_cookbook(name, repo, rel)
   if USE_LOCAL
