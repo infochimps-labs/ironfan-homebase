@@ -1,9 +1,3 @@
-[submodule "vendor/ironfan-pantry"]
-	path = vendor/ironfan-pantry
-	url = https://github.com/infochimps-labs/ironfan-pantry
-[submodule "vendor/opscode/cookbooks"]
-	path = vendor/opscode/cookbooks
-	url = https://github.com/infochimps-labs/opscode_cookbooks
 [submodule "notes"]
 	path = notes
 	url = https://github.com/infochimps-labs/ironfan.wiki.git

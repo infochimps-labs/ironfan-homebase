@@ -1,1 +1,8 @@
-../vendor/ironfan-pantry/roles/volumes.rb
+name        'volumes'
+description 'mounts attached volumes as described by node attributes'
+
+run_list(*[
+    'xfs',
+    'volumes::mount',
+    'volumes::resize',
+  ])

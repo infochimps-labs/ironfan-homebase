@@ -1,1 +1,5 @@
-../vendor/ironfan-pantry/roles/chef_server.rb
+name        "chef_server"
+description "Chef server"
+run_list(
+  "recipe[chef-server::rubygems-install]"
+)

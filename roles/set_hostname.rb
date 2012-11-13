@@ -1,1 +1,7 @@
-../vendor/ironfan-pantry/roles/set_hostname.rb
+name        'set_hostname'
+description 'Uses route53 to set the machine\'s hostname'
+
+run_list *%w[
+  route53::default
+  route53::set_hostname
+  ]

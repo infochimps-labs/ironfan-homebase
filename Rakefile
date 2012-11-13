@@ -58,6 +58,14 @@ Dir[File.join('tasks', '*.rake')].sort.each{|f| load(f) }
 
 load 'chef/tasks/chef_repo.rake'
 
+desc "Install berkshelf cookbooks locally"
+task :berkshelf do |t, args|
+  system("bundle exec berks install --path cookbooks")
+end
+
+desc "Install berkshelf cookbooks and sync with Chef server"
+task :berkshelf_install => [ :berkshelf, :install ]
+
 desc "Bundle a single cookbook for distribution"
 task :bundle_cookbook => [ :metadata ]
 task :bundle_cookbook, :cookbook do |t, args|
@@ -115,7 +123,7 @@ end
 # RSpec::Core::RakeTask.new(:spec) do |spec|
 #   spec.pattern = FileList['spec/**/*_spec.rb']
 # end
-# 
+#
 # RSpec::Core::RakeTask.new(:rcov) do |spec|
 #   spec.pattern = 'spec/**/*_spec.rb'
 #   spec.rcov = true

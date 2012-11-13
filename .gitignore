@@ -62,7 +62,8 @@ knife/checksums/*
 knife/plugins
 
 .chef
-vendor/ironfan-enterprise
 vagrants/*
 .rbenv-version
 Gemfile.lock
+Berksfile.lock
+cookbooks/*

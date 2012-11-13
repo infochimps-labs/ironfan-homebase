@@ -1,1 +1,9 @@
-../vendor/ironfan-pantry/roles/resque_server.rb
+name        'resque_server'
+description 'installs resque and launches its redis and web services'
+
+run_list *%w[
+  redis::install_from_release
+  redis::server
+  resque::default
+  resque::dashboard
+  ]

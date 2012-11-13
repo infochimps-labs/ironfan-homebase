@@ -1,1 +1,8 @@
-../vendor/ironfan-pantry/roles/zookeeper_client.rb
+name 'zookeeper_client'
+description 'Files needed to access a zookeeper.'
+
+run_list %w[
+  zookeeper::default
+  zookeeper::client
+  zookeeper::config_files
+]
