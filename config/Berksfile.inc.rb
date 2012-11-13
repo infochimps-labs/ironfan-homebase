@@ -21,5 +21,5 @@ def pantry_cookbook(name)
 end
 
 def org_cookbook(name)
-  cookbook name, path: "org_cookbooks"
+  cookbook name, path: "org_cookbooks/#{name}"
 end
