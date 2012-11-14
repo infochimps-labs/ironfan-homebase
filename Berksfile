@@ -1,5 +1,6 @@
-require './config/Berksfile.conf'
-require './config/Berksfile.inc'
+CONF = File.join(File.dirname(__FILE__), 'config/Berksfile.conf.rb')
+require CONF if File.exists? CONF
+require File.join(File.dirname(__FILE__), 'config/Berksfile.inc.rb')
 
 opscode_cookbook        'ant'
 opscode_cookbook        'apache2'
