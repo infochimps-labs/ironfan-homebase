@@ -6,8 +6,7 @@ source "http://rubygems.org"
 
 gem 'chef',            ">= 0.10.8"
 gem 'ironfan',         "~> 4.2"
-gem 'berkshelf',       :git => "git://github.com/temujin9/berkshelf",
-                       :branch => "one_clone_path"
+gem 'berkshelf',       ">= 1.0.1"
 
 # Everything in the world is being a stupid dick about JSON versions. Pin it to
 # the one that doesn't seem to angrify everyone.
