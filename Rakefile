@@ -62,9 +62,14 @@ desc "Install berkshelf cookbooks locally"
 task :berkshelf do |t, args|
   system("bundle exec berks install --path cookbooks")
 end
-
 desc "Install berkshelf cookbooks and sync with Chef server"
 task :berkshelf_install => [ :berkshelf, :install ]
+desc "Install berkshelf cookbooks and upload one to the Chef server"
+task :berkshelf_upload => [ :berkshelf ]
+task :berkshelf_upload, :cookbook do |t, args|
+  system("knife cookbook upload #{args.cookbook}")
+end
+
 
 desc "Bundle a single cookbook for distribution"
 task :bundle_cookbook => [ :metadata ]
@@ -119,7 +124,7 @@ end
 # ---------------------------------------------------------------------------
 #
 # RSpec -- testing
-# #
+#
 # RSpec::Core::RakeTask.new(:spec) do |spec|
 #   spec.pattern = FileList['spec/**/*_spec.rb']
 # end
