@@ -1,2 +1,4 @@
-USE_LOCAL       = false
-LOCAL_PATH      = "vendor"
+# This allows you to work with cookbook repos checked out
+#   to the same base path as the homebases
+USE_LOCAL       = true
+LOCAL_PATH      = ".."
