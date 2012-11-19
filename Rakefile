@@ -58,12 +58,23 @@ Dir[File.join('tasks', '*.rake')].sort.each{|f| load(f) }
 
 load 'chef/tasks/chef_repo.rake'
 
+#
+# Berkshelf
+#
 desc "Install berkshelf cookbooks locally"
 task :berkshelf do |t, args|
   system("bundle exec berks install --path cookbooks")
 end
+
 desc "Install berkshelf cookbooks and sync with Chef server"
-task :berkshelf_install => [ :berkshelf, :install ]
+task :berkshelf_install => [ :berkshelf, :upload_cookbooks_without_metadata ]
+# FIXME: This is necessary because the :metadata step attempts to build
+#   *cookbooks, which breaks on org_cookbooks/* (unless they already have a
+#   metadata.json)
+task :upload_cookbooks_without_metadata do
+  system("knife cookbook upload --all")
+end
+
 desc "Install berkshelf cookbooks and upload one to the Chef server"
 task :berkshelf_upload => [ :berkshelf ]
 task :berkshelf_upload, :cookbook do |t, args|
