@@ -61,7 +61,6 @@ knife-user-*.rb
 knife/checksums/*
 knife/plugins
 
-.chef
 vagrants/*
 .rbenv-version
 Gemfile.lock
