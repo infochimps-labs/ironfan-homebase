@@ -52,9 +52,7 @@ metadata.json
 vagrants/iso/*
 vagrants/boxes/*
 
-vendor/internal
-vendor/cluster_chef
-vendor/ironfan-knife
+vendor/*
 
 knife/*-credentials
 knife-user-*.rb
