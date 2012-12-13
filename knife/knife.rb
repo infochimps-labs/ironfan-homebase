@@ -45,6 +45,15 @@ cache_options           :path => "/tmp/chef-checksums-#{username}"
 bootstrap_runs_chef_client true
 bootstrap_chef_version  "~> 0.10.4"
 
+#
+# Keys for git deploys
+#
+git_key_files = Dir.glob("#{credentials_path}/git_keys/*.pem")
+Chef::Config[:git_keys] = git_key_files.inject({}) do |hsh, file|
+  hsh[ File.basename(file, '.pem').to_sym ] = File.read(file)
+  hsh
+end
+
 def load_if_exists(file) ; load(file) if File.exists?(file) ; end
 
 # Organization-sepecific settings -- Chef::Config[:ec2_image_info] and so forth
