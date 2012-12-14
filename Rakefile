@@ -68,18 +68,27 @@ end
 
 desc "Install berkshelf cookbooks and sync with Chef server"
 task :berkshelf_install => [ :berkshelf, :upload_cookbooks_without_metadata ]
-# FIXME: This is necessary because the :metadata step attempts to build
-#   *cookbooks, which breaks on org_cookbooks/* (unless they already have a
-#   metadata.json)
-task :upload_cookbooks_without_metadata do
-  system("knife cookbook upload --all")
-end
+task(:upload_cookbooks_without_metadata) { system("knife cookbook upload --all") }
 
 desc "Install berkshelf cookbooks and upload one to the Chef server"
 task :berkshelf_upload => [ :berkshelf ]
 task :berkshelf_upload, :cookbook do |t, args|
   system("knife cookbook upload #{args.cookbook}")
 end
+
+#
+# Sync
+# 
+desc "Sync clusters with Chef and IaaS servers"
+task :sync_clusters => FileList[File.join(TOPDIR, 'clusters', '*.rb')].pathmap('knife cluster sync %n')
+rule(%r{knife cluster sync \S+\Z}) {|t| system(t.to_s) or raise "#{t} failed" }
+
+desc "Sync environments with Chef server"
+task :sync_environments => FileList[File.join(TOPDIR, 'environments', '[^_]*.rb')].pathmap('knife environment from file %p')
+rule(%r{knife environment from file \S+\Z}) {|t| system(t.to_s) or raise "#{t} failed" }
+
+desc "Sync everything (roles, environments, clusters, and cookbooks)"
+task :full_sync => [ :roles, :sync_environments, :sync_clusters, :berkshelf_install ]
 
 
 desc "Bundle a single cookbook for distribution"
