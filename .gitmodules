@@ -1,9 +1,6 @@
 [submodule "notes"]
 	path = notes
 	url = https://github.com/infochimps-labs/ironfan.wiki.git
-[submodule "git@github.com:infochimps-labs/example-credentials.git"]
-	path = git@github.com:infochimps-labs/example-credentials.git
-	url = ./knife/example-credentials
 [submodule "knife/example-credentials"]
 	path = knife/example-credentials
 	url = git@github.com:infochimps-labs/example-credentials.git
