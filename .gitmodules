@@ -3,4 +3,4 @@
 	url = https://github.com/infochimps-labs/ironfan.wiki.git
 [submodule "knife/example-credentials"]
 	path = knife/example-credentials
-	url = git@github.com:infochimps-labs/example-credentials.git
+	url = https://github.com/infochimps-labs/example-credentials.git
