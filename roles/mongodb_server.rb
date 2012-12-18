@@ -5,4 +5,5 @@ run_list %w[
   mongodb::default
   mongodb::install_from_release
   mongodb::server
+  mongodb::config_files
 ]
