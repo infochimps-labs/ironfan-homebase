@@ -7,6 +7,9 @@ run_list %w[
 
 override_attributes({
                       :hadoop => {
+                        :jobtracker => {
+                          :plugins => ['org.apache.hadoop.thriftfs.ThriftJobTrackerPlugin'],
+                        },
                         :namenode => {
                           :plugins => ['org.apache.hadoop.thriftfs.NamenodePlugin'],
                         },
