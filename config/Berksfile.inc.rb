@@ -4,7 +4,7 @@ conf_file = File.join(File.dirname(__FILE__), 'Berksfile.conf')
 old_conf_file = "#{conf_file}.rb"
 if ((File.exists? old_conf_file) && (not File.exists? conf_file))
   require 'fileutils'
-  echo "Moving #{old_conf_file} to #{conf_file}"
+  puts "Moving #{old_conf_file} to #{conf_file}"
   FileUtils.mv(old_conf_file, conf_file)
 end
 
