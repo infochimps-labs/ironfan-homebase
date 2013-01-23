@@ -4,13 +4,14 @@
 OLD_CONF = File.join(File.dirname(__FILE__), 'Berksfile.conf.rb')
 if File.exists? OLD_CONF
   echo "Please move Berksfile.conf.rb to Berksfile.conf"
-  CONF = OLD_CONF
+  require OLD_CONF
+  %w[ USE_LOCAL LOCAL_PATH PANTRY_REPO PANTRY_BRANCH ].each do |var|
+    ( ENV[var] = eval(var) ) rescue nil   unless ENV[var]
+  end
 else
-  CONF = File.join(File.dirname(__FILE__), 'Berksfile.conf')
-end
-require CONF if File.exists? CONF
-%w[ USE_LOCAL LOCAL_PATH PANTRY_REPO PANTRY_BRANCH ].each do |var|
-  ( ENV[var] = eval(var) ) rescue nil   unless ENV[var]
+  require 'parseconfig'
+  config = ParseConfig.new File.join(File.dirname(__FILE__), 'Berksfile.conf')
+  config.params.each_pair {|key,value| ENV[key] = value unless ENV[key] }
 end
 
 ENV['USE_LOCAL']        = false                               unless ENV['USE_LOCAL']
