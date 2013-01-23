@@ -1,18 +1,16 @@
-# Get configuration in both old and new way. This will eventually go away
-#   in favor of a singular conf file (which will be loaded direct into
-#   ENV variables).
-OLD_CONF = File.join(File.dirname(__FILE__), 'Berksfile.conf.rb')
-if File.exists? OLD_CONF
-  echo "Please move Berksfile.conf.rb to Berksfile.conf"
-  require OLD_CONF
-  %w[ USE_LOCAL LOCAL_PATH PANTRY_REPO PANTRY_BRANCH ].each do |var|
-    ( ENV[var] = eval(var) ) rescue nil   unless ENV[var]
-  end
-else
-  require 'parseconfig'
-  config = ParseConfig.new File.join(File.dirname(__FILE__), 'Berksfile.conf')
-  config.params.each_pair {|key,value| ENV[key] = value unless ENV[key] }
+conf_file = File.join(File.dirname(__FILE__), 'Berksfile.conf')
+
+# Move the old file to the right place
+old_conf_file = "#{conf_file}.rb"
+if ((File.exists? old_conf_file) && not (File.exists? conf_file))
+  require 'fileutils'
+  echo "Moving #{old_conf_file} to #{conf_file}"
+  FileUtils.mv(old_conf_file, conf_file)
 end
+
+require 'parseconfig'
+config = ParseConfig.new File.join(File.dirname(__FILE__), 'Berksfile.conf')
+config.params.each_pair {|key,value| ENV[key] = value unless ENV[key] }
 
 ENV['USE_LOCAL']        = false                               unless ENV['USE_LOCAL']
 ENV['LOCAL_PATH']       = "vendor"                            unless ENV['LOCAL_PATH']
