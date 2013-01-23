@@ -64,4 +64,4 @@ vagrants/*
 Gemfile.lock
 Berksfile.lock
 cookbooks/*
-config/Berksfile.conf.rb
+config/Berksfile.conf
