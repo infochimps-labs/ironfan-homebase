@@ -8,13 +8,12 @@ if ((File.exists? old_conf_file) && (not File.exists? conf_file))
   FileUtils.mv(old_conf_file, conf_file)
 end
 
-conf_file = File.join(File.dirname(__FILE__), 'Berksfile.conf')
 if File.exists? conf_file
   require 'parseconfig'
   ParseConfig.new(conf_file).params.each_pair {|k,v| ENV[k] = v unless ENV[k] }
 end
 
-ENV['USE_LOCAL']        = false                               unless ENV['USE_LOCAL']
+# ENV['USE_LOCAL']        = false       # This is already default
 ENV['LOCAL_PATH']       = "vendor"                            unless ENV['LOCAL_PATH']
 ENV['PANTRY_REPO']      = 'infochimps-labs/ironfan-pantry'    unless ENV['PANTRY_REPO']
 ENV['PANTRY_BRANCH']    = 'master'                            unless ENV['PANTRY_BRANCH']
