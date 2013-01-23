@@ -1,5 +1,6 @@
 # Get configuration in both old and new way. This will eventually go away
-#   in favor of 
+#   in favor of a singular conf file (which will be loaded direct into
+#   ENV variables).
 OLD_CONF = File.join(File.dirname(__FILE__), 'Berksfile.conf.rb')
 if File.exists? OLD_CONF
   echo "Please move Berksfile.conf.rb to Berksfile.conf"
@@ -12,10 +13,10 @@ require CONF if File.exists? CONF
   ( ENV[var] = eval(var) ) rescue nil   unless ENV[var]
 end
 
-ENV['USE_LOCAL']        = false                               unless defined? ENV['USE_LOCAL']
-ENV['LOCAL_PATH']       = "vendor"                            unless defined? ENV['LOCAL_PATH']
-ENV['PANTRY_REPO']      = 'infochimps-labs/ironfan-pantry'    unless defined? ENV['PANTRY_REPO']
-ENV['PANTRY_BRANCH']    = 'master'                            unless defined? ENV['PANTRY_BRANCH']
+ENV['USE_LOCAL']        = false                               unless ENV['USE_LOCAL']
+ENV['LOCAL_PATH']       = "vendor"                            unless ENV['LOCAL_PATH']
+ENV['PANTRY_REPO']      = 'infochimps-labs/ironfan-pantry'    unless ENV['PANTRY_REPO']
+ENV['PANTRY_BRANCH']    = 'master'                            unless ENV['PANTRY_BRANCH']
 
 def github_cookbook(name, repo, rel, branch)
   if ENV['USE_LOCAL']
