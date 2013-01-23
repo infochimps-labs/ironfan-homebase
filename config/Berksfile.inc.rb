@@ -8,9 +8,11 @@ if ((File.exists? old_conf_file) && (not File.exists? conf_file))
   FileUtils.mv(old_conf_file, conf_file)
 end
 
-require 'parseconfig'
-config = ParseConfig.new File.join(File.dirname(__FILE__), 'Berksfile.conf')
-config.params.each_pair {|key,value| ENV[key] = value unless ENV[key] }
+conf_file = File.join(File.dirname(__FILE__), 'Berksfile.conf')
+if File.exists? conf_file
+  require 'parseconfig'
+  ParseConfig.new(conf_file).params.each_pair {|k,v| ENV[k] = v unless ENV[k] }
+end
 
 ENV['USE_LOCAL']        = false                               unless ENV['USE_LOCAL']
 ENV['LOCAL_PATH']       = "vendor"                            unless ENV['LOCAL_PATH']
