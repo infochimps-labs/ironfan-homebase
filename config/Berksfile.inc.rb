@@ -19,7 +19,7 @@ ENV['PANTRY_REPO']       = 'infochimps-labs/ironfan-pantry'    unless ENV['PANTR
 ENV['PANTRY_BRANCH']     = 'master'                            unless ENV['PANTRY_BRANCH']
 
 def github_cookbook(name, repo, rel, branch)
-  if ENV['USE_LOCAL']
+  if ENV['USE_LOCAL'].to_i
     r_name = repo.split('/')[1]
     cookbook name, path: "#{ENV['LOCAL_PATH']}/#{r_name}/#{rel}"
   else
