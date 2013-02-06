@@ -4,7 +4,7 @@ source "http://rubygems.org"
 # Chef
 #
 
-gem 'chef',            ">= 0.10.8"
+gem 'chef',            "~> 10.18"
 gem 'ironfan',         "~> 4.7"
 
 gem 'berkshelf',       ">= 1.0.1"
