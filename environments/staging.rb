@@ -1,7 +1,7 @@
 name        "staging"
 description "Staging environment"
 
-# Make sure that we're in the staging environment before we sync
+# Make sure that we're in the staging branch before we sync
 `git status | grep -q "On branch staging"`
 raise "Not on the staging branch, can't sync the staging environment" unless ($?.to_i == 0)
 
