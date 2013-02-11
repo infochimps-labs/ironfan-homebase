@@ -12,7 +12,7 @@ gem 'parseconfig'
 
 # Everything in the world is being a stupid dick about JSON versions. Pin it to
 # the one that doesn't seem to angrify everyone.
-gem 'json',            "~> 1.5.4"
+gem 'json',            "= 1.5.4"
 
 #
 # Test drivers
