@@ -1,0 +1,242 @@
+GIT
+  remote: git://github.com/infochimps-forks/guard-chef.git
+  revision: fb2d162e89260dba2b04bf955b6d114dfbfd0a17
+  specs:
+    guard-chef (0.0.2)
+      guard (>= 1.1)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activemodel (3.2.12)
+      activesupport (= 3.2.12)
+      builder (~> 3.0.0)
+    activesupport (3.2.12)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    addressable (2.3.2)
+    archive-tar-minitar (0.5.2)
+    berkshelf (1.1.4)
+      activesupport
+      chef (>= 10.16.2, <= 11.0.1)
+      chozo (>= 0.2.3)
+      hashie
+      minitar
+      multi_json (>= 1.3.0)
+      ridley (~> 0.6.3)
+      solve (>= 0.4.0.rc1)
+      thor (~> 0.16.0)
+      vagrant (~> 1.0.5)
+      yajl-ruby
+    builder (3.0.4)
+    bunny (0.7.9)
+    celluloid (0.12.4)
+      facter (>= 1.6.12)
+      timers (>= 1.0.0)
+    chef (10.18.2)
+      bunny (>= 0.6.0, < 0.8.0)
+      erubis
+      highline (>= 1.6.9)
+      json (>= 1.4.4, <= 1.6.1)
+      mixlib-authentication (>= 1.3.0)
+      mixlib-cli (>= 1.1.0)
+      mixlib-config (>= 1.1.2)
+      mixlib-log (>= 1.3.0)
+      mixlib-shellout
+      moneta (< 0.7.0)
+      net-ssh (~> 2.2.2)
+      net-ssh-multi (~> 1.1.0)
+      ohai (>= 0.6.0)
+      rest-client (>= 1.0.4, < 1.7.0)
+      treetop (~> 1.4.9)
+      uuidtools
+      yajl-ruby (~> 1.1)
+    childprocess (0.3.8)
+      ffi (~> 1.0, >= 1.0.11)
+    chozo (0.4.2)
+      activesupport (>= 3.2.0)
+      hashie
+      multi_json (>= 1.3.0)
+    coderay (1.0.8)
+    configliere (0.4.18)
+      highline (>= 1.5.2)
+      multi_json (>= 1.1)
+    cucumber (1.2.1)
+      builder (>= 2.1.2)
+      diff-lcs (>= 1.1.3)
+      gherkin (~> 2.11.0)
+      json (>= 1.4.6)
+    diff-lcs (1.1.3)
+    erubis (2.7.0)
+    excon (0.16.10)
+    facter (1.6.17)
+    faraday (0.8.5)
+      multipart-post (~> 1.1)
+    ffi (1.0.11)
+    fog (1.9.0)
+      builder
+      excon (~> 0.14)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.0.4)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5.0)
+      ruby-hmac
+    formatador (0.2.4)
+    gherkin (2.11.5)
+      json (>= 1.4.6)
+    git (1.2.5)
+    gorillib (0.4.2)
+      configliere (>= 0.4.13)
+      json
+      multi_json (>= 1.1)
+    grit (2.5.0)
+      diff-lcs (~> 1.1)
+      mime-types (~> 1.15)
+      posix-spawn (~> 0.3.6)
+    guard (1.6.2)
+      listen (>= 0.6.0)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      terminal-table (>= 1.4.3)
+      thor (>= 0.14.6)
+    guard-cucumber (1.3.2)
+      cucumber (>= 1.2.0)
+      guard (>= 1.1.0)
+    guard-process (1.0.5)
+      ffi (~> 1.0.9)
+      guard (>= 0.4.2)
+      spoon (~> 0.0.1)
+    hashie (1.2.0)
+    highline (1.6.15)
+    i18n (0.6.1)
+    ipaddress (0.8.0)
+    ironfan (4.7.7)
+      chef (>= 0.10.4)
+      fog (~> 1.2)
+      formatador (~> 0.2)
+      gorillib (~> 0.4.2)
+    jeweler (1.8.4)
+      bundler (~> 1.0)
+      git (>= 1.2.5)
+      rake
+      rdoc
+    json (1.5.4)
+    listen (0.7.2)
+    log4r (1.1.10)
+    lumberjack (1.0.2)
+    method_source (0.8.1)
+    mime-types (1.21)
+    minitar (0.5.4)
+    mixlib-authentication (1.3.0)
+      mixlib-log
+    mixlib-cli (1.3.0)
+    mixlib-config (1.1.2)
+    mixlib-log (1.4.1)
+    mixlib-shellout (1.1.0)
+    moneta (0.6.0)
+    multi_json (1.6.0)
+    multipart-post (1.1.5)
+    net-http-persistent (2.8)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-ssh (2.2.2)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
+    net-ssh-multi (1.1)
+      net-ssh (>= 2.1.4)
+      net-ssh-gateway (>= 0.99.0)
+    nokogiri (1.5.6)
+    ohai (6.16.0)
+      ipaddress
+      mixlib-cli
+      mixlib-config
+      mixlib-log
+      mixlib-shellout
+      systemu
+      yajl-ruby
+    parseconfig (1.0.2)
+    polyglot (0.3.3)
+    posix-spawn (0.3.6)
+    pry (0.9.12)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    rake (10.0.3)
+    rdoc (3.12.1)
+      json (~> 1.4)
+    redcarpet (2.2.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    ridley (0.6.3)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      addressable
+      celluloid
+      chozo (>= 0.2.2)
+      erubis
+      faraday
+      json (>= 1.5.0)
+      mixlib-authentication
+      mixlib-log
+      multi_json (>= 1.0.4)
+      net-http-persistent (>= 2.8)
+      net-ssh
+    rspec (2.12.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
+    rspec-core (2.12.2)
+    rspec-expectations (2.12.1)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.12.2)
+    ruby-hmac (0.4.0)
+    ruby_gntp (0.3.4)
+    slop (3.4.3)
+    solve (0.4.1)
+      json
+    spoon (0.0.1)
+    systemu (2.5.2)
+    terminal-table (1.4.5)
+    thor (0.16.0)
+    timers (1.1.0)
+    treetop (1.4.12)
+      polyglot
+      polyglot (>= 0.3.1)
+    uuidtools (2.1.3)
+    vagrant (1.0.6)
+      archive-tar-minitar (= 0.5.2)
+      childprocess (~> 0.3.1)
+      erubis (~> 2.7.0)
+      i18n (~> 0.6.0)
+      json (~> 1.5.1)
+      log4r (~> 1.1.9)
+      net-scp (~> 1.0.4)
+      net-ssh (~> 2.2.2)
+    yajl-ruby (1.1.0)
+    yard (0.8.4.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  berkshelf (>= 1.0.1)
+  bundler (~> 1)
+  chef (~> 10.18)
+  cucumber (~> 1.1)
+  grit
+  guard (~> 1)
+  guard-chef!
+  guard-cucumber
+  guard-process (~> 1)
+  ironfan (~> 4.7)
+  jeweler
+  json (= 1.5.4)
+  parseconfig
+  pry
+  rake
+  redcarpet (~> 2)
+  rspec (~> 2.5)
+  ruby_gntp
+  yard (~> 0.6)

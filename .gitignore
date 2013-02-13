@@ -61,7 +61,6 @@ knife/plugins
 
 vagrants/*
 .rbenv-version
-Gemfile.lock
 Berksfile.lock
 cookbooks/*
 config/Berksfile.conf
