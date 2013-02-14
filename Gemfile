@@ -4,15 +4,10 @@ source "http://rubygems.org"
 # Chef
 #
 
-gem 'chef',            "~> 10.18"
-gem 'ironfan',         "~> 4.7"
+gem 'ironfan',         "~> 4.8"
 
-gem 'berkshelf',       ">= 1.0.1"
+gem 'berkshelf',       ">= 1.0.1"     # FIXME: pins chef to the 10.16 branch.
 gem 'parseconfig'
-
-# Everything in the world is being a stupid dick about JSON versions. Pin it to
-# the one that doesn't seem to angrify everyone.
-gem 'json',            "= 1.5.4"
 
 #
 # Test drivers
