@@ -13,13 +13,13 @@ if File.exists? conf_file
   ParseConfig.new(conf_file).params.each_pair {|k,v| ENV[k] = v unless ENV[k] }
 end
 
-# ENV['USE_LOCAL']         = false       # This is already default
+# ENV['USE_LOCAL']       = nil                                 # This is already default
 ENV['LOCAL_PATH']        = "vendor"                            unless ENV['LOCAL_PATH']
 ENV['PANTRY_REPO']       = 'infochimps-labs/ironfan-pantry'    unless ENV['PANTRY_REPO']
 ENV['PANTRY_BRANCH']     = 'master'                            unless ENV['PANTRY_BRANCH']
 
 def github_cookbook(name, repo, rel, branch)
-  if ENV['USE_LOCAL'].to_i
+  if ! ENV['USE_LOCAL'].nil?
     r_name = repo.split('/')[1]
     cookbook name, path: "#{ENV['LOCAL_PATH']}/#{r_name}/#{rel}"
   else
