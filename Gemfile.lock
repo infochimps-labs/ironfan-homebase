@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/infochimps-forks/guard-chef.git
-  revision: fb2d162e89260dba2b04bf955b6d114dfbfd0a17
-  specs:
-    guard-chef (0.0.2)
-      guard (>= 1.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -14,7 +7,7 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    addressable (2.3.2)
+    addressable (2.3.3)
     archive-tar-minitar (0.5.2)
     berkshelf (1.1.4)
       activesupport
@@ -57,7 +50,7 @@ GEM
       activesupport (>= 3.2.0)
       hashie
       multi_json (>= 1.3.0)
-    coderay (1.0.8)
+    coderay (1.0.9)
     configliere (0.4.18)
       highline (>= 1.5.2)
       multi_json (>= 1.1)
@@ -68,11 +61,11 @@ GEM
       json (>= 1.4.6)
     diff-lcs (1.1.3)
     erubis (2.7.0)
-    excon (0.16.10)
+    excon (0.18.3)
     facter (1.6.17)
     faraday (0.8.5)
       multipart-post (~> 1.1)
-    ffi (1.0.11)
+    ffi (1.4.0)
     fog (1.9.0)
       builder
       excon (~> 0.14)
@@ -95,24 +88,11 @@ GEM
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
-    guard (1.6.2)
-      listen (>= 0.6.0)
-      lumberjack (>= 1.0.2)
-      pry (>= 0.9.10)
-      terminal-table (>= 1.4.3)
-      thor (>= 0.14.6)
-    guard-cucumber (1.3.2)
-      cucumber (>= 1.2.0)
-      guard (>= 1.1.0)
-    guard-process (1.0.5)
-      ffi (~> 1.0.9)
-      guard (>= 0.4.2)
-      spoon (~> 0.0.1)
-    hashie (1.2.0)
+    hashie (2.0.0)
     highline (1.6.15)
     i18n (0.6.1)
     ipaddress (0.8.0)
-    ironfan (4.8.1)
+    ironfan (4.8.2)
       chef (~> 10.16)
       fog (~> 1.2)
       formatador (~> 0.2)
@@ -124,9 +104,7 @@ GEM
       rake
       rdoc
     json (1.5.4)
-    listen (0.7.2)
     log4r (1.1.10)
-    lumberjack (1.0.2)
     method_source (0.8.1)
     mime-types (1.21)
     minitar (0.5.4)
@@ -197,9 +175,7 @@ GEM
     slop (3.4.3)
     solve (0.4.1)
       json
-    spoon (0.0.1)
     systemu (2.5.2)
-    terminal-table (1.4.5)
     thor (0.16.0)
     timers (1.1.0)
     treetop (1.4.12)
@@ -226,10 +202,6 @@ DEPENDENCIES
   bundler (~> 1)
   cucumber (~> 1.1)
   grit
-  guard (~> 1)
-  guard-chef!
-  guard-cucumber
-  guard-process (~> 1)
   ironfan (~> 4.8)
   jeweler
   parseconfig

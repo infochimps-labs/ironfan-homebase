@@ -31,10 +31,11 @@ group :development do
 
   gem 'ruby_gntp'
 
-  gem 'guard',         "~> 1"
-  gem 'guard-process', "~> 1"
-  gem 'guard-chef',    :git => 'git://github.com/infochimps-forks/guard-chef.git'
-  gem 'guard-cucumber'
+  # FIXME: Commented out until guard-chef stops breaking bundle update
+  # gem 'guard',         "~> 1"
+  # gem 'guard-process', "~> 1"
+  # gem 'guard-chef',    :git => 'git://github.com/infochimps-forks/guard-chef.git'
+  # gem 'guard-cucumber'
 end
 
 group :support do
