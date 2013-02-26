@@ -32,6 +32,7 @@ require 'json'
 # require 'rspec'
 # require 'rspec/core/rake_task'
 require 'yard'
+require 'git'
 
 # Load constants from rake config file.
 $LOAD_PATH.unshift('tasks')
@@ -83,12 +84,16 @@ desc "Sync clusters with Chef and IaaS servers"
 task :sync_clusters => FileList[File.join(TOPDIR, 'clusters', '*.rb')].pathmap('knife cluster sync %n')
 rule(%r{knife cluster sync \S+\Z}) {|t| system(t.to_s) or raise "#{t} failed" }
 
-desc "Sync environments with Chef server"
-task :sync_environments => FileList[File.join(TOPDIR, 'environments', '[^_]*.rb')].pathmap('knife environment from file %p')
-rule(%r{knife environment from file \S+\Z}) {|t| system(t.to_s) or raise "#{t} failed" }
+desc "Sync current environment with Chef server"
+task :sync_environment do
+  environment = Git.open('.').branches.to_s[%r/\* (.*)/,1]
+  environment = 'development' if environment == 'master'
+  command = "knife environment from file #{environment}.rb"
+  system(command) or raise "#{command} failed"
+end
 
-desc "Sync everything (roles, environments, clusters, and cookbooks)"
-task :full_sync => [ :roles, :sync_environments, :sync_clusters, :berkshelf_install ]
+desc "Sync everything (roles, environment, clusters, and cookbooks)"
+task :full_sync => [ :roles, :sync_environment, :sync_clusters, :berkshelf_install ]
 
 
 desc "Bundle a single cookbook for distribution"
