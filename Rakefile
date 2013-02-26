@@ -105,6 +105,8 @@ task :full_sync => [ :roles, :sync_environment, :sync_clusters, :berkshelf_insta
 
 desc "Initialize your staging environment"
 task :initialize_staging do
+  print "Initializing your staging environment will upload and freeze all versions currently in staging. Are you sure you want to continue? (y/n): "
+  exit unless STDIN.gets.chomp.downcase == 'y'
   # FIXME: stash any changes
   g = Git.open('.')
   current = find_current_branch
