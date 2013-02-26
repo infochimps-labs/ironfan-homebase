@@ -34,6 +34,10 @@ require 'json'
 require 'yard'
 require 'git'
 
+def find_current_branch
+  Git.open('.').branches.to_s[%r/\* (.*)/,1]
+end
+
 # Load constants from rake config file.
 $LOAD_PATH.unshift('tasks')
 Dir[File.join('tasks', '*.rake')].sort.each{|f| load(f) }
@@ -86,7 +90,7 @@ rule(%r{knife cluster sync \S+\Z}) {|t| system(t.to_s) or raise "#{t} failed" }
 
 desc "Sync current environment with Chef server"
 task :sync_environment do
-  environment = Git.open('.').branches.to_s[%r/\* (.*)/,1]
+  environment = find_current_branch
   environment = 'development' if environment == 'master'
   command = "knife environment from file #{environment}.rb"
   system(command) or raise "#{command} failed"
@@ -95,7 +99,48 @@ end
 desc "Sync everything (roles, environment, clusters, and cookbooks)"
 task :full_sync => [ :roles, :sync_environment, :sync_clusters, :berkshelf_install ]
 
+#
+# Environments
+#
 
+desc "Initialize your staging environment"
+task :initialize_staging do
+  # FIXME: stash any changes
+  g = Git.open('.')
+  current = find_current_branch
+  begin
+    g.checkout('staging')
+    Rake::Task[:roles].invoke
+    Rake::Task[:sync_environment].invoke
+    Rake::Task[:sync_clusters].invoke
+    Rake::Task[:berkshelf].invoke
+    system("knife cookbook upload --all --force --freeze")
+    puts "Initialized the staging environment successfully"
+  ensure
+    g.checkout(current)
+  end
+  # FIXME: unstash any changes
+end
+
+desc "Push the current staging environment to production"
+task :push_to_production do
+  # FIXME: stash any changes
+  g = Git.open('.')
+  current = find_current_branch
+  begin
+    g.checkout('production')
+    g.merge('origin/staging')
+    g.push('origin','production')
+    puts "Current staging has pushed to production successfully"
+  ensure
+    g.checkout(current)
+  end
+  # FIXME: unstash any changes
+end
+
+#
+# Other
+# 
 desc "Bundle a single cookbook for distribution"
 task :bundle_cookbook => [ :metadata ]
 task :bundle_cookbook, :cookbook do |t, args|
