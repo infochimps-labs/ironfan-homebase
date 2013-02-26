@@ -110,12 +110,10 @@ task :initialize_staging do
   current = find_current_branch
   begin
     g.checkout('staging')
-    Rake::Task[:roles].invoke
     Rake::Task[:sync_environment].invoke
-    Rake::Task[:sync_clusters].invoke
     Rake::Task[:berkshelf].invoke
     system("knife cookbook upload --all --force --freeze")
-    puts "Initialized the staging environment successfully"
+    puts "Initialized the staging environment and cookbooks"
   ensure
     g.checkout(current)
   end
@@ -128,10 +126,11 @@ task :push_to_production do
   g = Git.open('.')
   current = find_current_branch
   begin
-    g.checkout('production')
+    g.checkout('staging')
+    g.branch('production').checkout
     g.merge('origin/staging')
     g.push('origin','production')
-    puts "Current staging has pushed to production successfully"
+    puts "Current staging has pushed to production"
   ensure
     g.checkout(current)
   end
