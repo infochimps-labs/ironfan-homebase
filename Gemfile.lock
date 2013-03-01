@@ -46,9 +46,9 @@ GEM
       yajl-ruby (~> 1.1)
     childprocess (0.3.8)
       ffi (~> 1.0, >= 1.0.11)
-    chozo (0.6.0)
+    chozo (0.6.1)
       activesupport (>= 3.2.0)
-      hashie
+      hashie (>= 2.0.2)
       multi_json (>= 1.3.0)
     coderay (1.0.9)
     configliere (0.4.18)
@@ -61,7 +61,7 @@ GEM
       json (>= 1.4.6)
     diff-lcs (1.2.1)
     erubis (2.7.0)
-    excon (0.18.5)
+    excon (0.19.3)
     facter (1.6.17)
     faraday (0.8.6)
       multipart-post (~> 1.1)
@@ -84,15 +84,11 @@ GEM
       configliere (>= 0.4.13)
       json
       multi_json (>= 1.1)
-    grit (2.5.0)
-      diff-lcs (~> 1.1)
-      mime-types (~> 1.15)
-      posix-spawn (~> 0.3.6)
     hashie (2.0.2)
     highline (1.6.15)
-    i18n (0.6.2)
+    i18n (0.6.4)
     ipaddress (0.8.0)
-    ironfan (4.8.4)
+    ironfan (4.8.6)
       chef (~> 10.16)
       fog (~> 1.2)
       formatador (~> 0.2)
@@ -137,7 +133,6 @@ GEM
       yajl-ruby
     parseconfig (1.0.2)
     polyglot (0.3.3)
-    posix-spawn (0.3.6)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -201,7 +196,6 @@ DEPENDENCIES
   berkshelf (>= 1.0.1)
   bundler (~> 1)
   cucumber (~> 1.1)
-  grit
   ironfan (~> 4.8)
   jeweler
   parseconfig

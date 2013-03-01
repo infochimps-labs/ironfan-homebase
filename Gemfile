@@ -40,5 +40,4 @@ end
 
 group :support do
   gem 'pry'  # useful in debugging
-  gem 'grit' # used in rake scripts for push/pulling cookbooks
 end
