@@ -5,12 +5,18 @@
 # zookeeper doesn't guarantee availability; and you should NEVER run an even
 # number of ZKs (http://hbase.apache.org/book/zookeeper.html).
 #
+# take note that permanent true is commented out, this may or may not not be ideal for you
+
+
 Ironfan.cluster 'zk' do
   cloud(:ec2) do
     # permanent           true
     availability_zones ['us-east-1d']
     flavor              't1.micro'  # change to something larger for serious use
+    backing             'ebs'
     image_name          'ironfan-precise'
+    bootstrap_distro    'ubuntu12.04-ironfan'
+    chef_client_script  'client.rb'
     mount_ephemerals(:tags => { :zookeeper_journal => true, :zookeeper_scratch => true, :zookeeper_data => false, })
   end
 
@@ -37,8 +43,9 @@ Ironfan.cluster 'zk' do
 
   role                  :tuning,        :last
 
+#copied original zookeeper cluster and changed instances from 1 to 3 due to the comment at the beginning of this cluster defintion that recommends having 3 or 5 instances 
   facet :zookeeper do
-    instances           1
+    instances           3
     role                :zookeeper_server
   end
 

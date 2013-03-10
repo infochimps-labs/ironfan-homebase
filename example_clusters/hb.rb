@@ -1,6 +1,7 @@
 #
 # HBase with persisten EBS-backed storage.
 #
+# Copied from neptune cluster (spongecell-homebase)
 # For serious use, you will want to go to larger nodes (`m1.xlarge` works well
 # for us) and should NOT use EBS-backed storage. We assume that for initial
 # experimentation you'll want to start/stop this, so it comes out of the box
@@ -19,12 +20,17 @@
 # As soon as you see 'nodes=1' on jobtracker (host:50030) & namenode (host:50070)
 # control panels, you're good to launch the rest of the cluster.
 #
+# take note that permanent true is commented out, this may or may not not be ideal for you
+
 Ironfan.cluster 'hb' do
   cloud(:ec2) do
     # permanent         true
     availability_zones ['us-east-1d']
     flavor              'm1.large'
+    backing             'ebs'
     image_name          'ironfan-precise'
+    bootstrap_distro    'ubuntu12.04-ironfan'
+    chef_client_script  'client.rb'
     mount_ephemerals(:tags => { :hbase_scratch => true, :hadoop_scratch => true })
   end
 

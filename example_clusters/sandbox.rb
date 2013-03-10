@@ -3,13 +3,17 @@
 #
 Ironfan.cluster 'sandbox' do
   cloud(:ec2) do
+    permanent           false
     availability_zones ['us-east-1d']
     flavor              't1.micro'
-    image_name          'ironfan-precise'
+    backing             'ebs'
+    image_name          'ironfan-natty'
+    bootstrap_distro    'ubuntu10.04-ironfan'
+    chef_client_script  'client.rb'
     mount_ephemerals
   end
 
-  environment           :development
+  environment           :dev
 
   role                  :systemwide
   cloud(:ec2).security_group :systemwide
