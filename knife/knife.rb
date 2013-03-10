@@ -56,7 +56,23 @@ end
 
 def load_if_exists(file) ; load(file) if File.exists?(file) ; end
 
-# Organization-sepecific settings -- Chef::Config[:ec2_image_info] and so forth
+#
+# Ironfan AMIs
+#
+Chef::Config[:ec2_image_info] ||= {}
+ec2_image_info.merge!({
+    %w[us-east-1  64-bit  ebs     ironfan-precise  ] => { :image_id => 'ami-29fe7640', :ssh_user => 'ubuntu', :bootstrap_distro => "ubuntu12.04-ironfan", },
+  })
+Chef::Log.debug("Loaded #{__FILE__}, now have #{ec2_image_info.size} ec2 images")
+
+#
+# Chef Server - use Hosted Chef by default
+#
+chef_server_url "https://api.opscode.com/organizations/#{organization}"
+
+
+
+# Organization-specific settings -- Chef::Config[:ec2_image_info] and so forth
 #
 # This must do at least these things:
 #
