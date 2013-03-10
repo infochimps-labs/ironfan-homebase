@@ -7,6 +7,7 @@
 #
 Ironfan.cluster 'burninator' do
   cloud(:ec2) do
+    availability_zones ['us-east-1c']
     # use a c1.xlarge so the AMI knows about all ephemeral drives
     flavor              'c1.xlarge'
     # image_name is per-facet here

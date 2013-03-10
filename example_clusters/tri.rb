@@ -5,7 +5,7 @@
 Ironfan.cluster 'tri' do
   cloud(:ec2) do
     permanent           false
-    availability_zones  ['us-east-1d']
+    availability_zones ['us-east-1c']
     flavor              'm1.large'
     backing             'ebs'
     image_name          'ironfan-precise'

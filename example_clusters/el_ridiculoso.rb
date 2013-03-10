@@ -7,7 +7,7 @@
 #
 Ironfan.cluster 'el_ridiculoso' do
   cloud(:ec2) do
-    availability_zones ['us-east-1d']
+    availability_zones ['us-east-1c']
     flavor              'c1.xlarge'
     backing             'ebs'
     image_name          'ironfan-precise'

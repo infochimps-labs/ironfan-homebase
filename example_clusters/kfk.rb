@@ -5,7 +5,7 @@
 
 Ironfan.cluster 'kfk' do
   cloud(:ec2) do
-    availability_zones  ['us-east-1d']
+    availability_zones ['us-east-1c']
     flavor              'm1.large'
     image_name          'ironfan-precise'
     mount_ephemerals

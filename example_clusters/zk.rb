@@ -11,7 +11,7 @@
 Ironfan.cluster 'zk' do
   cloud(:ec2) do
     # permanent           true
-    availability_zones ['us-east-1d']
+    availability_zones ['us-east-1c']
     flavor              't1.micro'  # change to something larger for serious use
     backing             'ebs'
     image_name          'ironfan-precise'
