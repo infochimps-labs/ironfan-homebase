@@ -7,8 +7,8 @@ Ironfan.cluster 'sandbox' do
     availability_zones ['us-east-1d']
     flavor              't1.micro'
     backing             'ebs'
-    image_name          'ironfan-natty'
-    bootstrap_distro    'ubuntu10.04-ironfan'
+    image_name          'ironfan-precise'
+    bootstrap_distro    'ubuntu12.04-ironfan'
     chef_client_script  'client.rb'
     mount_ephemerals
   end
