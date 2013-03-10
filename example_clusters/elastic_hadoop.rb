@@ -18,17 +18,13 @@
 #
 Ironfan.cluster 'elastic_hadoop' do
   cloud(:ec2) do
-    permanent           false
     availability_zones ['us-east-1d']
     flavor              'm1.large'
-    backing             'ebs'
-    image_name          'ironfan-natty'
-    bootstrap_distro    'ubuntu10.04-ironfan'
-    chef_client_script  'client.rb'
+    image_name          'ironfan-precise'
     mount_ephemerals(:tags => { :hadoop_scratch => true, :hadoop_data => false, :persistent => false, :bulk => true })
   end
 
-  environment           :dev
+  environment           :development
 
   role                  :systemwide
   cloud(:ec2).security_group :systemwide

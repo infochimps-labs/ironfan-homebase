@@ -24,10 +24,7 @@ Ironfan.cluster 'hb' do
     # permanent         true
     availability_zones ['us-east-1d']
     flavor              'm1.large'
-    backing             'ebs'
-    image_name          'ironfan-natty'
-    bootstrap_distro    'ubuntu10.04-ironfan'
-    chef_client_script  'client.rb'
+    image_name          'ironfan-precise'
     mount_ephemerals(:tags => { :hbase_scratch => true, :hadoop_scratch => true })
   end
 
@@ -36,7 +33,7 @@ Ironfan.cluster 'hb' do
   science_cluster_name   = :elastic_hadoop
   zookeeper_cluster_name = :zk
 
-  environment           :dev
+  environment           :development
 
   cluster_overrides = Mash.new({
       # Look for the zookeeper nodes in the dedicated zookeeper cluster

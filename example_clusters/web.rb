@@ -3,14 +3,11 @@ Ironfan.cluster 'web' do
     # permanent         true
     availability_zones ['us-east-1d']
     flavor              't1.micro'  # change to something larger for serious use
-    backing             'ebs'
-    image_name          'ironfan-natty'
-    bootstrap_distro    'ubuntu10.04-ironfan'
-    chef_client_script  'client.rb'
+    image_name          'ironfan-precise'
     mount_ephemerals
   end
 
-  environment           :dev
+  environment           :development
 
   role                  :systemwide
   cloud(:ec2).security_group :systemwide

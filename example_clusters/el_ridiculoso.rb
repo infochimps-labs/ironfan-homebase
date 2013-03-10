@@ -9,14 +9,11 @@ Ironfan.cluster 'el_ridiculoso' do
   cloud(:ec2) do
     availability_zones ['us-east-1d']
     flavor              'c1.xlarge'
-    backing             'ebs'
-    image_name          'ironfan-natty'
-    bootstrap_distro    'ubuntu10.04-ironfan'
-    chef_client_script  'client.rb'
+    image_name          'ironfan-precise'
     mount_ephemerals(:tags => { :hadoop_scratch => true })
   end
 
-  environment           :dev
+  environment           :development
 
   role                  :systemwide
   cloud(:ec2).security_group :systemwide
