@@ -16,7 +16,7 @@ Ironfan.cluster 'el_ridiculoso' do
     mount_ephemerals(:tags => { :hadoop_scratch => true })
   end
 
-  environment           :dev
+  environment           :testing
 
   role                  :systemwide
   cloud(:ec2).security_group :systemwide

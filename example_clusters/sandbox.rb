@@ -13,7 +13,7 @@ Ironfan.cluster 'sandbox' do
     mount_ephemerals
   end
 
-  environment           :dev
+  environment           :development
 
   role                  :systemwide
   cloud(:ec2).security_group :systemwide
