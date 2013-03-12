@@ -1,0 +1,5 @@
+git clone https://github.com/sbergmann25/ironfan-homebase
+cd ironfan-homebase
+export IRONFAN_HOMEBASE=`pwd`
+bundle install
+git submodule update --init
