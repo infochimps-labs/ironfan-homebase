@@ -65,13 +65,6 @@ ec2_image_info.merge!({
   })
 Chef::Log.debug("Loaded #{__FILE__}, now have #{ec2_image_info.size} ec2 images")
 
-#
-# Chef Server - use Hosted Chef by default
-#
-chef_server_url "https://api.opscode.com/organizations/#{organization}"
-
-
-
 # Organization-specific settings -- Chef::Config[:ec2_image_info] and so forth
 #
 # This must do at least these things:
@@ -84,3 +77,8 @@ load_if_exists "#{credentials_path}/knife-org.rb"
 
 # User-specific knife info or credentials
 load_if_exists "#{credentials_path}/knife-user-#{username}.rb"
+
+#
+# Chef Server - use Hosted Chef by default
+#
+chef_server_url "https://api.opscode.com/organizations/#{organization}"
