@@ -58,20 +58,20 @@ def load_if_exists(file) ; load(file) if File.exists?(file) ; end
 
 #
 # Ironfan AMIs
-#
 Chef::Config[:ec2_image_info] ||= {}
 ec2_image_info.merge!({
+    %w[us-east-1  64-bit  ebs     ironfan-natty    ] => { :image_id => 'ami-4d18d624', :ssh_user => 'ubuntu', :bootstrap_distro => "ubuntu10.04-ironfan", },
     %w[us-east-1  64-bit  ebs     ironfan-precise  ] => { :image_id => 'ami-29fe7640', :ssh_user => 'ubuntu', :bootstrap_distro => "ubuntu12.04-ironfan", },
   })
 Chef::Log.debug("Loaded #{__FILE__}, now have #{ec2_image_info.size} ec2 images")
 
+chef_server_url 'unset'
 # Organization-specific settings -- Chef::Config[:ec2_image_info] and so forth
 #
 # This must do at least these things:
 #
 # * define Chef::Config.chef_server
 # * define Chef::Config.organization
-#
 #
 load_if_exists "#{credentials_path}/knife-org.rb"
 
@@ -81,4 +81,4 @@ load_if_exists "#{credentials_path}/knife-user-#{username}.rb"
 #
 # Chef Server - use Hosted Chef by default
 #
-chef_server_url "https://api.opscode.com/organizations/#{organization}"
+chef_server_url "https://api.opscode.com/organizations/#{organization}" if chef_server_url == 'unset'
