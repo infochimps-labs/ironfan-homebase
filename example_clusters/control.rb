@@ -23,7 +23,8 @@ Ironfan.cluster 'control' do
   role                  :ssh
   cloud(:ec2).security_group(:ssh).authorize_port_range 22..22
   role                  :set_hostname
-
+  recipe                'log_integration::logrotate' 
+  
   role                  :volumes
   role                  :package_set,   :last
   role                  :minidash,      :last

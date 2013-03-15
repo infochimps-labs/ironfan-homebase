@@ -10,7 +10,7 @@ Ironfan.cluster 'es' do
     image_name          'ironfan-precise'
     bootstrap_distro    'ubuntu12.04-ironfan'
     chef_client_script  'client.rb'
-    mount_ephemerals(:tags => { :elasticsearch_scratch => true }) if (Chef::Config.cloud == 'ec2')
+    mount_ephemerals(:tags => { :elasticsearch_scratch => true })
   end
 
   environment           :development
@@ -23,6 +23,7 @@ Ironfan.cluster 'es' do
   role                  :nfs_client
   cloud(:ec2).security_group :nfs_client
   role                  :set_hostname
+  recipe                'log_integration::logrotate' 
 
   role                  :volumes
   role                  :package_set,   :last
@@ -46,7 +47,7 @@ Ironfan.cluster 'es' do
         :elasticsearch => {
           :expected_nodes        => num_nodes,
           :recovery_after_nodes  => num_nodes,
-          :s3_gateway_bucket     => "elasticsearch.#{Chef::Config[:organization]}.chimpy.us",
+          :s3_gateway_bucket     => "elasticsearch.#{Chef::Config[:organization].gsub('_','-')}.chimpy.us",
           :server                => { :run_state => :start }
         }
       })

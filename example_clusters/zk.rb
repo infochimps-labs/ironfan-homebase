@@ -30,6 +30,7 @@ Ironfan.cluster 'zk' do
   role                  :nfs_client
   cloud(:ec2).security_group :nfs_client
   role                  :set_hostname
+  recipe                'log_integration::logrotate' 
 
   role                  :volumes
   role                  :package_set,   :last
@@ -43,7 +44,7 @@ Ironfan.cluster 'zk' do
 
   role                  :tuning,        :last
 
-#copied original zookeeper cluster and changed instances from 1 to 3 due to the comment at the beginning of this cluster defintion that recommends having 3 or 5 instances 
+  #copied original zookeeper cluster and changed instances from 1 to 3 due to the comment at the beginning of this cluster defintion that recommends having 3 or 5 instances
   facet :zookeeper do
     instances           3
     role                :zookeeper_server

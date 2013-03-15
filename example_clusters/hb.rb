@@ -95,6 +95,7 @@ Ironfan.cluster 'hb' do
   role                  :nfs_client
   cloud(:ec2).security_group :nfs_client
   role                  :set_hostname
+  recipe                'log_integration::logrotate' 
 
   role                  :volumes
   role                  :package_set,   :last

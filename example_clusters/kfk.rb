@@ -1,7 +1,7 @@
-# 
+#
 # Kafka cluster
-# 
-# Copied from discoveryone wcg cluster 
+#
+# Copied from discoveryone wcg cluster
 
 Ironfan.cluster 'kfk' do
   cloud(:ec2) do
@@ -18,6 +18,7 @@ Ironfan.cluster 'kfk' do
   role                  :ssh              ; cloud(:ec2).security_group(:ssh).authorize_port_range 22..22
   role                  :nfs_client       ; cloud(:ec2).security_group(:nfs_client)
   role                  :set_hostname
+  recipe                'log_integration::logrotate' 
 
   role                  :volumes
   role                  :package_set,   :last
@@ -48,28 +49,28 @@ Ironfan.cluster 'kfk' do
     role                :kafka_contrib
     role                :hadoop_datanode
 
-##need to set up a WCG S3 bucket 
-    facet_role.override_attributes(
-                                   {
-                                     :hadoop => { :datanode => { :run_state => :stop }},
-                                     :kafka => {
-                                       :contrib => {
-                                         :app => {
-                                           :s3_archiver => {
-                                             :type =>      's3_consumer',
-                                             :group_id => 's3_archiver',
-                                             :daemons =>   1,
-                                             :run_state => :nothing,
-                                             :topic =>     'raw',
-                                             :options => {
-                                               :bucket => 'archive.wcg.chimpy.us',
-                                               :batch_size => (10 * 2 ** 10),
-                                             }
-                                           },
-                                         }                                         
-                                       }
-                                     },
-                                   })
+    ##need to set up a WCG S3 bucket
+    facet_role.override_attributes({
+        :hadoop => { :datanode => { :run_state => :stop }},
+        :kafka => {
+          :contrib => {
+            :app => {
+              :s3_archiver => {
+                :type =>      's3_consumer',
+                :group_id => 's3_archiver',
+                :daemons =>   1,
+                :run_state => :nothing,
+                :topic =>     'raw',
+                :options => {
+                  :bucket => 'archive.wcg.chimpy.us',
+                  :batch_size => (10 * 2 ** 10),
+                }
+              },
+            }
+          }
+        },
+      })
+
     # Reliable store for the Kafka store
     # TODO Have Kafka write to this location
     volume(:kafka) do

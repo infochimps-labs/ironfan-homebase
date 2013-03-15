@@ -43,7 +43,8 @@ Ironfan.cluster 'sandbox' do
     cloud(:ec2).flavor        'm1.large'
     recipe              'volumes::build_raid', :first
 
-    cloud(:ec2).mount_ephemerals
+    # FIXME: This works around https://github.com/infochimps-labs/ironfan/issues/209
+    cloud(:ec2).mount_ephemerals(:mountable => false, :in_raid => "md0")
     raid_group(:md0) do
       device            '/dev/md0'
       mount_point       '/raid0'
