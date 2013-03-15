@@ -18,11 +18,13 @@ Ironfan.cluster 'control' do
 
   environment           :development
 
-  role                  :systemwide ; cloud(:ec2).security_group :systemwide
-  role                  :chef_client
+
+  role                  :systemwide,    :first
+  cloud(:ec2).security_group :systemwide
   role                  :ssh
   cloud(:ec2).security_group(:ssh).authorize_port_range 22..22
   role                  :set_hostname
+
   recipe                'log_integration::logrotate' 
   
   role                  :volumes

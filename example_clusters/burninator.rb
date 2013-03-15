@@ -16,7 +16,6 @@ Ironfan.cluster 'burninator' do
 
   environment           :_default
 
-  role                  :chef_client
   role                  :ssh              ; cloud(:ec2).security_group(:ssh).authorize_port_range 22..22
 
   #
