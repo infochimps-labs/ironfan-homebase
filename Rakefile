@@ -132,6 +132,7 @@ task :push_to_production do
     g.branch('production').checkout
     g.merge('origin/staging')
     g.push('origin','production')
+    Rake::Task[:sync_environment].invoke
     puts "Current staging has pushed to production"
   ensure
     g.checkout(current)
