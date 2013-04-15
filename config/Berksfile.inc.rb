@@ -17,6 +17,8 @@ end
 ENV['LOCAL_PATH']        = "vendor"                            unless ENV['LOCAL_PATH']
 ENV['PANTRY_REPO']       = 'infochimps-labs/ironfan-pantry'    unless ENV['PANTRY_REPO']
 ENV['PANTRY_BRANCH']     = 'master'                            unless ENV['PANTRY_BRANCH']
+ENV['COMMUNITY_REPO']    = 'infochimps-labs/community-pantry'  unless ENV['COMMUNITY_REPO']
+ENV['COMMUNITY_BRANCH']  = 'master'                            unless ENV['COMMUNITY_BRANCH']
 
 def github_cookbook(name, repo, rel, branch)
   if ! ENV['USE_LOCAL'].nil?
@@ -29,6 +31,10 @@ end
 
 def pantry_cookbook(name)
   github_cookbook name, ENV['PANTRY_REPO'], ('cookbooks/' + name), ENV['PANTRY_BRANCH']
+end
+
+def community_cookbook(name)
+  github_cookbook name, ENV['COMMUNITY_REPO'], ('cookbooks/' + name), ENV['COMMUNITY_BRANCH']
 end
 
 def org_cookbook(name)
