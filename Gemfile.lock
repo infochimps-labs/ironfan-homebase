@@ -84,7 +84,7 @@ GEM
     highline (1.6.18)
     i18n (0.6.1)
     ipaddress (0.8.0)
-    ironfan (4.9.3)
+    ironfan (4.9.4)
       chef (~> 10.16)
       fog (~> 1.2)
       formatador (~> 0.2)
