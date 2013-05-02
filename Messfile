@@ -9,7 +9,7 @@ link    'org_cookbooks/*/',                     :into => 'cookbooks'
 #
 # Development environment
 # 
-link    '.',                                    :to => 'environments/development'
+link    'cookbooks',                            :to => 'environments/development/cookbooks'
 
 # 
 # Documentation wiki
