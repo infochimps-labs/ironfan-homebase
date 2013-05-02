@@ -33,7 +33,7 @@ require 'json'
 # require 'rspec'
 # require 'rspec/core/rake_task'
 require 'yard'
-require 'git'
+# require 'git'
 
 # def find_current_branch
 #   Git.open('.').branches.to_s[%r/\* (.*)/,1]
@@ -115,44 +115,42 @@ module Ironfan
 
     class Pull < Ironfan::Dsl::Context
       # Get squashed checkout of url into path
+      # http://psionides.eu/2010/02/04/sharing-code-between-projects-with-git-subtree/
       def vendor(url)
         repo_name = url.match(/([^\/]+?)(\.git)?$/)[1]
-        path = File.join("vendor", repo_name ) if path.nil?
-        if File.exists? path
-          puts "should pull from #{url} to #{path}"
+        path = Pathname.new File.join("vendor", repo_name)
+        if path.exist?
+          puts "`git subtree merge --prefix=#{path} --squash #{url} master`"
         else
-          FileUtils.mkpath File.dirname path    # Ensure the containing directories exist
-          puts url, repo_name, path, File.dirname(path)
-          `git subtree add --prefix=#{path} --squash #{url} master`
-          # Git.clone(url, repo_name, {:path => File.dirname(path)})
-          puts "should have checkout from #{url} to #{path}"
+          FileUtils.mkpath path.dirname # Ensure the containing directories exist
+          puts "`git subtree add --prefix=#{path} --squash #{url} master`"
         end
-        # g = Git.open('.')
-        # if this path already exists
-          # pull in upstream changes and squash them
-        # otherwise, 
-        
-        #   # http://psionides.eu/2010/02/04/sharing-code-between-projects-with-git-subtree/
       end
 
       def link(source,params)
         raise "Only one action allowed per call (#{params})" unless params.length == 1
         action,target = params.flatten
         case action
-          when :to;     link_to(source,target)
           when :into;   link_into(source,target)
+          when :to;     link_to(source,target)
           else;         raise "Only :to and :into allowed as actions (#{params}"
         end
       end
       def link_to(source,target)
         raise "Link source #{source} doesn't exist" unless File.exists? source
-        puts "should ensure link from #{source} to #{target}"
+
+        source_path     = Pathname.new source
+        target_path     = Pathname.new target
+        relative_path   = source_path.relative_path_from(target_path.dirname)
+
+        FileUtils.mkpath target_path.dirname
+        File.unlink target if File.symlink? target
+        File.symlink relative_path, target_path
       end
       def link_into(source,target)
-        puts "should ensure links from #{source} into #{target}"
-        # For each (valid?) source, link that source into target
-        # Overwrite targets that exist, so that later link_intos can clobber choices
-        #   from earlier ones (predictably)
+        Dir.glob(source) do |match|
+          link_to(match, File.join(target, File.basename(match)))
+        end
       end
     end
 
