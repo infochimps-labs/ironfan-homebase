@@ -47,20 +47,10 @@ pkg
 metadata.json
 *.pem
 .rvmrc
-.vagrant
-
-vagrants/iso/*
-vagrants/boxes/*
-
-vendor/*
 
 knife/*-credentials
 knife-user-*.rb
 knife/checksums/*
 knife/plugins
 
-vagrants/*
 .rbenv-version
-Berksfile.lock
-cookbooks/*
-config/Berksfile.conf
