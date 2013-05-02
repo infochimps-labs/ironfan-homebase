@@ -117,12 +117,17 @@ module Ironfan
       def vendored_path(url)
         Pathname.new File.join("vendor", url.match(/([^\/]+?)(\.git)?$/)[1])
       end
+      
+      def test_for_clean_tree
+        raise "Working tree has modifications, can't continue" unless system 'git diff-files --quiet --'
+      end
     end
 
     class Pull < Ironfan::Messhall::Context
       # Get squashed checkout of url into path
       # https://github.com/apenwarr/git-subtree/blob/master/git-subtree.txt
       def vendor(url)
+        test_for_clean_tree
         path = vendored_path(url)
         if path.exist?
           %x[git subtree pull --prefix=#{path} --squash #{url} master]
