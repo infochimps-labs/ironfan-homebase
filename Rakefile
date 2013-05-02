@@ -113,12 +113,17 @@ module Ironfan
       field       :path,        String,         :default => 'Messfile'
     end
 
-    class Pull < Ironfan::Dsl::Context
+    class Context < Ironfan::Dsl::Context
+      def vendored_path(url)
+        Pathname.new File.join("vendor", url.match(/([^\/]+?)(\.git)?$/)[1])
+      end
+    end
+
+    class Pull < Ironfan::Messhall::Context
       # Get squashed checkout of url into path
-      # http://psionides.eu/2010/02/04/sharing-code-between-projects-with-git-subtree/
+      # https://github.com/apenwarr/git-subtree/blob/master/git-subtree.txt
       def vendor(url)
-        repo_name = url.match(/([^\/]+?)(\.git)?$/)[1]
-        path = Pathname.new File.join("vendor", repo_name)
+        path = vendored_path(url)
         if path.exist?
           %x[git subtree pull --prefix=#{path} --squash #{url} master]
         else
@@ -128,7 +133,7 @@ module Ironfan
       end
 
       def link(source,params)
-        raise "Only one action allowed per call (#{params})" unless params.length == 1
+        raise "Only one action allowed per link call (#{params})" unless params.length == 1
         action,target = params.flatten
         case action
           when :into;   link_into(source,target)
@@ -154,9 +159,11 @@ module Ironfan
       end
     end
 
-    class Push < Ironfan::Dsl::Context
+    class Push < Ironfan::Messhall::Context
       def vendor(url)
-        puts "should push to #{url}"
+        path = vendored_path(url)
+        raise "Can't push nonexistent path #{path}" unless path.exist?
+        %x[git subtree push --prefix=#{path} --squash #{url} master]
       end
       def link(source,params)   end     # do nothing
     end
