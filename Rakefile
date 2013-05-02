@@ -120,10 +120,10 @@ module Ironfan
         repo_name = url.match(/([^\/]+?)(\.git)?$/)[1]
         path = Pathname.new File.join("vendor", repo_name)
         if path.exist?
-          puts "`git subtree merge --prefix=#{path} --squash #{url} master`"
+          %x[git subtree merge --prefix=#{path} --squash #{url} master"]
         else
           FileUtils.mkpath path.dirname # Ensure the containing directories exist
-          puts "`git subtree add --prefix=#{path} --squash #{url} master`"
+          %x[git subtree add --prefix=#{path} --squash #{url} master]
         end
       end
 
