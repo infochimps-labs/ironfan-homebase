@@ -75,9 +75,23 @@ module Ironfan
     class Loader
       include Gorillib::Builder
       field     :path,          String
+      
+      def initialize
+        super
+        raise "Couldn't find #{path}" unless File.exists? path
+      end
+
+      def statements
+        File.read path
+      end
     end
+
     class Context
       include Gorillib::Builder
+      
+      def self.execute(loader)
+        new.instance_eval loader.statements
+      end
     end
   end
 end
@@ -86,10 +100,10 @@ module Ironfan
   class Messhall 
 
     def self.pull
-      Ironfan::Messhall::Pull.load loader
+      Ironfan::Messhall::Pull.execute loader
     end
     def self.push
-      Ironfan::Messhall::Push.load loader
+      Ironfan::Messhall::Push.execute loader
     end
     def self.loader
       Ironfan::Messhall::Loader.new
@@ -98,48 +112,64 @@ module Ironfan
     class Loader < Ironfan::Dsl::Loader
       field       :path,        String,         :default => 'Messfile'
     end
-    class Context < Ironfan::Dsl::Context
-      def link(source,params)
-        # logic to split link_to vs link_into
-      end
-    end
 
-    class Pull < Ironfan::Messhall::Context
+    class Pull < Ironfan::Dsl::Context
       # Get squashed checkout of url into path
-      def vendor(url, path=nil)
-        repo_name = /([^\/]+?)(\.git)?$/
-        path = File.join("vendor", url.match(repo_name)[1]) if path.nil?
+      def vendor(url)
+        repo_name = url.match(/([^\/]+?)(\.git)?$/)[1]
+        path = File.join("vendor", repo_name ) if path.nil?
+        if File.exists? path
+          puts "should pull from #{url} to #{path}"
+        else
+          FileUtils.mkpath File.dirname path    # Ensure the containing directories exist
+          puts url, repo_name, path, File.dirname(path)
+          `git subtree add --prefix=#{path} --squash #{url} master`
+          # Git.clone(url, repo_name, {:path => File.dirname(path)})
+          puts "should have checkout from #{url} to #{path}"
+        end
+        # g = Git.open('.')
         # if this path already exists
           # pull in upstream changes and squash them
         # otherwise, 
         
         #   # http://psionides.eu/2010/02/04/sharing-code-between-projects-with-git-subtree/
       end
-      def link_to
+
+      def link(source,params)
+        raise "Only one action allowed per call (#{params})" unless params.length == 1
+        action,target = params.flatten
+        case action
+          when :to;     link_to(source,target)
+          when :into;   link_into(source,target)
+          else;         raise "Only :to and :into allowed as actions (#{params}"
+        end
       end
-      def link_into
+      def link_to(source,target)
+        raise "Link source #{source} doesn't exist" unless File.exists? source
+        puts "should ensure link from #{source} to #{target}"
+      end
+      def link_into(source,target)
+        puts "should ensure links from #{source} into #{target}"
         # For each (valid?) source, link that source into target
         # Overwrite targets that exist, so that later link_intos can clobber choices
         #   from earlier ones (predictably)
       end
     end
-    class Push < Ironfan::Messhall::Context
-      def vendor(url, path=nil)
+
+    class Push < Ironfan::Dsl::Context
+      def vendor(url)
+        puts "should push to #{url}"
       end
-      def link(source,params)
-      end
-      def link_to
-      end
-      def link_into
-      end
+      def link(source,params)   end     # do nothing
     end
   end
 end
 
 desc "Ensure the messhall exists as described"
-task :pull_messhall     do Ironfan::Messhall.pull       end
+task :messhall_pull     do Ironfan::Messhall.pull       end
+
 desc "Find local commits to the messhall, and push them upstream"
-task :push_messhall     do Ironfan::Messhall.push       end
+task :messhall_push     do Ironfan::Messhall.push       end
 
 
 
