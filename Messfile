@@ -2,15 +2,14 @@
 # Development pantries
 # 
 vendor  'git://github.com/infochimps-labs/ironfan-pantry.git'
-vendor  'git://github.com/infochimps-labs/ironfan-enterprise.git'
-link    'vendor/ironfan-pantry/cookbooks/*',            :into => 'cookbooks'
-link    'vendor/ironfan-enterprise/cookbooks/*',        :into => 'cookbooks'
-link    'org_cookbooks/*',                              :into => 'cookbooks'
+# vendor  'git@github.com:your_org_here/ironfan-pantry.git'
+link    'vendor/ironfan-pantry/cookbooks/*/',   :into => 'cookbooks'
+link    'org_cookbooks/*/',                     :into => 'cookbooks'
 
 #
 # Development environment
 # 
-link    'cookbooks',            :to => 'environments/development/cookbooks'
+link    '.',                                    :to => 'environments/development'
 
 # 
 # Documentation wiki
