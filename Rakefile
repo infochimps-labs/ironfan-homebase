@@ -89,9 +89,10 @@ module Ironfan
     class Context
       include Gorillib::Builder
       
-      def self.execute(loader)
-        new.instance_eval loader.statements
+      def execute(loader)
+        self.instance_eval loader.statements
       end
+      def self.execute(loader)  new.execute loader      end
     end
   end
 end
@@ -124,6 +125,14 @@ module Ironfan
     end
 
     class Pull < Ironfan::Messhall::Context
+      def execute(loader)
+        @linked_paths = []
+        %x[git reset]
+        super
+        %x[git add #{@linked_paths.join(' ')}]
+        %x[git commit -m"Messhall: adding symlinks for #{@linked_paths.uniq.join(', ')}"]
+      end
+
       # Get squashed checkout of url into path
       # https://github.com/apenwarr/git-subtree/blob/master/git-subtree.txt
       def vendor(url)
@@ -145,6 +154,7 @@ module Ironfan
           when :to;     link_to(source,target)
           else;         raise "Only :to and :into allowed as actions (#{params}"
         end
+        @linked_paths << target
       end
       def link_to(source,target)
         raise "Link source #{source} doesn't exist" unless File.exists? source
