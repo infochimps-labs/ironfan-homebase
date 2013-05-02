@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+#
+# Core components
+# 
+set -o errexit  # big boy pants (die on any error)
+
+export ROOT_DIR=`dirname $0`
+export WORKSPACE=$ROOT_DIR/workspace
+export SHARED_DIR=<%= node[:jenkins][:server][:home_dir] %>/shared
+
+#
+# Repositories
+# 
+<%- def repo_name(repo)   repo[/\/([a-z-]*)\.git/,1];                   end
+    def repo_names(repo)  repo.map {|r| repo_name r }.join(' ');        end %>
+export REPOS="<%= @pantries.join(' ') %> <%= @homebases.join(' ') %>"
+export PANTRIES="<%= repo_names @pantries %>"
+export HOMEBASES="<%= repo_names @homebases %>"
+export ALL_PATHS="$PANTRIES $HOMEBASES"
+export TEST_PATH="<%= repo_name node[:jenkins_integration][:cookbook_ci][:test_homebase] %>"
+
+function switch_to { 
+  level=$2; if [ ! $level ]; then level='item'; fi
+  cd $WORKSPACE/$1
+  $level "In $1"
+}
+
+function ensure_bundle {
+  if ! bundle check; then
+    ${2:-echo} "Installing bundle"
+    PARAMS="--path $SHARED_DIR"
+    # Only install from source if cache fails
+    bundle install $PARAMS --local || bundle install $PARAMS
+  fi
+}
+
+function change_all_branches {
+  ${2:-echo} "Switching to $1 on all repos"
+  for name in $ALL_PATHS; do
+    switch_to $name
+    git checkout -f $1 2> /dev/null
+    cd - > /dev/null
+  done
+}
+
+export USE_LOCAL=true
+export LOCAL_PATH=..
+function install_berkshelves {
+  ${2:-echo} "Installing cookbooks at $1"
+  for name in $HOMEBASES; do
+    switch_to $name
+    ensure_bundle > /dev/null
+    bundle exec berks install --path $1 > /dev/null
+  done
+  echo
+}
+
+# 
+# Launch
+# 
+export TARGETS="<%= Array(node[:jenkins_integration][:cookbook_ci][:targets]).join(' ') %>"
+export BROKEN="<%= Array(node[:jenkins_integration][:cookbook_ci][:broken]).join(' ') %>"
+
+export MAX_WAIT=<%= node[:jenkins_integration][:cookbook_ci][:max_wait] %>
+export CHEF_USER=<%= node[:jenkins_integration][:cookbook_ci][:chef_user] %>
+
+function knife {
+  bundle exec knife "$@"
+}
+function kc {
+  knife cluster "$@"
+}
+function klean_up {
+  h2 "Killing $FACET"
+  kc kill $FACET --yes
+}
+
+#
+# Formatting
+#
+function item {
+  echo "- $*"
+}
+function success {
+  echo
+  echo "SUCCESS: $*"
+  exit 0
+}
+function failure {
+  echo
+  echo "FAILURE: ${*:2}"
+  exit $1
+}
+function warning {
+  echo "WARNING: $*"
+}
+function header {
+  echo
+  wrapper=`for i in $(seq $1); do echo -n '#'; done`
+  echo -e "\x1b[30;1m$wrapper ${*:2} $wrapper\x1b[0m"
+}
+function h1 {
+  header 1 $*
+}
+function h2 {
+  header 2 $*
+}
+function indent {
+  "$@" |& sed "s/^/    /"; return ${PIPESTATUS[0]}
+}
+
+export TEST_KOAN="<%= node[:jenkins_integration][:cookbook_ci][:koan][:testing] %>"
+export STAGE_KOAN="<%= node[:jenkins_integration][:cookbook_ci][:koan][:staging] %>"

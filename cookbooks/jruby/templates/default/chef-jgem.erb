@@ -1,0 +1,36 @@
+#!<%= @jruby[:home_dir] %>/bin/jruby19 -S
+
+# This is basicaly the same as the stock version of jgem, except that it runs
+# jruby with the -S option.  The overall effect is that this version of the
+# script is suitable for use as the "gem-binary" option on gem_package resources
+# in chef.
+#
+#--
+# Copyright 2006 by Chad Fowler, Rich Kilmer, Jim Weirich and others.
+# All rights reserved.
+# See LICENSE.txt for permissions.
+#++
+
+require 'rubygems'
+require 'rubygems/gem_runner'
+require 'rubygems/exceptions'
+
+required_version = Gem::Requirement.new ">= 1.9.2"
+
+unless required_version.satisfied_by? Gem.ruby_version then
+  abort "Expected Ruby Version #{required_version}, is #{Gem.ruby_version}"
+end
+
+args = ARGV.clone
+
+version_idx = args.index('-v')
+if version_idx && args[version_idx + 1].to_s.empty?
+  args.delete_at(version_idx + 1)
+  args.delete_at(version_idx)
+end   
+
+begin
+  Gem::GemRunner.new.run args
+rescue Gem::SystemExitException => e
+  exit e.exit_code
+end

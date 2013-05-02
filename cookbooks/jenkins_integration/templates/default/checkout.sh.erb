@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+source `dirname $0`/shared.inc
+
+h1 "Getting all repositories (inc. bundled code & branches) up-to-date"
+
+for repo in $REPOS; do
+  name=${repo##*/}
+  name=${name%.git}
+
+  cd $WORKSPACE
+  if [ ! -d $name ]; then
+    h2 "Checking out $name"
+    indent git clone $repo
+    switch_to $name
+  else
+    h2 "Updating $name"
+    switch_to $name
+    indent git up
+  fi
+
+  # This doesn't remove old branches, which may eventually
+  #   cause a collision - fix it if/when it happens
+  item "track all remote branches"
+  for remote in `git branch -r | grep -v origin/master`; do
+    indent git checkout -f ${remote#*/}
+  done
+
+  item "Get submodules"
+  indent git checkout -f master
+  indent git submodule update --init
+
+  item "Ensure bundle is loaded"
+  indent ensure_bundle
+done

@@ -1,0 +1,6397 @@
+{
+  "json_class": "Chef::ResourceCollection",
+  "instance_vars": {
+    "@resources_by_name": {
+      "package[build-essential]": 0,
+      "package[binutils-doc]": 1,
+      "package[autoconf]": 2,
+      "package[flex]": 3,
+      "package[bison]": 4,
+      "link[/etc/motd]": 5,
+      "template[/etc/motd]": 6,
+      "template[/etc/node_name]": 7,
+      "package[zsh]": 8,
+      "package[zsh-doc]": 9,
+      "package[emacs23-nox]": 36,
+      "package[ntpdate]": 11,
+      "package[ntp]": 12,
+      "directory[/var/lib/ntp]": 13,
+      "directory[/var/log/ntpstats]": 14,
+      "service[ntp]": 17,
+      "template[/etc/ntp.conf]": 16,
+      "directory[/etc/silverware]": 20,
+      "directory[/var/log/silverware]": 19,
+      "package[nfs-common]": 22,
+      "bash[modprobe nfs]": 23,
+      "package[xfsprogs]": 24,
+      "package[xfsdump]": 25,
+      "package[xfslibs-dev]": 26,
+      "package[tree]": 44,
+      "package[git]": 28,
+      "package[zip]": 29,
+      "package[openssl]": 30,
+      "package[wget]": 31,
+      "package[curl]": 32,
+      "package[runit]": 33,
+      "package[libyaml-dev]": 34,
+      "package[libxslt1-dev]": 35,
+      "package[elinks]": 37,
+      "package[w3m-el]": 38,
+      "package[colordiff]": 39,
+      "package[ack]": 40,
+      "package[exuberant-ctags]": 41,
+      "package[ifstat]": 42,
+      "package[htop]": 43,
+      "package[chkconfig]": 45,
+      "package[sysstat]": 46,
+      "package[nmap]": 47,
+      "package[python-software-properties]": 73,
+      "gem_package[bundler]": 49,
+      "gem_package[extlib]": 50,
+      "gem_package[json]": 51,
+      "gem_package[yajl-ruby]": 52,
+      "gem_package[awesome_print]": 53,
+      "gem_package[addressable]": 54,
+      "gem_package[cheat]": 55,
+      "gem_package[rest-client]": 56,
+      "gem_package[yard]": 57,
+      "gem_package[jeweler]": 58,
+      "gem_package[rspec]": 59,
+      "gem_package[watchr]": 60,
+      "gem_package[pry]": 61,
+      "gem_package[wirble]": 62,
+      "gem_package[hirb]": 63,
+      "gem_package[highline]": 64,
+      "gem_package[formatador]": 65,
+      "gem_package[configliere]": 66,
+      "gem_package[gorillib]": 67,
+      "gem_package[wukong]": 68,
+      "gem_package[swineherd]": 69,
+      "gem_package[hackboxen]": 70,
+      "gem_package[activesupport]": 71,
+      "gem_package[activemodel]": 72,
+      "bash[add-apt-repository ppa:ferramroberto/java]": 74,
+      "execute[update-java-alternatives]": 75,
+      "package[sun-java6-jdk]": 76,
+      "bash[set VM overcommit ratio to 1]": 77,
+      "bash[set VM overcommit memory to 100]": 78,
+      "bash[set VM swappiness to 5]": 79,
+      "template[/etc/security/limits.d/hdfs.conf]": 80,
+      "template[/etc/security/limits.d/mapred.conf]": 81,
+      "execute[apt-get-update]": 82,
+      "execute[apt-get update]": 83,
+      "package[update-notifier-common]": 84,
+      "execute[apt-get-update-periodic]": 85,
+      "directory[/var/cache/local]": 86,
+      "directory[/var/cache/local/preseeding]": 87,
+      "apt_repository[cloudera]": 88,
+      "group[hdfs]": 89,
+      "user[hdfs]": 90,
+      "group[mapred]": 91,
+      "user[mapred]": 92,
+      "group[hadoop]": 93,
+      "group[supergroup]": 94,
+      "package[hadoop-0.20]": 95,
+      "package[hadoop-0.20-native]": 96,
+      "package[hadoop-0.20-sbin]": 97,
+      "directory[/etc/hadoop/conf]": 98,
+      "directory[/var/run/hadoop]": 99,
+      "directory[/mnt/hadoop/hdfs/name]": 100,
+      "directory[/mnt2/hadoop/hdfs/name]": 101,
+      "directory[/mnt3/hadoop/hdfs/name]": 102,
+      "directory[/mnt4/hadoop/hdfs/name]": 103,
+      "directory[/mnt/hadoop/hdfs/secondary]": 104,
+      "directory[/mnt2/hadoop/hdfs/secondary]": 105,
+      "directory[/mnt3/hadoop/hdfs/secondary]": 106,
+      "directory[/mnt4/hadoop/hdfs/secondary]": 107,
+      "directory[/mnt/hadoop/hdfs/data]": 108,
+      "directory[/mnt2/hadoop/hdfs/data]": 109,
+      "directory[/mnt3/hadoop/hdfs/data]": 110,
+      "directory[/mnt4/hadoop/hdfs/data]": 111,
+      "directory[/mnt/hadoop/mapred/local]": 112,
+      "directory[/mnt2/hadoop/mapred/local]": 113,
+      "directory[/mnt3/hadoop/mapred/local]": 114,
+      "directory[/mnt4/hadoop/mapred/local]": 115,
+      "directory[/mnt/hadoop/tmp]": 116,
+      "directory[/mnt/hadoop/log]": 117,
+      "directory[/mnt/hadoop/log/namenode]": 118,
+      "directory[/mnt/hadoop/log/secondarynn]": 119,
+      "directory[/mnt/hadoop/log/datanode]": 120,
+      "directory[/mnt/hadoop/log/jobtracker]": 121,
+      "directory[/mnt/hadoop/log/tasktracker]": 122,
+      "directory[/var/log/hadoop]": 123,
+      "link[/var/log/hadoop]": 124,
+      "directory[/var/log/hadoop-0.20]": 125,
+      "link[/var/log/hadoop-0.20]": 126,
+      "directory[/var/run/hadoop-0.20]": 127,
+      "link[/var/run/hadoop-0.20]": 128,
+      "directory[/var/lib/minidash]": 129,
+      "directory[/var/log/minidash]": 130,
+      "directory[/etc/minidash]": 131,
+      "minidash_dashboard[minidash]": 132,
+      "minidash_dashboard[hadoop_cluster]": 133,
+      "file[/etc/silverware/chef_node-el_ridiculoso-gordo-0.json]": 134
+    },
+    "@resources": [
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "build-essential",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/build-essential/recipes/default.rb:23:in `block in from_file'",
+          "resource_name": "package",
+          "package_name": "build-essential",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "build-essential",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "binutils-doc",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/build-essential/recipes/default.rb:23:in `block in from_file'",
+          "resource_name": "package",
+          "package_name": "binutils-doc",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "build-essential",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "autoconf",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/build-essential/recipes/default.rb:35:in `from_file'",
+          "resource_name": "package",
+          "package_name": "autoconf",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "build-essential",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "flex",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/build-essential/recipes/default.rb:39:in `from_file'",
+          "resource_name": "package",
+          "package_name": "flex",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "build-essential",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "bison",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/build-essential/recipes/default.rb:43:in `from_file'",
+          "resource_name": "package",
+          "package_name": "bison",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "build-essential",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Link",
+        "instance_vars": {
+          "name": "/etc/motd",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "delete"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/motd/recipes/default.rb:26:in `from_file'",
+          "resource_name": "link",
+          "to": null,
+          "link_type": "symbolic",
+          "target_file": "/etc/motd",
+          "cookbook_name": "motd",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Template",
+        "instance_vars": {
+          "name": "/etc/motd",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete",
+            "touch",
+            "create_if_missing"
+          ],
+          "action": "create",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/motd/recipes/default.rb:48:in `from_file'",
+          "resource_name": "template",
+          "path": "/etc/motd",
+          "backup": 5,
+          "source": "motd.erb",
+          "cookbook": null,
+          "local": false,
+          "variables": {
+          },
+          "cookbook_name": "motd",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "mode": "0644",
+          "content": ""
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Template",
+        "instance_vars": {
+          "name": "/etc/node_name",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete",
+            "touch",
+            "create_if_missing"
+          ],
+          "action": "create",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/motd/recipes/default.rb:56:in `from_file'",
+          "resource_name": "template",
+          "path": "/etc/node_name",
+          "backup": 5,
+          "source": "node_name.erb",
+          "cookbook": null,
+          "local": false,
+          "variables": {
+          },
+          "cookbook_name": "motd",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "mode": 420,
+          "content": ""
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "zsh",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/zsh/recipes/default.rb:20:in `from_file'",
+          "resource_name": "package",
+          "package_name": "zsh",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "zsh",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "zsh-doc",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/zsh/recipes/default.rb:26:in `from_file'",
+          "resource_name": "package",
+          "package_name": "zsh-doc",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "zsh",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "emacs23-nox",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "upgrade"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/emacs/recipes/default.rb:22:in `block in from_file'",
+          "resource_name": "package",
+          "package_name": "emacs23-nox",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "emacs",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "ntpdate",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/ntp/recipes/default.rb:22:in `from_file'",
+          "resource_name": "package",
+          "package_name": "ntpdate",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "ntp",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "ntp",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/ntp/recipes/default.rb:28:in `from_file'",
+          "resource_name": "package",
+          "package_name": "ntp",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "ntp",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/lib/ntp",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": "create",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/ntp/recipes/default.rb:35:in `block in from_file'",
+          "resource_name": "directory",
+          "path": "/var/lib/ntp",
+          "recursive": false,
+          "cookbook_name": "ntp",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "ntp",
+          "group": "ntp",
+          "mode": 493
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/log/ntpstats",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": "create",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/ntp/recipes/default.rb:35:in `block in from_file'",
+          "resource_name": "directory",
+          "path": "/var/log/ntpstats",
+          "recursive": false,
+          "cookbook_name": "ntp",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "ntp",
+          "group": "ntp",
+          "mode": 493
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Service",
+        "instance_vars": {
+          "name": "ntp",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "enable",
+            "disable",
+            "start",
+            "stop",
+            "restart",
+            "reload"
+          ],
+          "action": [
+            "start"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+            "restart": false,
+            "reload": false,
+            "status": false
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/ntp/recipes/default.rb:43:in `from_file'",
+          "resource_name": "service",
+          "service_name": "ntp",
+          "enabled": null,
+          "running": null,
+          "pattern": "ntp",
+          "start_command": null,
+          "stop_command": null,
+          "status_command": null,
+          "restart_command": null,
+          "reload_command": null,
+          "priority": null,
+          "startup_type": "automatic",
+          "cookbook_name": "ntp",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Template",
+        "instance_vars": {
+          "name": "/etc/ntp.conf",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete",
+            "touch",
+            "create_if_missing"
+          ],
+          "action": "create",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/ntp/recipes/default.rb:47:in `from_file'",
+          "resource_name": "template",
+          "path": "/etc/ntp.conf",
+          "backup": 5,
+          "source": "ntp.conf.erb",
+          "cookbook": null,
+          "local": false,
+          "variables": {
+          },
+          "cookbook_name": "ntp",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "mode": 420,
+          "group": "root",
+          "content": ""
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Service",
+        "instance_vars": {
+          "name": "ntp",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "enable",
+            "disable",
+            "start",
+            "stop",
+            "restart",
+            "reload"
+          ],
+          "action": [
+            "enable",
+            "start"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+            "restart": false,
+            "reload": false,
+            "status": false
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/ntp/recipes/default.rb:55:in `from_file'",
+          "resource_name": "service",
+          "service_name": "ntp",
+          "enabled": null,
+          "running": null,
+          "pattern": "ntp",
+          "start_command": null,
+          "stop_command": null,
+          "status_command": null,
+          "restart_command": null,
+          "reload_command": null,
+          "priority": null,
+          "startup_type": "automatic",
+          "cookbook_name": "ntp",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/etc/silverware",
+          "noop": null,
+          "before": null,
+          "params": {
+            "subsys": null,
+            "directories": [
+              "conf_dir",
+              "log_dir",
+              "home_dir"
+            ],
+            "log_dir": null,
+            "home_dir": null,
+            "user": "root",
+            "group": "root",
+            "name": "silverware"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/standard_dirs.rb:47:in `block (3 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/etc/silverware",
+          "recursive": true,
+          "cookbook_name": "silverware",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "group": "root",
+          "mode": "0755"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/log/silverware",
+          "noop": null,
+          "before": null,
+          "params": {
+            "subsys": null,
+            "directories": [
+              "conf_dir",
+              "log_dir",
+              "home_dir"
+            ],
+            "log_dir": null,
+            "home_dir": null,
+            "user": "root",
+            "group": "root",
+            "name": "silverware"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/standard_dirs.rb:47:in `block (3 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/var/log/silverware",
+          "recursive": true,
+          "cookbook_name": "silverware",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "group": "root",
+          "mode": "0775"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/etc/silverware",
+          "noop": null,
+          "before": null,
+          "params": {
+            "subsys": null,
+            "directories": [
+              "conf_dir",
+              "log_dir",
+              "home_dir"
+            ],
+            "log_dir": null,
+            "home_dir": null,
+            "user": "root",
+            "group": "root",
+            "name": "silverware"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/standard_dirs.rb:47:in `block (3 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/etc/silverware",
+          "recursive": true,
+          "cookbook_name": "silverware",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "group": "root",
+          "mode": "0755"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "nfs-common",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": "install",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/nfs/recipes/default.rb:14:in `from_file'",
+          "resource_name": "package",
+          "package_name": "nfs-common",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "nfs",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "nfs-common",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "nothing"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/nfs/recipes/client.rb:12:in `from_file'",
+          "resource_name": "package",
+          "package_name": "nfs-common",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "nfs",
+          "recipe_name": "client",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Bash",
+        "instance_vars": {
+          "name": "modprobe nfs",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "run"
+          ],
+          "action": "run",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/nfs/recipes/client.rb:14:in `from_file'",
+          "resource_name": "bash",
+          "command": "modprobe nfs",
+          "backup": 5,
+          "creates": null,
+          "cwd": null,
+          "environment": null,
+          "group": null,
+          "path": null,
+          "returns": 0,
+          "timeout": null,
+          "user": "root",
+          "umask": null,
+          "code": "modprobe nfs",
+          "interpreter": "bash",
+          "flags": null,
+          "cookbook_name": "nfs",
+          "recipe_name": "client",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "xfsprogs",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": "install",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/xfs/recipes/default.rb:21:in `block in from_file'",
+          "resource_name": "package",
+          "package_name": "xfsprogs",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "xfs",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "xfsdump",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": "install",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/xfs/recipes/default.rb:21:in `block in from_file'",
+          "resource_name": "package",
+          "package_name": "xfsdump",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "xfs",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "xfslibs-dev",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": "install",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/xfs/recipes/default.rb:24:in `from_file'",
+          "resource_name": "package",
+          "package_name": "xfslibs-dev",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "xfs",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "tree",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "tree",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "git",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "git",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "zip",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "zip",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "openssl",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "openssl",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "wget",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "wget",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "curl",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "curl",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "runit",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "runit",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "libyaml-dev",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "libyaml-dev",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "libxslt1-dev",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "libxslt1-dev",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "emacs23-nox",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "emacs23-nox",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "elinks",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "elinks",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "w3m-el",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "w3m-el",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "colordiff",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "colordiff",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "ack",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "ack",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "exuberant-ctags",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "exuberant-ctags",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "ifstat",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "ifstat",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "htop",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "htop",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "tree",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "tree",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "chkconfig",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "chkconfig",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "sysstat",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "sysstat",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "nmap",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "nmap",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "python-software-properties",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:28:in `block (2 levels) in from_file'",
+          "resource_name": "package",
+          "package_name": "python-software-properties",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "bundler",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "bundler",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "extlib",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "extlib",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "json",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "json",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "yajl-ruby",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "yajl-ruby",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "awesome_print",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "awesome_print",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "addressable",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "addressable",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "cheat",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "cheat",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "rest-client",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "rest-client",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "yard",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "yard",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "jeweler",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "jeweler",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "rspec",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "rspec",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "watchr",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "watchr",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "pry",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "pry",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "wirble",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "wirble",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "hirb",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "hirb",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "highline",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "highline",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "formatador",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "formatador",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "configliere",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "configliere",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "gorillib",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "gorillib",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "wukong",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "wukong",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "swineherd",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "swineherd",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "hackboxen",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "hackboxen",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "activesupport",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "activesupport",
+          "version": "3.1.0",
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::GemPackage",
+        "instance_vars": {
+          "name": "activemodel",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": "Chef::Provider::Package::Rubygems",
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/package_set/recipes/default.rb:41:in `block (2 levels) in from_file'",
+          "resource_name": "gem_package",
+          "package_name": "activemodel",
+          "version": "3.1.0",
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "package_set",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "python-software-properties",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "nothing"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/java/recipes/sun.rb:38:in `from_file'",
+          "resource_name": "package",
+          "package_name": "python-software-properties",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "java",
+          "recipe_name": "sun",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Bash",
+        "instance_vars": {
+          "name": "add-apt-repository ppa:ferramroberto/java",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "run"
+          ],
+          "action": "run",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/java/recipes/sun.rb:39:in `from_file'",
+          "resource_name": "bash",
+          "command": "add-apt-repository ppa:ferramroberto/java",
+          "backup": 5,
+          "creates": null,
+          "cwd": null,
+          "environment": null,
+          "group": null,
+          "path": null,
+          "returns": 0,
+          "timeout": null,
+          "user": null,
+          "umask": null,
+          "code": "add-apt-repository ppa:ferramroberto/java && apt-get update",
+          "interpreter": "bash",
+          "flags": null,
+          "cookbook_name": "java",
+          "recipe_name": "sun",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Execute",
+        "instance_vars": {
+          "name": "update-java-alternatives",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "run"
+          ],
+          "action": [
+            "nothing"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/java/recipes/sun.rb:79:in `from_file'",
+          "resource_name": "execute",
+          "command": "update-java-alternatives -s java-6-sun",
+          "backup": 5,
+          "creates": null,
+          "cwd": null,
+          "environment": null,
+          "group": null,
+          "path": null,
+          "returns": [
+            0,
+            2
+          ],
+          "timeout": null,
+          "user": null,
+          "umask": null,
+          "cookbook_name": "java",
+          "recipe_name": "sun",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "sun-java6-jdk",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": [
+            "install"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/java/recipes/sun.rb:87:in `block in from_file'",
+          "resource_name": "package",
+          "package_name": "sun-java6-jdk",
+          "version": null,
+          "candidate_version": null,
+          "response_file": "java.seed",
+          "source": null,
+          "cookbook_name": "java",
+          "recipe_name": "sun",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Bash",
+        "instance_vars": {
+          "name": "set VM overcommit ratio to 1",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "run"
+          ],
+          "action": "run",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/tuning/recipes/ubuntu.rb:23:in `set_proc_sys_limit'",
+          "resource_name": "bash",
+          "command": "set VM overcommit ratio to 1",
+          "backup": 5,
+          "creates": null,
+          "cwd": null,
+          "environment": null,
+          "group": null,
+          "path": null,
+          "returns": 0,
+          "timeout": null,
+          "user": null,
+          "umask": null,
+          "code": "echo 1 > /proc/sys/vm/overcommit_memory",
+          "interpreter": "bash",
+          "flags": null,
+          "cookbook_name": "tuning",
+          "recipe_name": "ubuntu",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Bash",
+        "instance_vars": {
+          "name": "set VM overcommit memory to 100",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "run"
+          ],
+          "action": "run",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/tuning/recipes/ubuntu.rb:23:in `set_proc_sys_limit'",
+          "resource_name": "bash",
+          "command": "set VM overcommit memory to 100",
+          "backup": 5,
+          "creates": null,
+          "cwd": null,
+          "environment": null,
+          "group": null,
+          "path": null,
+          "returns": 0,
+          "timeout": null,
+          "user": null,
+          "umask": null,
+          "code": "echo 100 > /proc/sys/vm/overcommit_ratio",
+          "interpreter": "bash",
+          "flags": null,
+          "cookbook_name": "tuning",
+          "recipe_name": "ubuntu",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Bash",
+        "instance_vars": {
+          "name": "set VM swappiness to 5",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "run"
+          ],
+          "action": "run",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/tuning/recipes/ubuntu.rb:23:in `set_proc_sys_limit'",
+          "resource_name": "bash",
+          "command": "set VM swappiness to 5",
+          "backup": 5,
+          "creates": null,
+          "cwd": null,
+          "environment": null,
+          "group": null,
+          "path": null,
+          "returns": 0,
+          "timeout": null,
+          "user": null,
+          "umask": null,
+          "code": "echo 5 > /proc/sys/vm/swappiness",
+          "interpreter": "bash",
+          "flags": null,
+          "cookbook_name": "tuning",
+          "recipe_name": "ubuntu",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Template",
+        "instance_vars": {
+          "name": "/etc/security/limits.d/hdfs.conf",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete",
+            "touch",
+            "create_if_missing"
+          ],
+          "action": "create",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/tuning/recipes/ubuntu.rb:37:in `block in from_file'",
+          "resource_name": "template",
+          "path": "/etc/security/limits.d/hdfs.conf",
+          "backup": 5,
+          "source": "etc_security_limits_overrides.conf.erb",
+          "cookbook": null,
+          "local": false,
+          "variables": {
+          },
+          "cookbook_name": "tuning",
+          "recipe_name": "ubuntu",
+          "enclosing_provider": null,
+          "owner": "root",
+          "mode": "0644",
+          "content": ""
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Template",
+        "instance_vars": {
+          "name": "/etc/security/limits.d/mapred.conf",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete",
+            "touch",
+            "create_if_missing"
+          ],
+          "action": "create",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/tuning/recipes/ubuntu.rb:37:in `block in from_file'",
+          "resource_name": "template",
+          "path": "/etc/security/limits.d/mapred.conf",
+          "backup": 5,
+          "source": "etc_security_limits_overrides.conf.erb",
+          "cookbook": null,
+          "local": false,
+          "variables": {
+          },
+          "cookbook_name": "tuning",
+          "recipe_name": "ubuntu",
+          "enclosing_provider": null,
+          "owner": "root",
+          "mode": "0644",
+          "content": ""
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Execute",
+        "instance_vars": {
+          "name": "apt-get-update",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "run"
+          ],
+          "action": [
+            "nothing"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": true,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/apt/recipes/default.rb:22:in `from_file'",
+          "resource_name": "execute",
+          "command": "apt-get update",
+          "backup": 5,
+          "creates": null,
+          "cwd": null,
+          "environment": null,
+          "group": null,
+          "path": null,
+          "returns": 0,
+          "timeout": null,
+          "user": null,
+          "umask": null,
+          "cookbook_name": "apt",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Execute",
+        "instance_vars": {
+          "name": "apt-get update",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "run"
+          ],
+          "action": [
+            "nothing"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": true,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/apt/recipes/default.rb:30:in `from_file'",
+          "resource_name": "execute",
+          "command": "apt-get update",
+          "backup": 5,
+          "creates": null,
+          "cwd": null,
+          "environment": null,
+          "group": null,
+          "path": null,
+          "returns": 0,
+          "timeout": null,
+          "user": null,
+          "umask": null,
+          "cookbook_name": "apt",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "update-notifier-common",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": "install",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/apt/recipes/default.rb:37:in `from_file'",
+          "resource_name": "package",
+          "package_name": "update-notifier-common",
+          "version": null,
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "apt",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Execute",
+        "instance_vars": {
+          "name": "apt-get-update-periodic",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "run"
+          ],
+          "action": "run",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": true,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/apt/recipes/default.rb:41:in `from_file'",
+          "resource_name": "execute",
+          "command": "apt-get update",
+          "backup": 5,
+          "creates": null,
+          "cwd": null,
+          "environment": null,
+          "group": null,
+          "path": null,
+          "returns": 0,
+          "timeout": null,
+          "user": null,
+          "umask": null,
+          "cookbook_name": "apt",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/cache/local",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/apt/recipes/default.rb:51:in `block in from_file'",
+          "resource_name": "directory",
+          "path": "/var/cache/local",
+          "recursive": false,
+          "cookbook_name": "apt",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "group": "root",
+          "mode": 420
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/cache/local/preseeding",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/apt/recipes/default.rb:51:in `block in from_file'",
+          "resource_name": "directory",
+          "path": "/var/cache/local/preseeding",
+          "recursive": false,
+          "cookbook_name": "apt",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "group": "root",
+          "mode": 420
+        }
+      },
+      {
+        "json_class": "Chef::Resource::AptRepository",
+        "instance_vars": {
+          "resource_name": "apt_repository",
+          "name": "cloudera",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "add",
+            "remove"
+          ],
+          "action": [
+            "add"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/recipes/add_cloudera_repo.rb:29:in `from_file'",
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "add_cloudera_repo",
+          "enclosing_provider": null,
+          "uri": "http://archive.cloudera.com/debian",
+          "distribution": "maverick-cdh3u2",
+          "components": [
+            "contrib"
+          ],
+          "key": "http://archive.cloudera.com/debian/archive.key"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Group",
+        "instance_vars": {
+          "name": "hdfs",
+          "noop": null,
+          "before": null,
+          "params": {
+            "action": [
+              "create",
+              "manage"
+            ],
+            "component": null,
+            "user": "hdfs",
+            "home": "/var/run/hadoop",
+            "manage_home": false,
+            "shell": "/bin/false",
+            "group": "hdfs",
+            "comment": "hadoop daemon",
+            "create_group": [
+              "create"
+            ],
+            "name": "hadoop"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "remove",
+            "modify",
+            "manage"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/daemon_user.rb:42:in `block in from_file'",
+          "resource_name": "group",
+          "group_name": "hdfs",
+          "gid": 302,
+          "members": [
+
+          ],
+          "append": false,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::User",
+        "instance_vars": {
+          "name": "hdfs",
+          "noop": null,
+          "before": null,
+          "params": {
+            "action": [
+              "create",
+              "manage"
+            ],
+            "component": null,
+            "user": "hdfs",
+            "home": "/var/run/hadoop",
+            "manage_home": false,
+            "shell": "/bin/false",
+            "group": "hdfs",
+            "comment": "hadoop daemon",
+            "create_group": [
+              "create"
+            ],
+            "name": "hadoop"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "remove",
+            "modify",
+            "manage",
+            "lock",
+            "unlock"
+          ],
+          "action": [
+            "create",
+            "manage"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+            "manage_home": false
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/daemon_user.rb:51:in `block in from_file'",
+          "resource_name": "user",
+          "username": "hdfs",
+          "comment": null,
+          "uid": 302,
+          "gid": "hdfs",
+          "home": "/var/run/hadoop",
+          "shell": "/bin/false",
+          "password": null,
+          "system": false,
+          "manage_home": false,
+          "non_unique": false,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Group",
+        "instance_vars": {
+          "name": "mapred",
+          "noop": null,
+          "before": null,
+          "params": {
+            "action": [
+              "create",
+              "manage"
+            ],
+            "component": null,
+            "user": "mapred",
+            "home": "/var/run/hadoop",
+            "manage_home": false,
+            "shell": "/bin/false",
+            "group": "mapred",
+            "comment": "hadoop daemon",
+            "create_group": [
+              "create"
+            ],
+            "name": "hadoop"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "remove",
+            "modify",
+            "manage"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/daemon_user.rb:42:in `block in from_file'",
+          "resource_name": "group",
+          "group_name": "mapred",
+          "gid": 303,
+          "members": [
+
+          ],
+          "append": false,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::User",
+        "instance_vars": {
+          "name": "mapred",
+          "noop": null,
+          "before": null,
+          "params": {
+            "action": [
+              "create",
+              "manage"
+            ],
+            "component": null,
+            "user": "mapred",
+            "home": "/var/run/hadoop",
+            "manage_home": false,
+            "shell": "/bin/false",
+            "group": "mapred",
+            "comment": "hadoop daemon",
+            "create_group": [
+              "create"
+            ],
+            "name": "hadoop"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "remove",
+            "modify",
+            "manage",
+            "lock",
+            "unlock"
+          ],
+          "action": [
+            "create",
+            "manage"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+            "manage_home": false
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/daemon_user.rb:51:in `block in from_file'",
+          "resource_name": "user",
+          "username": "mapred",
+          "comment": null,
+          "uid": 303,
+          "gid": "mapred",
+          "home": "/var/run/hadoop",
+          "shell": "/bin/false",
+          "password": null,
+          "system": false,
+          "manage_home": false,
+          "non_unique": false,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Group",
+        "instance_vars": {
+          "name": "hadoop",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "remove",
+            "modify",
+            "manage"
+          ],
+          "action": [
+            "create",
+            "manage"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/recipes/default.rb:37:in `from_file'",
+          "resource_name": "group",
+          "group_name": "hadoop",
+          "gid": 300,
+          "members": [
+            "hdfs",
+            "mapred"
+          ],
+          "append": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Group",
+        "instance_vars": {
+          "name": "supergroup",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "remove",
+            "modify",
+            "manage"
+          ],
+          "action": [
+            "create",
+            "manage"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/recipes/default.rb:46:in `from_file'",
+          "resource_name": "group",
+          "group_name": "supergroup",
+          "gid": 301,
+          "members": [
+
+          ],
+          "append": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "hadoop-0.20",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": "install",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/libraries/hadoop_cluster.rb:5:in `hadoop_package'",
+          "resource_name": "package",
+          "package_name": "hadoop-0.20",
+          "version": "0.20.2+923.142-1~maverick-cdh3",
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "hadoop-0.20-native",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": "install",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/libraries/hadoop_cluster.rb:5:in `hadoop_package'",
+          "resource_name": "package",
+          "package_name": "hadoop-0.20-native",
+          "version": "0.20.2+923.142-1~maverick-cdh3",
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Package",
+        "instance_vars": {
+          "name": "hadoop-0.20-sbin",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "install",
+            "upgrade",
+            "remove",
+            "purge",
+            "reconfig"
+          ],
+          "action": "install",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/libraries/hadoop_cluster.rb:5:in `hadoop_package'",
+          "resource_name": "package",
+          "package_name": "hadoop-0.20-sbin",
+          "version": "0.20.2+923.142-1~maverick-cdh3",
+          "candidate_version": null,
+          "response_file": null,
+          "source": null,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/etc/hadoop/conf",
+          "noop": null,
+          "before": null,
+          "params": {
+            "subsys": null,
+            "directories": [
+              "conf_dir",
+              "pid_dir"
+            ],
+            "log_dir": null,
+            "home_dir": null,
+            "user": "hdfs",
+            "group": "hdfs",
+            "name": "hadoop"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/standard_dirs.rb:47:in `block (3 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/etc/hadoop/conf",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "group": "root",
+          "mode": "0755"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/run/hadoop",
+          "noop": null,
+          "before": null,
+          "params": {
+            "subsys": null,
+            "directories": [
+              "conf_dir",
+              "pid_dir"
+            ],
+            "log_dir": null,
+            "home_dir": null,
+            "user": "hdfs",
+            "group": "hdfs",
+            "name": "hadoop"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/standard_dirs.rb:47:in `block (3 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/var/run/hadoop",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0755"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/hdfs/name",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/name",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.namenode.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/hdfs/name",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt2/hadoop/hdfs/name",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/name",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.namenode.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt2/hadoop/hdfs/name",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt3/hadoop/hdfs/name",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/name",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.namenode.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt3/hadoop/hdfs/name",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt4/hadoop/hdfs/name",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/name",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.namenode.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt4/hadoop/hdfs/name",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/hdfs/secondary",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/secondary",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.secondarynn.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/hdfs/secondary",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt2/hadoop/hdfs/secondary",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/secondary",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.secondarynn.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt2/hadoop/hdfs/secondary",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt3/hadoop/hdfs/secondary",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/secondary",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.secondarynn.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt3/hadoop/hdfs/secondary",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt4/hadoop/hdfs/secondary",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/secondary",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.secondarynn.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt4/hadoop/hdfs/secondary",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/hdfs/data",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/data",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.datanode.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/hdfs/data",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt2/hadoop/hdfs/data",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/data",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.datanode.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt2/hadoop/hdfs/data",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt3/hadoop/hdfs/data",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/data",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.datanode.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt3/hadoop/hdfs/data",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt4/hadoop/hdfs/data",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "persistent",
+            "path": "hadoop/hdfs/data",
+            "owner": "hdfs",
+            "group": "hdfs",
+            "mode": "0700",
+            "name": "hadoop.datanode.data"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt4/hadoop/hdfs/data",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hdfs",
+          "mode": "0700"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/mapred/local",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "local",
+            "path": "hadoop/mapred/local",
+            "owner": "mapred",
+            "group": "mapred",
+            "mode": "0755",
+            "name": "hadoop.tasktracker.scratch"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/mapred/local",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "mapred",
+          "group": "mapred",
+          "mode": "0755"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt2/hadoop/mapred/local",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "local",
+            "path": "hadoop/mapred/local",
+            "owner": "mapred",
+            "group": "mapred",
+            "mode": "0755",
+            "name": "hadoop.tasktracker.scratch"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt2/hadoop/mapred/local",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "mapred",
+          "group": "mapred",
+          "mode": "0755"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt3/hadoop/mapred/local",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "local",
+            "path": "hadoop/mapred/local",
+            "owner": "mapred",
+            "group": "mapred",
+            "mode": "0755",
+            "name": "hadoop.tasktracker.scratch"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt3/hadoop/mapred/local",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "mapred",
+          "group": "mapred",
+          "mode": "0755"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt4/hadoop/mapred/local",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "all",
+            "type": "local",
+            "path": "hadoop/mapred/local",
+            "owner": "mapred",
+            "group": "mapred",
+            "mode": "0755",
+            "name": "hadoop.tasktracker.scratch"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt4/hadoop/mapred/local",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "mapred",
+          "group": "mapred",
+          "mode": "0755"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/tmp",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "single",
+            "type": "local",
+            "path": "hadoop/tmp",
+            "owner": "hdfs",
+            "group": "hadoop",
+            "mode": "0777",
+            "name": "hadoop.tmp"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/tmp",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hadoop",
+          "mode": "0777"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/log",
+          "noop": null,
+          "before": null,
+          "params": {
+            "aspect": null,
+            "selects": "single",
+            "type": "local",
+            "path": "hadoop/log",
+            "owner": "hdfs",
+            "group": "hadoop",
+            "mode": "0777",
+            "name": "hadoop.log"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/volumes/definitions/volume_dirs.rb:80:in `block (2 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/log",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hadoop",
+          "mode": "0777"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/log/namenode",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/recipes/default.rb:120:in `block in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/log/namenode",
+          "recursive": false,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hadoop",
+          "mode": "0775"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/log/secondarynn",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/recipes/default.rb:120:in `block in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/log/secondarynn",
+          "recursive": false,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hadoop",
+          "mode": "0775"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/log/datanode",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/recipes/default.rb:120:in `block in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/log/datanode",
+          "recursive": false,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "hdfs",
+          "group": "hadoop",
+          "mode": "0775"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/log/jobtracker",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/recipes/default.rb:121:in `block in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/log/jobtracker",
+          "recursive": false,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "mapred",
+          "group": "hadoop",
+          "mode": "0775"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/mnt/hadoop/log/tasktracker",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/recipes/default.rb:121:in `block in from_file'",
+          "resource_name": "directory",
+          "path": "/mnt/hadoop/log/tasktracker",
+          "recursive": false,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "mapred",
+          "group": "hadoop",
+          "mode": "0775"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/log/hadoop",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "delete"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/libraries/hadoop_cluster.rb:29:in `force_link'",
+          "resource_name": "directory",
+          "path": "/var/log/hadoop",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Link",
+        "instance_vars": {
+          "name": "/var/log/hadoop",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": "create",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/libraries/hadoop_cluster.rb:33:in `force_link'",
+          "resource_name": "link",
+          "to": null,
+          "link_type": "symbolic",
+          "target_file": "/var/log/hadoop",
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "source_file": "/mnt/hadoop/log"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/log/hadoop-0.20",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "delete"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/libraries/hadoop_cluster.rb:29:in `force_link'",
+          "resource_name": "directory",
+          "path": "/var/log/hadoop-0.20",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Link",
+        "instance_vars": {
+          "name": "/var/log/hadoop-0.20",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": "create",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/libraries/hadoop_cluster.rb:33:in `force_link'",
+          "resource_name": "link",
+          "to": null,
+          "link_type": "symbolic",
+          "target_file": "/var/log/hadoop-0.20",
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "source_file": "/mnt/hadoop/log"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/run/hadoop-0.20",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "delete"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/libraries/hadoop_cluster.rb:29:in `force_link'",
+          "resource_name": "directory",
+          "path": "/var/run/hadoop-0.20",
+          "recursive": true,
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Link",
+        "instance_vars": {
+          "name": "/var/run/hadoop-0.20",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": "create",
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/libraries/hadoop_cluster.rb:33:in `force_link'",
+          "resource_name": "link",
+          "to": null,
+          "link_type": "symbolic",
+          "target_file": "/var/run/hadoop-0.20",
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "source_file": "/var/run/hadoop"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/lib/minidash",
+          "noop": null,
+          "before": null,
+          "params": {
+            "subsys": null,
+            "directories": [
+              "home_dir",
+              "log_dir",
+              "conf_dir"
+            ],
+            "log_dir": null,
+            "home_dir": null,
+            "user": "root",
+            "group": "root",
+            "name": "minidash"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/standard_dirs.rb:47:in `block (3 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/var/lib/minidash",
+          "recursive": true,
+          "cookbook_name": "minidash",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "group": "root",
+          "mode": "0755"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/var/log/minidash",
+          "noop": null,
+          "before": null,
+          "params": {
+            "subsys": null,
+            "directories": [
+              "home_dir",
+              "log_dir",
+              "conf_dir"
+            ],
+            "log_dir": null,
+            "home_dir": null,
+            "user": "root",
+            "group": "root",
+            "name": "minidash"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/standard_dirs.rb:47:in `block (3 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/var/log/minidash",
+          "recursive": true,
+          "cookbook_name": "minidash",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "group": "root",
+          "mode": "0775"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::Directory",
+        "instance_vars": {
+          "name": "/etc/minidash",
+          "noop": null,
+          "before": null,
+          "params": {
+            "subsys": null,
+            "directories": [
+              "home_dir",
+              "log_dir",
+              "conf_dir"
+            ],
+            "log_dir": null,
+            "home_dir": null,
+            "user": "root",
+            "group": "root",
+            "name": "minidash"
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/silverware/definitions/standard_dirs.rb:47:in `block (3 levels) in from_file'",
+          "resource_name": "directory",
+          "path": "/etc/minidash",
+          "recursive": true,
+          "cookbook_name": "minidash",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "owner": "root",
+          "group": "root",
+          "mode": "0755"
+        }
+      },
+      {
+        "json_class": "Chef::Resource::MinidashDashboard",
+        "instance_vars": {
+          "resource_name": "minidash_dashboard",
+          "name": "minidash",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/minidash/recipes/default.rb:32:in `from_file'",
+          "cookbook_name": "minidash",
+          "recipe_name": "default",
+          "enclosing_provider": null,
+          "template_name": "index",
+          "variables": {
+          }
+        }
+      },
+      {
+        "json_class": "Chef::Resource::MinidashDashboard",
+        "instance_vars": {
+          "resource_name": "minidash_dashboard",
+          "name": "hadoop_cluster",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/hadoop_cluster/recipes/minidash.rb:38:in `from_file'",
+          "cookbook_name": "hadoop_cluster",
+          "recipe_name": "minidash",
+          "enclosing_provider": null,
+          "variables": {
+          }
+        }
+      },
+      {
+        "json_class": "Chef::Resource::File",
+        "instance_vars": {
+          "name": "/etc/silverware/chef_node-el_ridiculoso-gordo-0.json",
+          "noop": null,
+          "before": null,
+          "params": {
+          },
+          "provider": null,
+          "allowed_actions": [
+            "nothing",
+            "create",
+            "delete",
+            "touch",
+            "create_if_missing"
+          ],
+          "action": [
+            "create"
+          ],
+          "updated": false,
+          "updated_by_last_action": false,
+          "supports": {
+          },
+          "ignore_failure": false,
+          "retries": 0,
+          "retry_delay": 2,
+          "immediate_notifications": [
+
+          ],
+          "delayed_notifications": [
+
+          ],
+          "source_line": "/srv/chef/file_store/cookbooks/cloud_utils/recipes/pickle_node.rb:26:in `from_file'",
+          "resource_name": "file",
+          "path": "/etc/silverware/chef_node-el_ridiculoso-gordo-0.json",
+          "backup": 5,
+          "cookbook_name": "cloud_utils",
+          "recipe_name": "pickle_node",
+          "enclosing_provider": null,
+          "content": "",
+          "owner": "root",
+          "group": "root",
+          "mode": "0600"
+        }
+      }
+    ],
+    "@insert_after_idx": null
+  }
+}
