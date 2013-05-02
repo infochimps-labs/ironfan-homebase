@@ -1,0 +1,95 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+
+class Hbase_Backup
+
+  def initialize(dt)
+    @dt = dt
+  end
+ 
+  def backup(table, start, versions, type)
+
+    `hbase org.apache.hadoop.hbase.mapreduce.Export -D mapred.output.compression.codec=org.apache.hadoop.io.compress.SnappyCodec -D mapred.output.compression.type=BLOCK -D mapred.output.compress=true #{table} /tmp/backups/#{type}/#{@dt}/#{table}/ #{versions} #{start}`
+  end
+
+end
+
+def s3(bucket, type, dt)
+  `hadoop distcp /tmp/backups/#{type}/#{dt}/ s3n://#{bucket}/hbase_backups/#{type}/#{dt}/`
+  `hadoop fs -rmr /tmp/backups`
+end
+
+def cleanup(bucket, retention, dt)
+  today = Date.strptime(dt, "%Y%m%d")
+  retention.each_pair do |type, days|
+    if days < 1
+      break # If 0, keep all backups 
+    end
+
+    distcp=`s3cmd -c /etc/s3cfg ls s3://#{bucket}/hbase_backups/#{type}/ | grep "_distcp" | awk '{print $NF}'`
+    distcp.split("\n").each do |distcp|
+      `s3cmd -c /etc/s3cfg -r del #{distcp}`
+    end
+
+    backups=`s3cmd -c /etc/s3cfg ls s3://#{bucket}/hbase_backups/#{type}/ | grep "DIR" | awk '{print $2}'`
+    backups = backups.split("\n").sort
+    if backups.length > days
+      backups[0..(backups.length - days.to_i - 1)].each do |backup|
+        `s3cmd -c /etc/s3cfg -r del #{backup}`
+        `s3cmd -c /etc/s3cfg -r del #{backup}_\\$folder\\$`
+      end
+    end
+
+  end
+end
+
+
+config = YAML::load(File.open('<%= @node[:backups][:hbase][:conf] %>', 'r').read())
+tables = config['tables']
+versions = config['backups']['versions']
+
+dt = Date.today().strftime("%Y%m%d")
+today = Date.today().strftime("%A")
+start = nil
+type = nil
+
+if tables == '*'
+  # This is the mega hacky, but it is independant of Stargate / Thrift
+  tlist = `echo "list" | hbase shell | sed -n -e '/TABLE/,/seconds/ p' | head -n -1 | tail -n +2`
+  tables = tlist.split("\n").map {|t| t.strip}
+end
+
+tables.each do |table|
+  if config.has_key?(table)
+    full = config[table]['full']
+    diff = config[table]['differential'] 
+    incr = config[table]['incrimental'] 
+  else
+    full = config['default']['full']
+    diff = config['default']['differential']
+    incr = config['default']['incrimental']
+  end
+ 
+  last_full = full.last
+  last_diff = diff.last
+  hour_offset = config['backups']['offset']
+
+  if full.include? today
+    start = 0 
+    type = 'full'
+  elsif diff.include? today
+    start = `date -d "last-#{last_full}" +%s`.chomp # This is hacky, but it works...  
+    type = 'differential'
+  elsif incr.include? today
+    start = `date -d "last-#{last_diff}" +%s`.chomp
+    type = 'incrimental'
+  end
+    
+  backup = Hbase_Backup.new(dt)  
+  backup.backup(table, start, versions, type)
+
+end
+  
+s3(config['backups']['s3'], type, dt)
+cleanup(config['backups']['s3'], config['retention'], dt)

@@ -1,0 +1,109 @@
+= Backup Cookbook
+
+== Overview
+
+This cookbook provides backup routines for various data-stores including HBase and Elasticsearch.  
+
+Time configurations have defaults of weekends and nights.  S3 bucket and table names need to be specified.  
+
+== Usage
+
+To enable a specific backup, include the recipe.  Configure an S3 bucket and any required tables.  
+
+  default[:backups][:location]	= "/mnt/backups"
+  default[:backups][:s3      ] 	= nil 
+
+You will need to set the S3 bucket.  
+
+=== backups::s3cfg
+
+This recipe is included from all other recipes and sets up s3cmd with your credentials.  
+
+=== backups::hbase
+
+This recipe performs full, differential, and incrimental backups on the specified days of the week.  This is intended to run daily and is a little fragile regarding times.  Arrays are expected to be in the correct order.  Larger backups will supercede smaller onese (ie: if you specify "Sunday" in both full and differential, only the full will be ran).  
+
+  default[:backups][:hbase][:cluster_name]     = "hbase"
+  default[:backups][:hbase][:conf        ]     = "/etc/hbase_backup.yaml"
+  default[:backups][:hbase][:full        ]     = ["Sunday"]
+  default[:backups][:hbase][:differential]     = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  default[:backups][:hbase][:incrimental ]     = []
+  default[:backups][:hbase][:tables      ]     = '"*"' 
+  default[:backups][:hbase][:versions    ]     = "2147483647"
+  default[:backups][:hbase][:minute      ]     = "0"
+  default[:backups][:hbase][:hour        ]     = "2"
+  default[:backups][:hbase][:day         ]     = "*"
+  default[:backups][:hbase][:month       ]     = "*"
+  default[:backups][:hbase][:weekday     ]     = "*"
+
+
+All tables are backed up by default.  A list can also be supplied.  The default settings run full backups every Sunday at 2:00 and differential backups the rest of the week. 
+
+Restores can be done as follows: 
+
+1. Create a table with the same column families.  
+2. Run $ in/hbase org.apache.hadoop.hbase.mapreduce.Import <tablename> <inputdir>
+
+inputdir must be on HDFS.  Mind TTLs.  See http://hbase.apache.org/book/ops_mgt.html for more information. 
+
+=== backups::namenode
+
+  Backups up namenode fsimage and edit logs.  Defaults to 30 minutes and buckets to S3 by day.  
+
+  default[:backups][:namenode][:cluster_name]     = "hadoop"
+  default[:backups][:namenode][:minute      ]     = "*/30"
+  default[:backups][:namenode][:hour        ]     = "*"
+  default[:backups][:namenode][:day         ]     = "*"
+  default[:backups][:namenode][:month       ]     = "*"
+  default[:backups][:namenode][:weekday     ]     = "*"
+
+=== backups::elasticsearch
+
+  Backups up elasticsearch indexes to GZipped JSON using Scan / Scroll API.  This is extremely slow and needs to be reworked. 
+
+  default[:backups][:elasticsearch][:cluster_name]     = "elasticsearch"
+  default[:backups][:elasticsearch][:scroll      ]     = "1000"
+  default[:backups][:elasticsearch][:indexes     ]     = []
+  default[:backups][:elasticsearch][:minute      ]     = "0"
+  default[:backups][:elasticsearch][:hour        ]     = "4"
+  default[:backups][:elasticsearch][:day         ]     = "*"
+  default[:backups][:elasticsearch][:month       ]     = "*"
+  default[:backups][:elasticsearch][:weekday     ]     = "0"
+
+=== backups::zookeeper
+
+  Backups up Zookeeper transaction logs and snapshots.  This needs to be located alongside at least one zookeeper node at this time. 
+
+  default[:backups][:zookeeper][:cluster_name]     = "zookeeper"
+  default[:backups][:zookeeper][:minute      ]     = "*/30"
+  default[:backups][:zookeeper][:hour        ]     = "*"
+  default[:backups][:zookeeper][:day         ]     = "*"
+  default[:backups][:zookeeper][:month       ]     = "*"
+  default[:backups][:zookeeper][:weekday     ]     = "*"
+
+  To include on only one index, specify the index as follows:
+
+  facet(:foo).server(0) do
+    recipe              'backups::zookeeper'
+  end
+
+
+  TODO: Figure out how to do this backup remotely.  
+ 
+=== backups::ebs
+
+  Backs up EBS volumes.  Will not include '/'.  Default retention of 7 days.  
+
+  default[:backups][:ebs][:minute    ]     = "0"
+  default[:backups][:ebs][:hour      ]     = "2"
+  default[:backups][:ebs][:day       ]     = "*"
+  default[:backups][:ebs][:month     ]     = "*"
+  default[:backups][:ebs][:weekday   ]     = "*"
+  default[:backups][:ebs][:xfs_freeze]     = "/usr/sbin/xfs_freeze"  
+  #default[:backups][:ebs][:xfs_freeze]     = nil
+
+  Volume will be 'frozen' if the binary path is defined.  This was designed around XFS.  
+
+
+
+

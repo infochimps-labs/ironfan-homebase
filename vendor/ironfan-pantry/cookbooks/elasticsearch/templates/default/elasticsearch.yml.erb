@@ -1,0 +1,287 @@
+# -*- YAML -*-
+# ElasticSearch config file
+#
+
+cluster.name:                  <%= @elasticsearch[:realm] %>
+<%- if  @elasticsearch[:is_datanode] %>
+node.name:                     <%= node.name %>
+<%- end %>
+
+# File paths
+path:
+  home:                         <%= @elasticsearch[:home_dir] %>
+  conf:                         <%= @elasticsearch[:conf_dir] %>
+  logs:                         <%= @elasticsearch[:log_dir] %>
+  # data dir and work dir are set in in the elasticsearch.in.sh
+
+# http://www.elasticsearch.com/docs/elasticsearch/modules/node/
+node:
+  # node.data: is this a data esnode (stores, indexes data)? default true
+  data:                         <%= @elasticsearch[:is_datanode] %>
+  # eligible for master election
+  master:                       <%= @elasticsearch[:master_electable] %>
+
+  # tags for shard allocation, etc
+  ironfan_cluster:              <%= node[:cluster_name] %>
+  ironfan_facet:                <%= node[:facet_name]   %>
+  ironfan_facet_idx:            <%= node[:facet_index]  %>
+  ironfan_name:                 <%= node.name %>
+
+  max_local_storage_nodes:      1
+
+# http://www.elasticsearch.com/docs/elasticsearch/modules/http/
+http:
+  # # http.enabled: is this a query esnode (has http interface, dispatches/gathers queries)? Default true
+  enabled:                      <%= @elasticsearch[:is_httpnode] %>
+  port:                         <%= @elasticsearch[:http_ports] %>
+  max_content_length:           100mb
+
+gateway:
+  # The gateway set on the node level will automatically control the index
+  # gateway to use. For example, if the fs gateway is used, then automatically,
+  # each index created on the node will also use its own respective index level
+  # fs gateway. In this case, if in an index should not persist its state, it
+  # should be explicitly set to none.
+  #
+  # Set gateway.type to one of: [none, local, fs, hadoop, s3]
+  #
+  type:                         <%= @elasticsearch[:gateway_type] %>
+  #
+  # recovery begins when recover_after_nodes are present and then either
+  # recovery_after_time has passed *or* expected_nodes have shown up.
+  recover_after_nodes:          <%= @elasticsearch[:recovery_after_nodes] %>
+  recovery_after_time:          <%= @elasticsearch[:recovery_after_time]  %>
+  expected_nodes:               <%= @elasticsearch[:expected_nodes] %>
+  #
+  # use with type: s3
+  s3:
+    bucket:                     <%= @elasticsearch[:s3_gateway_bucket] %>
+
+cluster:
+  # http://groups.google.com/a/elasticsearch.com/group/users/browse_thread/thread/439afb06f3e85aa7/431a8543811d7848?lnk=gst&q=configuration#431a8543811d7848
+  routing:
+    allocation:
+      # initial recovery (eg full-cluster restart)
+      node_initial_primaries_recoveries: 10
+      # peer-to-peer recovery (from shard seed to shard peers)
+      node_concurrent_recoveries:        6
+      # # let nodes that have come back up take place in recovery
+      # allow_rebalance:                   always
+
+# Concurrent streams when recovering a shard from a peer:
+indices.recovery:
+  concurrent_streams:           3
+  compress:                     true
+  
+# http://groups.google.com/a/elasticsearch.com/group/users/browse_thread/thread/1f3001f43266879a/06d62ea3ceb4db30?lnk=gst&q=translog#06d62ea3ceb4db30
+indices:
+  cache:
+    filter:
+      # Percent of memory on the node to cache filter results; this is a
+      # node-level setting (and different from index.cache.*)
+      size:                    <%= @elasticsearch[:cache_filter_size] %>
+  memory:
+    # Increase if you are bulk loading
+    # A number ('512m') or percent ('10%'). You can set limits on a percentage
+    # with max_index_buffer_size and min_index_buffer_size. 10% by default.
+    index_buffer_size:          <%= @elasticsearch[:index_buffer_size]   %>
+
+cache:
+  memory:
+    # small_buffer_size:              1kb
+    # large_buffer_size:              1mb
+    # small_cache_size:               10mb
+    # large_cache_size:               500mb
+    # direct:                         true
+    # warm_cache:                     false
+
+bootstrap:
+  # For a node that is dedicated to elasticsearch, Setting this to true; and in
+  # a parent shell set `ulimit -l unlimited`; and enabling JNA can make memory
+  # allocation significantly more efficient. Be sure you understand the
+  # ramifications of doing this, especially how it interacts with swappiness.
+  mlockall:                     <%= @elasticsearch[:ulimit_mlock].nil? ? "false" : "true" %>
+
+index:
+  number_of_shards:             <%= @elasticsearch[:default_shards]   %>
+  number_of_replicas:           <%= @elasticsearch[:default_replicas] %>
+  # The field cache can OOM your machine in a moment when too large, but when
+  # you have the RAM field values are one of the most important things to cache.
+  index.cache.field.type:         <%= @elasticsearch[:index_cache_field_type] %>
+  #
+  translog:
+    # A shard is flushed to local disk (the lucene index is committed) once this
+    # number of operations accumulate in the translog. defaults to 5000.
+    # This may be worth increasing for a high-speed flow.
+    flush_threshold_ops:      <%= @elasticsearch[:flush_threshold] || @elasticsearch[:flush_threshold_ops] %>
+    flush_threshold_size:     <%= @elasticsearch[:flush_threshold_size] %>
+    flush_threshold_period:   <%= @elasticsearch[:flush_threshold_period] %>
+
+  store.compress:
+    stored:                   true
+    tv:                       true
+
+  merge:
+    policy:
+      # Determines how often segment indices are merged by index operation. With
+      # smaller values, less RAM is used while indexing, and searches on
+      # unoptimized indices are faster, but indexing speed is slower. With
+      # larger values, more RAM is used during indexing, and while searches on
+      # unoptimized indices are slower, indexing is faster. Thus larger values
+      # (greater than 10) are best for batch index creation, and smaller values
+      # (lower than 10) for indices that are interactively maintained. Defaults
+      # to 10.
+      max_merge_at_once:         <%= @elasticsearch[:merge_factor] %>
+      segments_per_tier:         <%= @elasticsearch[:merge_factor] %>
+
+      # Use the compound file format. If not set, controlled by the actually
+      # store used, this is because the compound format was created to reduce
+      # the number of open file handles when using file based storage. The file
+      # system based ones default to true which others default to false. Even
+      # with file system based ones, consider increasing the number of open file
+      # handles and setting this to false for better performance
+      use_compound_file:        false
+      # A size setting type which sets the minimum size for the lowest level
+      # segments. Any segments below this size are considered to be on the same
+      # level (even if they vary drastically in size) and will be merged
+      # whenever there are mergeFactor of them. This effectively truncates the
+      # "long tail" of small segments that would otherwise be created into a
+      # single level. If you set this too large, it could greatly increase the
+      # merging cost during indexing (if you flush many small
+      # segments). Defaults to 2mb.
+      floor_segment:           <%= @elasticsearch[:floor_segment] %>
+      # Largest segment (by total byte size) that may be merged with other
+      # segments. Defaults to 5gb.
+      # max_merged_segment:
+    <%- unless @elasticsearch[:max_thread_count].nil? %>
+    scheduler:
+      max_thread_count:         <%= @elasticsearch[:max_thread_count] %>
+    <%- end %>
+  # deletionpolicy:             keep_only_last
+
+  # How often to schedule the refresh operation (the same one the Refresh
+  # API, which enables near real time search).  Default '1s'; set to -1 to
+  # disable automatic refresh (you must instead initiate refresh via API)
+  refresh_interval:         <%= @elasticsearch[:refresh_interval] %>
+
+  engine:
+    robin:
+      # Set the interval between indexed terms. Large values cause less memory
+      # to be used by a reader / searcher, but slow random-access to
+      # terms. Small values cause more memory to be used by a reader / searcher,
+      # and speed random-access to terms. Defaults to 128.
+      term_index_interval:      <%= @elasticsearch[:term_index_interval] %>
+
+  gateway:
+    # The index.gateway.snapshot_interval is a time setting allowing to
+    # configure the interval at which snapshotting of the index shard to the
+    # gateway will take place. Note, only primary shards start this scheduled
+    # snapshotting process. It defaults to 10s, and can be disabled by setting
+    # it to -1.
+    snapshot_interval:          <%= @elasticsearch[:snapshot_interval] %>
+    # When a primary shard is shut down explicitly (not relocated), the
+    # index.gateway.snapshot_on_close flag can control if while shutting down, a
+    # gateway snapshot should be performed. It defaults to true.
+    snapshot_on_close:          <%= @elasticsearch[:snapshot_on_close] %>
+
+# http://www.elasticsearch.com/docs/elasticsearch/modules/node/network/
+network:
+  bind_host:                    0.0.0.0
+  publish_host:                 0.0.0.0
+
+# http://www.elasticsearch.org/guide/reference/api/admin-cluster-nodes-shutdown.html
+action:
+  disable_shutdown:            false
+
+# http://www.elasticsearch.com/docs/elasticsearch/modules/transport/
+transport:
+  tcp:
+    port:                       9300-9400
+    connect_timeout:            2s
+    # enable lzf compression in esnode-esnode communication?
+    compress:                   <%= @elasticsearch[:compress_transport] %>
+
+  connections_per_node:
+    low:  2  # default 2 -- batch oriented APIs (like recovery or batch) with high payload that will cause regular requests (like search or single index) to take longer
+    med:  6  # default 6 -- connections for for the typical search / single doc index
+    high: 1  # default 1 -- connections for for ping type requests (like fault detection)
+
+# threadpool:
+#   bulk:
+#     keep_alive:              5m
+
+# http://www.elasticsearch.com/docs/elasticsearch/modules/jmx/
+jmx:
+  # Create an RMI connector?
+  create_connector:             true
+  port:                         <%= @elasticsearch[:jmx_dash_port] %>
+  domain:                       elasticsearch
+
+# http://www.elasticsearch.com/docs/elasticsearch/modules/discovery/
+discovery:
+  # set to 'zen' or 'ec2'
+  type:                         zen
+  zen:
+    <%- if @elasticsearch[:seeds].nil? %>
+    ping:
+      multicast:
+        enabled:                true
+    <%- else %>
+    ping:
+      multicast:
+        enabled:                false
+      unicast:
+        hosts:                  <%= @elasticsearch[:seeds].compact.map(&:to_s).sort.join(",") %>
+    minimum_master_nodes:       <%= (@elasticsearch[:seeds].compact.length > 2) ? (1+(@elasticsearch[:seeds].compact.length / 2)) : 1 %>
+    <%- end %>
+    # There are two fault detection processes running. The first is by the
+    # master, to ping all the other nodes in the cluster and verify that they
+    # are alive. And on the other end, each node pings to master to verify if
+    # its still alive or an election process needs to be initiated.
+    fd:
+      # How often a node gets pinged. Defaults to "1s".
+      ping_interval:            <%= @elasticsearch[:fd_ping_interval] %>
+      # # How long to wait for a ping response, defaults to "30s".
+      ping_timeout:             <%= @elasticsearch[:fd_ping_timeout] %>
+      # # How many ping failures / timeouts cause a node to be considered failed. Defaults to 3.
+      ping_retries:             <%= @elasticsearch[:fd_ping_retries] %>
+
+<%- if @aws  %>
+# Necessary if you will use either of
+# * the ec2 discovery module: for finding peers
+# * the s3 gateway module, for pushing indices to an s3 mirror.
+# Read more: http://www.elasticsearch.com/docs/elasticsearch/cloud/
+#
+cloud:
+  aws:
+    access_key:                 <%= @aws[:access_key]        || @aws[:aws_access_key]        %>
+    secret_key:                 <%= @aws[:secret_access_key] || @aws[:aws_secret_access_key] %>
+<%- end %>
+
+# thrift:
+#   # port:
+
+# ---- Logging -----
+
+# Uncomment to record slow queries, useful for improving your app responsiveness
+#
+index.search.slowlog.level: TRACE
+index.search.slowlog.threshold.query.warn:      10s
+index.search.slowlog.threshold.query.info:      5s
+index.search.slowlog.threshold.query.debug:     2s
+index.search.slowlog.threshold.query.trace:     500ms
+
+index.search.slowlog.threshold.fetch.warn:      1s
+index.search.slowlog.threshold.fetch.info:      800ms
+index.search.slowlog.threshold.fetch.debug:     500ms
+index.search.slowlog.threshold.fetch.trace:     200ms
+
+# GC Logging
+
+# Make a note in logs if GC pause times exceed these thresholds
+monitor.jvm.gc.ParNew.warn:               1000ms
+monitor.jvm.gc.ParNew.info:                700ms
+monitor.jvm.gc.ParNew.debug:               400ms
+monitor.jvm.gc.ConcurrentMarkSweep.warn:    10s
+monitor.jvm.gc.ConcurrentMarkSweep.info:     5s
+monitor.jvm.gc.ConcurrentMarkSweep.debug:    2s

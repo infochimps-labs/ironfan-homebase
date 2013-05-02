@@ -1,0 +1,2604 @@
+{
+  "chef_type": "node",
+  "name": "el_ridiculoso-gordo-0",
+  "chef_environment": "dev",
+  "languages": {
+    "ruby": {
+      "platform": "x86_64-linux",
+      "version": "1.9.2",
+      "release_date": "2011-07-09",
+      "target": "x86_64-unknown-linux-gnu",
+      "target_cpu": "x86_64",
+      "target_vendor": "unknown",
+      "target_os": "linux",
+      "host": "x86_64-unknown-linux-gnu",
+      "host_cpu": "x86_64",
+      "host_os": "linux-gnu",
+      "host_vendor": "unknown",
+      "bin_dir": "/usr/bin",
+      "ruby_bin": "/usr/bin/ruby1.9.2-p290",
+      "gems_dir": "/usr/lib/ruby/gems/1.9.2-p290",
+      "gem_bin": "/usr/bin/gem1.9.2-p290"
+    },
+    "java": {
+      "version": "1.6.0_26",
+      "runtime": {
+        "name": "Java(TM) SE Runtime Environment",
+        "build": "1.6.0_26-b03"
+      },
+      "hotspot": {
+        "name": "Java HotSpot(TM) 64-Bit Server VM",
+        "build": "20.1-b02, mixed mode"
+      }
+    },
+    "php": {
+      "version": "5.3.5-1ubuntu7.7",
+      "builddate": "(cli) (built: Feb"
+    },
+    "perl": {
+      "version": "5.10.1",
+      "archname": "x86_64-linux-gnu-thread-multi"
+    },
+    "python": {
+      "version": "2.7.1+",
+      "builddate": "Apr 11 2011, 18:13:53"
+    }
+  },
+  "kernel": {
+    "name": "Linux",
+    "release": "2.6.38-8-server",
+    "version": "#42-Ubuntu SMP Mon Apr 11 03:49:04 UTC 2011",
+    "machine": "x86_64",
+    "modules": {
+      "nfs": {
+        "size": "330371"
+      },
+      "lockd": {
+        "size": "85732"
+      },
+      "fscache": {
+        "size": "57123"
+      },
+      "nfs_acl": {
+        "size": "12883"
+      },
+      "auth_rpcgss": {
+        "size": "52881"
+      },
+      "sunrpc": {
+        "size": "234297"
+      },
+      "vboxsf": {
+        "size": "39343"
+      },
+      "vesafb": {
+        "size": "13761"
+      },
+      "psmouse": {
+        "size": "73535"
+      },
+      "serio_raw": {
+        "size": "13166"
+      },
+      "i2c_piix4": {
+        "size": "13303"
+      },
+      "ppdev": {
+        "size": "17113"
+      },
+      "parport_pc": {
+        "size": "36959"
+      },
+      "vboxguest": {
+        "size": "232904"
+      },
+      "lp": {
+        "size": "17789"
+      },
+      "parport": {
+        "size": "46458"
+      },
+      "ahci": {
+        "size": "25951"
+      },
+      "libahci": {
+        "size": "26642"
+      },
+      "e1000": {
+        "size": "111862"
+      }
+    },
+    "os": "GNU/Linux"
+  },
+  "os": "linux",
+  "os_version": "2.6.38-8-server",
+  "chef_packages": {
+    "ohai": {
+      "version": "0.6.10",
+      "ohai_root": "/usr/lib/ruby/gems/1.9.2-p290/gems/ohai-0.6.10/lib/ohai"
+    },
+    "chef": {
+      "version": "0.10.8",
+      "chef_root": "/usr/lib/ruby/gems/1.9.2-p290/gems/chef-0.10.8/lib"
+    }
+  },
+  "network": {
+    "interfaces": {
+      "eth0": {
+        "type": "eth",
+        "number": "0",
+        "encapsulation": "Ethernet",
+        "addresses": {
+          "08:00:27:bd:59:a7": {
+            "family": "lladdr"
+          },
+          "10.0.2.15": {
+            "family": "inet",
+            "broadcast": "10.0.2.255",
+            "netmask": "255.255.255.0"
+          },
+          "fe80::a00:27ff:febd:59a7": {
+            "family": "inet6",
+            "prefixlen": "64",
+            "scope": "Link"
+          }
+        },
+        "flags": [
+          "UP",
+          "BROADCAST",
+          "RUNNING",
+          "MULTICAST"
+        ],
+        "mtu": "1500",
+        "arp": {
+          "10.0.2.3": "52:54:00:12:35:03",
+          "10.0.2.2": "52:54:00:12:35:02"
+        }
+      },
+      "eth1": {
+        "type": "eth",
+        "number": "1",
+        "encapsulation": "Ethernet",
+        "addresses": {
+          "08:00:27:83:83:fd": {
+            "family": "lladdr"
+          },
+          "33.33.33.30": {
+            "family": "inet",
+            "broadcast": "33.33.33.255",
+            "netmask": "255.255.255.0"
+          },
+          "fe80::a00:27ff:fe83:83fd": {
+            "family": "inet6",
+            "prefixlen": "64",
+            "scope": "Link"
+          }
+        },
+        "flags": [
+          "UP",
+          "BROADCAST",
+          "RUNNING",
+          "MULTICAST"
+        ],
+        "mtu": "1500",
+        "arp": {
+          "33.33.33.1": "0a:00:27:00:00:00"
+        }
+      },
+      "lo": {
+        "encapsulation": "Loopback",
+        "addresses": {
+          "127.0.0.1": {
+            "family": "inet",
+            "netmask": "255.0.0.0"
+          },
+          "::1": {
+            "family": "inet6",
+            "prefixlen": "128",
+            "scope": "Node"
+          }
+        },
+        "flags": [
+          "UP",
+          "LOOPBACK",
+          "RUNNING"
+        ],
+        "mtu": "16436"
+      }
+    },
+    "default_gateway": "10.0.2.2",
+    "default_interface": "eth0"
+  },
+  "hostname": "ironfan-natty",
+  "fqdn": "ironfan-natty.infinitemonkeys.info",
+  "domain": "infinitemonkeys.info",
+  "ipaddress": "10.0.2.15",
+  "macaddress": "08:00:27:bd:59:a7",
+  "lsb": {
+    "id": "Ubuntu",
+    "release": "11.04",
+    "codename": "natty",
+    "description": "Ubuntu 11.04"
+  },
+  "platform": "ubuntu",
+  "platform_version": "11.04",
+  "command": {
+    "ps": "ps -ef"
+  },
+  "etc": {
+    "passwd": {
+      "root": {
+        "dir": "/root",
+        "gid": 0,
+        "uid": 0,
+        "shell": "/bin/bash",
+        "gecos": "root"
+      },
+      "daemon": {
+        "dir": "/usr/sbin",
+        "gid": 1,
+        "uid": 1,
+        "shell": "/bin/sh",
+        "gecos": "daemon"
+      },
+      "bin": {
+        "dir": "/bin",
+        "gid": 2,
+        "uid": 2,
+        "shell": "/bin/sh",
+        "gecos": "bin"
+      },
+      "sys": {
+        "dir": "/dev",
+        "gid": 3,
+        "uid": 3,
+        "shell": "/bin/sh",
+        "gecos": "sys"
+      },
+      "sync": {
+        "dir": "/bin",
+        "gid": 65534,
+        "uid": 4,
+        "shell": "/bin/sync",
+        "gecos": "sync"
+      },
+      "games": {
+        "dir": "/usr/games",
+        "gid": 60,
+        "uid": 5,
+        "shell": "/bin/sh",
+        "gecos": "games"
+      },
+      "man": {
+        "dir": "/var/cache/man",
+        "gid": 12,
+        "uid": 6,
+        "shell": "/bin/sh",
+        "gecos": "man"
+      },
+      "lp": {
+        "dir": "/var/spool/lpd",
+        "gid": 7,
+        "uid": 7,
+        "shell": "/bin/sh",
+        "gecos": "lp"
+      },
+      "mail": {
+        "dir": "/var/mail",
+        "gid": 8,
+        "uid": 8,
+        "shell": "/bin/sh",
+        "gecos": "mail"
+      },
+      "news": {
+        "dir": "/var/spool/news",
+        "gid": 9,
+        "uid": 9,
+        "shell": "/bin/sh",
+        "gecos": "news"
+      },
+      "uucp": {
+        "dir": "/var/spool/uucp",
+        "gid": 10,
+        "uid": 10,
+        "shell": "/bin/sh",
+        "gecos": "uucp"
+      },
+      "proxy": {
+        "dir": "/bin",
+        "gid": 13,
+        "uid": 13,
+        "shell": "/bin/sh",
+        "gecos": "proxy"
+      },
+      "www-data": {
+        "dir": "/var/www",
+        "gid": 33,
+        "uid": 33,
+        "shell": "/bin/sh",
+        "gecos": "www-data"
+      },
+      "backup": {
+        "dir": "/var/backups",
+        "gid": 34,
+        "uid": 34,
+        "shell": "/bin/sh",
+        "gecos": "backup"
+      },
+      "list": {
+        "dir": "/var/list",
+        "gid": 38,
+        "uid": 38,
+        "shell": "/bin/sh",
+        "gecos": "Mailing List Manager"
+      },
+      "irc": {
+        "dir": "/var/run/ircd",
+        "gid": 39,
+        "uid": 39,
+        "shell": "/bin/sh",
+        "gecos": "ircd"
+      },
+      "gnats": {
+        "dir": "/var/lib/gnats",
+        "gid": 41,
+        "uid": 41,
+        "shell": "/bin/sh",
+        "gecos": "Gnats Bug-Reporting System (admin)"
+      },
+      "nobody": {
+        "dir": "/nonexistent",
+        "gid": 65534,
+        "uid": 65534,
+        "shell": "/bin/sh",
+        "gecos": "nobody"
+      },
+      "libuuid": {
+        "dir": "/var/lib/libuuid",
+        "gid": 101,
+        "uid": 100,
+        "shell": "/bin/sh",
+        "gecos": ""
+      },
+      "syslog": {
+        "dir": "/home/syslog",
+        "gid": 103,
+        "uid": 101,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "ntp": {
+        "dir": "/home/ntp",
+        "gid": 107,
+        "uid": 102,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "sshd": {
+        "dir": "/var/run/sshd",
+        "gid": 65534,
+        "uid": 103,
+        "shell": "/usr/sbin/nologin",
+        "gecos": ""
+      },
+      "vagrant": {
+        "dir": "/home/vagrant",
+        "gid": 1000,
+        "uid": 1000,
+        "shell": "/bin/bash",
+        "gecos": "vagrant,,,"
+      },
+      "log": {
+        "dir": "/nonexistent",
+        "gid": 65534,
+        "uid": 104,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "statd": {
+        "dir": "/var/lib/nfs",
+        "gid": 65534,
+        "uid": 105,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "vboxadd": {
+        "dir": "/var/run/vboxadd",
+        "gid": 1,
+        "uid": 999,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "messagebus": {
+        "dir": "/var/run/dbus",
+        "gid": 111,
+        "uid": 106,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "avahi": {
+        "dir": "/var/run/avahi-daemon",
+        "gid": 112,
+        "uid": 107,
+        "shell": "/bin/false",
+        "gecos": "Avahi mDNS daemon,,,"
+      },
+      "hdfs": {
+        "dir": "/var/run/hadoop",
+        "gid": 302,
+        "uid": 302,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "mapred": {
+        "dir": "/var/run/hadoop",
+        "gid": 303,
+        "uid": 303,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "cassandra": {
+        "dir": "/var/run/cassandra",
+        "gid": 65534,
+        "uid": 330,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "zookeeper": {
+        "dir": "/mnt/zookeeper/data",
+        "gid": 305,
+        "uid": 305,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "flume": {
+        "dir": "/var/run/flume",
+        "gid": 114,
+        "uid": 108,
+        "shell": "/bin/false",
+        "gecos": "Flume User,,,"
+      },
+      "ganglia": {
+        "dir": "/var/run/ganglia",
+        "gid": 320,
+        "uid": 320,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "hbase": {
+        "dir": "/var/run/hbase",
+        "gid": 304,
+        "uid": 304,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "redis": {
+        "dir": "/var/lib/redis",
+        "gid": 335,
+        "uid": 335,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "elasticsearch": {
+        "dir": "/var/run/elasticsearch",
+        "gid": 61021,
+        "uid": 61021,
+        "shell": "/bin/false",
+        "gecos": ""
+      },
+      "hive": {
+        "dir": "/var/lib/hive",
+        "gid": 116,
+        "uid": 109,
+        "shell": "/bin/false",
+        "gecos": "Hive User,,,"
+      },
+      "zabbix": {
+        "dir": "/opt/zabbix",
+        "gid": 447,
+        "uid": 447,
+        "shell": "/bin/bash",
+        "gecos": ""
+      }
+    },
+    "group": {
+      "root": {
+        "gid": 0,
+        "members": [
+
+        ]
+      },
+      "daemon": {
+        "gid": 1,
+        "members": [
+
+        ]
+      },
+      "bin": {
+        "gid": 2,
+        "members": [
+
+        ]
+      },
+      "sys": {
+        "gid": 3,
+        "members": [
+
+        ]
+      },
+      "adm": {
+        "gid": 4,
+        "members": [
+          "vagrant"
+        ]
+      },
+      "tty": {
+        "gid": 5,
+        "members": [
+
+        ]
+      },
+      "disk": {
+        "gid": 6,
+        "members": [
+
+        ]
+      },
+      "lp": {
+        "gid": 7,
+        "members": [
+
+        ]
+      },
+      "mail": {
+        "gid": 8,
+        "members": [
+
+        ]
+      },
+      "news": {
+        "gid": 9,
+        "members": [
+
+        ]
+      },
+      "uucp": {
+        "gid": 10,
+        "members": [
+
+        ]
+      },
+      "man": {
+        "gid": 12,
+        "members": [
+
+        ]
+      },
+      "proxy": {
+        "gid": 13,
+        "members": [
+
+        ]
+      },
+      "kmem": {
+        "gid": 15,
+        "members": [
+
+        ]
+      },
+      "dialout": {
+        "gid": 20,
+        "members": [
+          "vagrant"
+        ]
+      },
+      "fax": {
+        "gid": 21,
+        "members": [
+
+        ]
+      },
+      "voice": {
+        "gid": 22,
+        "members": [
+
+        ]
+      },
+      "cdrom": {
+        "gid": 24,
+        "members": [
+          "vagrant"
+        ]
+      },
+      "floppy": {
+        "gid": 25,
+        "members": [
+
+        ]
+      },
+      "tape": {
+        "gid": 26,
+        "members": [
+
+        ]
+      },
+      "sudo": {
+        "gid": 27,
+        "members": [
+
+        ]
+      },
+      "audio": {
+        "gid": 29,
+        "members": [
+
+        ]
+      },
+      "dip": {
+        "gid": 30,
+        "members": [
+
+        ]
+      },
+      "www-data": {
+        "gid": 33,
+        "members": [
+
+        ]
+      },
+      "backup": {
+        "gid": 34,
+        "members": [
+
+        ]
+      },
+      "operator": {
+        "gid": 37,
+        "members": [
+
+        ]
+      },
+      "list": {
+        "gid": 38,
+        "members": [
+
+        ]
+      },
+      "irc": {
+        "gid": 39,
+        "members": [
+
+        ]
+      },
+      "src": {
+        "gid": 40,
+        "members": [
+
+        ]
+      },
+      "gnats": {
+        "gid": 41,
+        "members": [
+
+        ]
+      },
+      "shadow": {
+        "gid": 42,
+        "members": [
+
+        ]
+      },
+      "utmp": {
+        "gid": 43,
+        "members": [
+
+        ]
+      },
+      "video": {
+        "gid": 44,
+        "members": [
+
+        ]
+      },
+      "sasl": {
+        "gid": 45,
+        "members": [
+
+        ]
+      },
+      "plugdev": {
+        "gid": 46,
+        "members": [
+          "vagrant"
+        ]
+      },
+      "staff": {
+        "gid": 50,
+        "members": [
+
+        ]
+      },
+      "games": {
+        "gid": 60,
+        "members": [
+
+        ]
+      },
+      "users": {
+        "gid": 100,
+        "members": [
+
+        ]
+      },
+      "nogroup": {
+        "gid": 65534,
+        "members": [
+
+        ]
+      },
+      "libuuid": {
+        "gid": 101,
+        "members": [
+
+        ]
+      },
+      "crontab": {
+        "gid": 102,
+        "members": [
+
+        ]
+      },
+      "syslog": {
+        "gid": 103,
+        "members": [
+
+        ]
+      },
+      "fuse": {
+        "gid": 104,
+        "members": [
+
+        ]
+      },
+      "mlocate": {
+        "gid": 105,
+        "members": [
+
+        ]
+      },
+      "ssh": {
+        "gid": 106,
+        "members": [
+
+        ]
+      },
+      "ntp": {
+        "gid": 107,
+        "members": [
+
+        ]
+      },
+      "vagrant": {
+        "gid": 1000,
+        "members": [
+
+        ]
+      },
+      "lpadmin": {
+        "gid": 108,
+        "members": [
+          "vagrant"
+        ]
+      },
+      "sambashare": {
+        "gid": 109,
+        "members": [
+          "vagrant"
+        ]
+      },
+      "admin": {
+        "gid": 110,
+        "members": [
+          "vagrant"
+        ]
+      },
+      "vboxsf": {
+        "gid": 1001,
+        "members": [
+
+        ]
+      },
+      "messagebus": {
+        "gid": 111,
+        "members": [
+
+        ]
+      },
+      "avahi": {
+        "gid": 112,
+        "members": [
+
+        ]
+      },
+      "netdev": {
+        "gid": 113,
+        "members": [
+
+        ]
+      },
+      "hdfs": {
+        "gid": 302,
+        "members": [
+
+        ]
+      },
+      "mapred": {
+        "gid": 303,
+        "members": [
+
+        ]
+      },
+      "hadoop": {
+        "gid": 300,
+        "members": [
+          "hdfs",
+          "mapred"
+        ]
+      },
+      "supergroup": {
+        "gid": 301,
+        "members": [
+
+        ]
+      },
+      "zookeeper": {
+        "gid": 305,
+        "members": [
+
+        ]
+      },
+      "flume": {
+        "gid": 114,
+        "members": [
+
+        ]
+      },
+      "ganglia": {
+        "gid": 320,
+        "members": [
+
+        ]
+      },
+      "ssl-cert": {
+        "gid": 115,
+        "members": [
+
+        ]
+      },
+      "hbase": {
+        "gid": 304,
+        "members": [
+
+        ]
+      },
+      "redis": {
+        "gid": 335,
+        "members": [
+
+        ]
+      },
+      "elasticsearch": {
+        "gid": 61021,
+        "members": [
+
+        ]
+      },
+      "hive": {
+        "gid": 116,
+        "members": [
+
+        ]
+      },
+      "utempter": {
+        "gid": 117,
+        "members": [
+
+        ]
+      },
+      "zabbix": {
+        "gid": 447,
+        "members": [
+
+        ]
+      }
+    }
+  },
+  "current_user": "root",
+  "dmi": {
+    "dmidecode_version": "2.9",
+    "smbios_version": "2.5",
+    "structures": {
+      "count": "5",
+      "size": "352"
+    },
+    "table_location": "0x000E1000",
+    "bios": {
+      "all_records": [
+        {
+          "record_id": "0x0000",
+          "size": "0",
+          "application_identifier": "BIOS Information",
+          "Vendor": "innotek GmbH",
+          "Version": "VirtualBox",
+          "Release Date": "12/01/2006",
+          "Address": "0xE0000",
+          "Runtime Size": "128 kB",
+          "ROM Size": "128 kB",
+          "Characteristics": {
+            "ISA is supported": null,
+            "PCI is supported": null,
+            "Boot from CD is supported": null,
+            "Selectable boot is supported": null,
+            "8042 keyboard services are supported (int 9h)": null,
+            "CGA/mono video services are supported (int 10h)": null,
+            "ACPI is supported": null
+          }
+        }
+      ],
+      "vendor": "innotek GmbH",
+      "version": "VirtualBox",
+      "release_date": "12/01/2006",
+      "address": "0xE0000",
+      "runtime_size": "128 kB",
+      "rom_size": "128 kB"
+    },
+    "system": {
+      "all_records": [
+        {
+          "record_id": "0x0001",
+          "size": "1",
+          "application_identifier": "End Of Table",
+          "Manufacturer": "innotek GmbH",
+          "Product Name": "VirtualBox",
+          "Version": "1.2",
+          "Serial Number": "0",
+          "UUID": "DE4395CD-64C5-4C13-BC5B-3B6DB0FF4346",
+          "Wake-up Type": "Power Switch",
+          "SKU Number": "Not Specified",
+          "Family": "Virtual Machine"
+        }
+      ],
+      "manufacturer": "innotek GmbH",
+      "product_name": "VirtualBox",
+      "version": "1.2",
+      "serial_number": "0",
+      "uuid": "DE4395CD-64C5-4C13-BC5B-3B6DB0FF4346",
+      "wake_up_type": "Power Switch",
+      "sku_number": "Not Specified",
+      "family": "Virtual Machine"
+    }
+  },
+  "virtualization": {
+    "system": "vbox",
+    "role": "guest"
+  },
+  "filesystem": {
+    "/dev/mapper/ironfan--natty-root": {
+      "kb_size": "9490656",
+      "kb_used": "3023068",
+      "kb_available": "5985492",
+      "percent_used": "34%",
+      "mount": "/",
+      "fs_type": "ext4",
+      "mount_options": [
+        "rw",
+        "errors=remount-ro"
+      ]
+    },
+    "none": {
+      "kb_size": "316572",
+      "kb_used": "0",
+      "kb_available": "316572",
+      "percent_used": "0%",
+      "mount": "/var/lock",
+      "fs_type": "tmpfs",
+      "mount_options": [
+        "rw",
+        "noexec",
+        "nosuid",
+        "nodev"
+      ]
+    },
+    "/dev/sda1": {
+      "kb_size": "233191",
+      "kb_used": "23535",
+      "kb_available": "197215",
+      "percent_used": "11%",
+      "mount": "/boot",
+      "fs_type": "ext2",
+      "mount_options": [
+        "rw"
+      ]
+    },
+    "proc": {
+      "mount": "/proc",
+      "fs_type": "proc",
+      "mount_options": [
+        "rw",
+        "noexec",
+        "nosuid",
+        "nodev"
+      ]
+    },
+    "fusectl": {
+      "mount": "/sys/fs/fuse/connections",
+      "fs_type": "fusectl",
+      "mount_options": [
+        "rw"
+      ]
+    },
+    "rootfs": {
+      "mount": "/",
+      "fs_type": "rootfs",
+      "mount_options": [
+        "rw"
+      ]
+    }
+  },
+  "memory": {
+    "swap": {
+      "cached": "6200kB",
+      "total": "487420kB",
+      "free": "474768kB"
+    },
+    "total": "633148kB",
+    "free": "31000kB",
+    "buffers": "71908kB",
+    "cached": "261724kB",
+    "active": "233396kB",
+    "inactive": "284584kB",
+    "dirty": "212kB",
+    "writeback": "0kB",
+    "anon_pages": "179784kB",
+    "mapped": "22912kB",
+    "slab": "49876kB",
+    "slab_reclaimable": "37896kB",
+    "slab_unreclaim": "11980kB",
+    "page_tables": "8208kB",
+    "nfs_unstable": "0kB",
+    "bounce": "0kB",
+    "commit_limit": "1120568kB",
+    "committed_as": "512300kB",
+    "vmalloc_total": "34359738367kB",
+    "vmalloc_used": "25088kB",
+    "vmalloc_chunk": "34359709500kB"
+  },
+  "cpu": {
+    "0": {
+      "vendor_id": "GenuineIntel",
+      "family": "6",
+      "model": "42",
+      "model_name": "Intel(R) Core(TM) i7-2720QM CPU @ 2.20GHz",
+      "stepping": "7",
+      "mhz": "2208.204",
+      "cache_size": "6144 KB",
+      "physical_id": "0",
+      "core_id": "0",
+      "cores": "2",
+      "flags": [
+        "fpu",
+        "vme",
+        "de",
+        "pse",
+        "tsc",
+        "msr",
+        "pae",
+        "mce",
+        "cx8",
+        "apic",
+        "sep",
+        "mtrr",
+        "pge",
+        "mca",
+        "cmov",
+        "pat",
+        "pse36",
+        "clflush",
+        "mmx",
+        "fxsr",
+        "sse",
+        "sse2",
+        "ht",
+        "syscall",
+        "nx",
+        "lm",
+        "constant_tsc",
+        "rep_good",
+        "nopl",
+        "pni",
+        "ssse3",
+        "lahf_lm"
+      ]
+    },
+    "1": {
+      "vendor_id": "GenuineIntel",
+      "family": "6",
+      "model": "42",
+      "model_name": "Intel(R) Core(TM) i7-2720QM CPU @ 2.20GHz",
+      "stepping": "7",
+      "mhz": "2208.204",
+      "cache_size": "6144 KB",
+      "physical_id": "0",
+      "core_id": "1",
+      "cores": "2",
+      "flags": [
+        "fpu",
+        "vme",
+        "de",
+        "pse",
+        "tsc",
+        "msr",
+        "pae",
+        "mce",
+        "cx8",
+        "apic",
+        "sep",
+        "mtrr",
+        "pge",
+        "mca",
+        "cmov",
+        "pat",
+        "pse36",
+        "clflush",
+        "mmx",
+        "fxsr",
+        "sse",
+        "sse2",
+        "ht",
+        "syscall",
+        "nx",
+        "lm",
+        "constant_tsc",
+        "rep_good",
+        "nopl",
+        "pni",
+        "ssse3",
+        "lahf_lm"
+      ]
+    },
+    "total": 2,
+    "real": 1
+  },
+  "block_device": {
+    "ram0": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram1": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram2": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram3": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram4": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram5": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram6": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram7": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram8": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram9": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram10": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram11": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram12": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram13": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram14": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "ram15": {
+      "size": "131072",
+      "removable": "0"
+    },
+    "loop0": {
+      "size": "0",
+      "removable": "0"
+    },
+    "loop1": {
+      "size": "0",
+      "removable": "0"
+    },
+    "loop2": {
+      "size": "0",
+      "removable": "0"
+    },
+    "loop3": {
+      "size": "0",
+      "removable": "0"
+    },
+    "loop4": {
+      "size": "0",
+      "removable": "0"
+    },
+    "loop5": {
+      "size": "0",
+      "removable": "0"
+    },
+    "loop6": {
+      "size": "0",
+      "removable": "0"
+    },
+    "loop7": {
+      "size": "0",
+      "removable": "0"
+    },
+    "sr0": {
+      "size": "2097151",
+      "removable": "1",
+      "model": "CD-ROM",
+      "rev": "1.0",
+      "state": "running",
+      "timeout": "30",
+      "vendor": "VBOX"
+    },
+    "sda": {
+      "size": "20766720",
+      "removable": "0",
+      "model": "VBOX HARDDISK",
+      "rev": "1.0",
+      "state": "running",
+      "timeout": "30",
+      "vendor": "ATA"
+    },
+    "dm-0": {
+      "size": "19283968",
+      "removable": "0"
+    },
+    "dm-1": {
+      "size": "974848",
+      "removable": "0"
+    }
+  },
+  "recipes": [
+    "build-essential",
+    "motd",
+    "zsh",
+    "emacs",
+    "ntp",
+    "nfs",
+    "nfs::client",
+    "xfs",
+    "volumes::mount",
+    "volumes::resize",
+    "package_set",
+    "hadoop_cluster",
+    "hadoop_cluster::minidash",
+    "cloud_utils::pickle_node",
+    "minidash::server",
+    "hadoop_cluster::config_files",
+    "tuning::default"
+  ],
+  "roles": [
+    "systemwide",
+    "chef_client",
+    "ssh",
+    "nfs_client",
+    "volumes",
+    "package_set",
+    "org_base",
+    "org_users",
+    "hadoop",
+    "hadoop_s3_keys",
+    "el_ridiculoso_cluster",
+    "el_ridiculoso_gordo",
+    "minidash",
+    "org_final",
+    "tuning"
+  ],
+  "volumes": {
+    "root": {
+      "name": "root",
+      "tags": {
+      },
+      "device": "/dev/sda1",
+      "mount_point": "/",
+      "mountable": false,
+      "availability_zone": "us-east-1d"
+    },
+    "ephemeral0": {
+      "name": "ephemeral0",
+      "tags": {
+        "bulk": true,
+        "local": true,
+        "fallback": true
+      },
+      "device": "/dev/sdb",
+      "volume_id": "ephemeral0",
+      "mount_point": "/mnt",
+      "availability_zone": "us-east-1d"
+    },
+    "ephemeral1": {
+      "name": "ephemeral1",
+      "tags": {
+        "bulk": true,
+        "local": true,
+        "fallback": true
+      },
+      "device": "/dev/sdc",
+      "volume_id": "ephemeral1",
+      "mount_point": "/mnt2",
+      "availability_zone": "us-east-1d"
+    },
+    "ephemeral2": {
+      "name": "ephemeral2",
+      "tags": {
+        "bulk": true,
+        "local": true,
+        "fallback": true
+      },
+      "device": "/dev/sdd",
+      "volume_id": "ephemeral2",
+      "mount_point": "/mnt3",
+      "availability_zone": "us-east-1d"
+    },
+    "ephemeral3": {
+      "name": "ephemeral3",
+      "tags": {
+        "bulk": true,
+        "local": true,
+        "fallback": true
+      },
+      "device": "/dev/sde",
+      "volume_id": "ephemeral3",
+      "mount_point": "/mnt4",
+      "availability_zone": "us-east-1d"
+    }
+  },
+  "package_set": {
+    "install": [
+      "base",
+      "dev",
+      "sysadmin"
+    ],
+    "pkgs": {
+      "base": [
+        "tree",
+        "git",
+        "zip",
+        "openssl",
+        "wget",
+        "curl",
+        "runit",
+        "libyaml-dev",
+        "libxslt1-dev"
+      ],
+      "dev": [
+        "emacs23-nox",
+        "elinks",
+        "w3m-el",
+        "colordiff",
+        "ack",
+        "exuberant-ctags"
+      ],
+      "sysadmin": [
+        "ifstat",
+        "htop",
+        "tree",
+        "chkconfig",
+        "sysstat",
+        "nmap",
+        "python-software-properties"
+      ],
+      "text": [
+        "libidn11-dev",
+        "libxml2-dev",
+        "libxml2-utils",
+        "libxslt1-dev",
+        "tidy"
+      ],
+      "ec2": [
+        "s3cmd",
+        "ec2-ami-tools",
+        "ec2-api-tools"
+      ],
+      "vagrant": [
+        "ifstat",
+        "htop",
+        "tree",
+        "chkconfig",
+        "sysstat",
+        "nmap"
+      ],
+      "python": [
+        "python-dev",
+        "python-setuptools",
+        "python-simplejson"
+      ],
+      "datatools": [
+        "r-base",
+        "r-base-dev",
+        "x11-apps",
+        "eog",
+        "texlive-common",
+        "texlive-binaries",
+        "dvipng",
+        "ghostscript",
+        "latex",
+        "libfreetype6",
+        "python-gtk2",
+        "python-gtk2-dev",
+        "python-wxgtk2.8"
+      ],
+      "emacs": [
+        "emacs23-nox",
+        "emacs23-el",
+        "python-mode",
+        "ruby1.9.1-elisp",
+        "org-mode"
+      ]
+    },
+    "gems": {
+      "base": [
+        "bundler"
+      ],
+      "dev": [
+        "extlib",
+        "json",
+        "yajl-ruby",
+        "awesome_print",
+        "addressable",
+        "cheat",
+        "rest-client",
+        "yard",
+        "jeweler",
+        "rspec",
+        "watchr",
+        "pry",
+        "wirble",
+        "hirb",
+        "highline",
+        "formatador",
+        "configliere",
+        "gorillib",
+        "wukong",
+        "swineherd",
+        "hackboxen",
+        {
+          "name": "activesupport",
+          "version": "3.1.0"
+        },
+        {
+          "name": "activemodel",
+          "version": "3.1.0"
+        }
+      ],
+      "sysadmin": [
+
+      ],
+      "text": [
+        "nokogiri",
+        "erubis",
+        "i18n"
+      ],
+      "ec2": [
+        "fog",
+        "right_aws",
+        "ironfan"
+      ],
+      "vagrant": [
+        "vagrant",
+        "veewee",
+        "ironfan"
+      ]
+    }
+  },
+  "tuning": {
+    "ulimit": {
+      "hdfs": {
+        "nofile": {
+          "both": 32768
+        },
+        "nproc": {
+          "both": 50000
+        }
+      },
+      "mapred": {
+        "nofile": {
+          "both": 32768
+        },
+        "nproc": {
+          "both": 50000
+        }
+      }
+    },
+    "overcommit_memory": 1,
+    "overcommit_ratio": 100,
+    "swappiness": 5
+  },
+  "hadoop": {
+    "namenode": {
+      "run_state": "stop",
+      "data_dirs": [
+        "/mnt/hadoop/hdfs/name",
+        "/mnt2/hadoop/hdfs/name",
+        "/mnt3/hadoop/hdfs/name",
+        "/mnt4/hadoop/hdfs/name"
+      ],
+      "port": 8020,
+      "dash_port": 50070,
+      "jmx_dash_port": 8004,
+      "user": "hdfs",
+      "handler_count": 40,
+      "java_heap_size_max": null,
+      "addr": "10.0.2.15"
+    },
+    "secondarynn": {
+      "run_state": "stop",
+      "data_dirs": [
+        "/mnt/hadoop/hdfs/secondary",
+        "/mnt2/hadoop/hdfs/secondary",
+        "/mnt3/hadoop/hdfs/secondary",
+        "/mnt4/hadoop/hdfs/secondary"
+      ],
+      "dash_port": 50090,
+      "jmx_dash_port": 8005,
+      "user": "hdfs",
+      "java_heap_size_max": null,
+      "addr": "10.0.2.15"
+    },
+    "jobtracker": {
+      "run_state": "stop",
+      "system_hdfsdir": "/hadoop/mapred/system",
+      "staging_hdfsdir": "/hadoop/mapred/system",
+      "port": 8021,
+      "dash_port": 50030,
+      "jmx_dash_port": 8008,
+      "user": "mapred",
+      "handler_count": 40,
+      "java_heap_size_max": null,
+      "addr": "10.0.2.15"
+    },
+    "datanode": {
+      "run_state": "stop",
+      "data_dirs": [
+        "/mnt/hadoop/hdfs/data",
+        "/mnt2/hadoop/hdfs/data",
+        "/mnt3/hadoop/hdfs/data",
+        "/mnt4/hadoop/hdfs/data"
+      ],
+      "port": 50010,
+      "ipc_port": 50020,
+      "dash_port": 50075,
+      "jmx_dash_port": 8006,
+      "user": "hdfs",
+      "handler_count": 8,
+      "java_heap_size_max": null
+    },
+    "tasktracker": {
+      "run_state": "stop",
+      "scratch_dirs": [
+        "/mnt/hadoop/mapred/local",
+        "/mnt2/hadoop/mapred/local",
+        "/mnt3/hadoop/mapred/local",
+        "/mnt4/hadoop/mapred/local"
+      ],
+      "dash_port": 50060,
+      "jmx_dash_port": 8009,
+      "user": "mapred",
+      "http_threads": 32,
+      "java_heap_size_max": null
+    },
+    "hdfs_fuse": {
+      "run_state": "stop"
+    },
+    "balancer": {
+      "run_state": "stop",
+      "jmx_dash_port": 8007,
+      "max_bandwidth": 1048576
+    },
+    "home_dir": "/usr/lib/hadoop",
+    "conf_dir": "/etc/hadoop/conf",
+    "pid_dir": "/var/run/hadoop",
+    "log_dir": "/mnt/hadoop/log",
+    "tmp_dir": "/mnt/hadoop/tmp",
+    "exported_confs": [
+      "/etc/hadoop/conf/core-site.xml",
+      "/etc/hadoop/conf/hdfs-site.xml",
+      "/etc/hadoop/conf/mapred-site.xml"
+    ],
+    "exported_jars": [
+      "/usr/lib/hadoop/hadoop-core.jar",
+      "/usr/lib/hadoop/hadoop-examples.jar",
+      "/usr/lib/hadoop/hadoop-test.jar",
+      "/usr/lib/hadoop/hadoop-tools.jar"
+    ],
+    "user": "hdfs",
+    "handle": "hadoop-0.20",
+    "deb_version": "0.20.2+923.142-1~maverick-cdh3",
+    "extra_classpaths": {
+      "zookeeper": "/usr/lib/zookeeper/zookeeper.jar",
+      "hbase": "/usr/lib/hbase/hbase.jar:/usr/lib/hbase/conf"
+    },
+    "min_split_size": 134217728,
+    "s3_block_size": 134217728,
+    "hdfs_block_size": 134217728,
+    "dfs_replication": 3,
+    "reducer_parallel_copies": 10,
+    "compress_output": "false",
+    "compress_output_type": "BLOCK",
+    "compress_output_codec": "org.apache.hadoop.io.compress.DefaultCodec",
+    "compress_mapout": "true",
+    "compress_mapout_codec": "org.apache.hadoop.io.compress.DefaultCodec",
+    "java_heap_size_max": 1000,
+    "log_retention_hours": 24,
+    "define_topology": false,
+    "fake_rack_size": 4,
+    "max_map_tasks": 2,
+    "max_reduce_tasks": 1,
+    "java_child_opts": "-Xmx256m",
+    "java_child_ulimit": 524288,
+    "io_sort_factor": 10,
+    "io_sort_mb": 100,
+    "jmx_dash_addr": "10.0.2.15",
+    "exported_libs": [
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libhadoop.a",
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libhadoop.la",
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libhadoop.so",
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libhadoop.so.1",
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libhadoop.so.1.0.0",
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libsnappy.a",
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libsnappy.la",
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libsnappy.so",
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libsnappy.so.1",
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libsnappy.so.1.1.1",
+      "/usr/lib/hadoop/lib/native/Linux-amd64-64/libsnappyjava.so"
+    ]
+  },
+  "apache": {
+    "root_group": "root",
+    "package": "apache2",
+    "dir": "/etc/apache2",
+    "log_dir": "/var/log/apache2",
+    "user": "www-data",
+    "group": "www-data",
+    "binary": "/usr/sbin/apache2",
+    "icondir": "/usr/share/apache2/icons",
+    "cache_dir": "/var/cache/apache2",
+    "pid_file": "/var/run/apache2.pid",
+    "lib_dir": "/usr/lib/apache2",
+    "libexecdir": "/usr/lib/apache2/modules",
+    "server": {
+      "run_state": "stop"
+    }
+  },
+  "cassandra": {
+    "listen_addr": "10.0.2.15",
+    "rpc_addr": "10.0.2.15",
+    "seeds": [
+      "10.0.2.15"
+    ],
+    "auto_bootstrap": false,
+    "run_state": "stop"
+  },
+  "chef": {
+    "client": {
+      "run_state": "stop"
+    },
+    "server": {
+      "run_state": "stop"
+    }
+  },
+  "elasticsearch": {
+    "seeds": [
+
+    ],
+    "run_state": "stop"
+  },
+  "flume": {
+    "exported_jars": [
+      "/usr/lib/flume/plugins/jruby-flume.jar",
+      "/usr/lib/flume/plugins/hbase-sink.jar"
+    ],
+    "exported_confs": [
+
+    ],
+    "plugins": {
+      "jruby_flume": {
+        "classes": [
+          "com.infochimps.flume.jruby.JRubySink",
+          "com.infochimps.flume.jruby.JRubySource",
+          "com.infochimps.flume.jruby.JRubyDecorator"
+        ],
+        "classpath": [
+          "/usr/lib/flume/plugins/jruby-flume.jar",
+          "/usr/local/share/jruby/lib/jruby.jar"
+        ],
+        "java_opts": [
+          "-Djruby.home=/usr/local/share/jruby",
+          "-Djruby.lib=/usr/local/share/jruby/lib",
+          "-Djruby.script=jruby"
+        ]
+      },
+      "hbase_sink": {
+        "classes": [
+          "com.cloudera.flume.hbase.Attr2HBaseEventSink",
+          "com.cloudera.flume.hbase.HBaseSink"
+        ],
+        "classpath": [
+          "/usr/lib/flume/plugins/hbase-sink.jar",
+          "/etc/hbase/conf"
+        ],
+        "java_opts": [
+
+        ]
+      }
+    },
+    "master": {
+      "run_state": "stop"
+    },
+    "node": {
+      "run_state": "stop"
+    }
+  },
+  "ganglia": {
+    "server": {
+      "run_state": "stop"
+    },
+    "agent": {
+      "run_state": "stop"
+    }
+  },
+  "graphite": {
+    "carbon": {
+      "run_state": "stop"
+    },
+    "whisper": {
+      "run_state": "stop"
+    },
+    "dashboard": {
+      "run_state": "stop"
+    }
+  },
+  "hbase": {
+    "exported_jars": [
+      "/usr/lib/hbase/hbase.jar",
+      "/usr/lib/hbase/hbase-tests.jar"
+    ],
+    "exported_confs": [
+      "/etc/hbase/conf/hbase-default.xml",
+      "/etc/hbase/conf/hbase-site.xml"
+    ],
+    "user": "hbase",
+    "services": [
+      "master",
+      "regionserver",
+      "stargate",
+      "thrift"
+    ],
+    "jmx_dash_addr": "10.0.2.15",
+    "master": {
+      "run_state": "stop"
+    },
+    "regionserver": {
+      "run_state": "stop"
+    },
+    "stargate": {
+      "run_state": "stop"
+    },
+    "thrift": {
+      "run_state": "stop"
+    }
+  },
+  "jenkins": {
+    "server": {
+      "run_state": "stop"
+    },
+    "worker": {
+      "run_state": "stop"
+    }
+  },
+  "minidash": {
+    "links": {
+      "hadoop.namenode": "http://10.0.2.15:50070",
+      "hadoop.secondarynn": "http://10.0.2.15:50090",
+      "hadoop.jobtracker": "http://10.0.2.15:50030",
+      "hadoop.datanode": "http://10.0.2.15:50075",
+      "hadoop.tasktracker": "http://10.0.2.15:50060"
+    },
+    "conf_dir": "/etc/minidash",
+    "log_dir": "/var/log/minidash",
+    "home_dir": "/var/lib/minidash",
+    "port": 6789,
+    "run_state": "stop",
+    "user": "root"
+  },
+  "mongodb": {
+    "server": {
+      "run_state": "stop"
+    }
+  },
+  "mysql": {
+    "conf_dir": "/etc/mysql",
+    "socket": "/var/run/mysqld/mysqld.sock",
+    "pid_file": "/var/run/mysqld/mysqld.pid",
+    "old_passwords": 0,
+    "grants_path": "/etc/mysql/grants.sql",
+    "server": {
+      "run_state": "stop"
+    }
+  },
+  "nginx": {
+    "server": {
+      "run_state": "stop"
+    }
+  },
+  "redis": {
+    "server": {
+      "run_state": "stop"
+    }
+  },
+  "resque": {
+    "redis": {
+      "run_state": "stop"
+    },
+    "dashboard": {
+      "run_state": "stop"
+    }
+  },
+  "statsd": {
+    "run_state": "stop"
+  },
+  "zabbix": {
+    "agent": {
+      "run_state": "stop"
+    },
+    "master": {
+      "run_state": "stop"
+    }
+  },
+  "zookeeper": {
+    "server": {
+      "run_state": "stop"
+    },
+    "data_dir": "/mnt/zookeeper/data",
+    "journal_dir": "/mnt/zookeeper/txlog",
+    "jmx_dash_addr": "10.0.2.15",
+    "zkid": 0
+  },
+  "organization": "local",
+  "vagrant": {
+    "config": {
+      "keys": {
+        "vagrant": {
+          "dotfile_name": ".vagrant",
+          "host": "detect"
+        },
+        "ssh": {
+          "username": "vagrant",
+          "password": "vagrant",
+          "host": "127.0.0.1",
+          "guest_port": 22,
+          "max_tries": 100,
+          "timeout": 10,
+          "forward_agent": false,
+          "forward_x11": false,
+          "shell": "bash"
+        },
+        "vm": {
+          "forwarded_ports": [
+            {
+              "name": "ssh",
+              "guestport": 22,
+              "hostport": 2222,
+              "protocol": "tcp",
+              "adapter": 1,
+              "auto": true
+            }
+          ],
+          "shared_folders": {
+            "v-root": {
+              "guestpath": "/vagrant",
+              "hostpath": ".",
+              "create": false,
+              "owner": null,
+              "group": null,
+              "nfs": false,
+              "transient": false,
+              "extra": null
+            },
+            "homebase": {
+              "guestpath": "/homebase",
+              "hostpath": "/Users/flip/ics/sysadmin/homebase",
+              "create": false,
+              "owner": null,
+              "group": null,
+              "nfs": false,
+              "transient": false,
+              "extra": null
+            }
+          },
+          "networks": [
+
+          ],
+          "provisioners": [
+
+          ],
+          "customizations": [
+
+          ],
+          "auto_port_range": "2200..2250",
+          "box_url": null,
+          "base_mac": null,
+          "boot_mode": "gui",
+          "guest": "linux",
+          "defined_vm_keys": [
+            "el_ridiculoso-bobo-0",
+            "el_ridiculoso-gordo-0",
+            "el_ridiculoso-jefe-0"
+          ],
+          "defined_vms": {
+            "el_ridiculoso-bobo-0": "#<Vagrant::Config::VMConfig::SubVM:0x007fbc824f4278>",
+            "el_ridiculoso-gordo-0": "#<Vagrant::Config::VMConfig::SubVM:0x007fbc824f32d8>",
+            "el_ridiculoso-jefe-0": "#<Vagrant::Config::VMConfig::SubVM:0x007fbc824f20e0>"
+          }
+        },
+        "nfs": {
+          "map_uid": "auto",
+          "map_gid": "auto"
+        },
+        "package": {
+          "name": "package.box"
+        }
+      },
+      "registry": {
+        "vagrant": "Vagrant::Config::VagrantConfig",
+        "ssh": "Vagrant::Config::SSHConfig",
+        "nfs": "Vagrant::Config::NFSConfig",
+        "vm": "Vagrant::Config::VMConfig",
+        "package": "Vagrant::Config::PackageConfig",
+        "freebsd": "Vagrant::Guest::FreeBSD::FreeBSDConfig",
+        "linux": "Vagrant::Guest::Linux::LinuxConfig",
+        "solaris": "Vagrant::Guest::Solaris::SolarisConfig"
+      }
+    },
+    "directory": "/vagrant"
+  },
+  "instance_role": "vagrant",
+  "chef_server": "http://33.33.33.1:4000",
+  "validation_client_name": "local-validator",
+  "node_name": "el_ridiculoso-gordo-0",
+  "cluster_name": "el_ridiculoso",
+  "facet_name": "gordo",
+  "facet_index": 0,
+  "tags": [
+
+  ],
+  "runit": {
+    "sv_bin": "/usr/bin/sv",
+    "chpst_bin": "/usr/bin/chpst",
+    "service_dir": "/etc/service",
+    "sv_dir": "/etc/sv"
+  },
+  "platform?": [
+    "redhat",
+    "centos",
+    "scientific",
+    "fedora",
+    "suse",
+    "arch",
+    "freebsd"
+  ],
+  "postgresql": {
+    "dir": "/etc/postgresql/8.4/main"
+  },
+  "motd": {
+    "roles": [
+      "systemwide",
+      "chef_client",
+      "ssh",
+      "nfs_client",
+      "volumes",
+      "package_set",
+      "org_base",
+      "org_users",
+      "hadoop",
+      "hadoop_s3_keys",
+      "el_ridiculoso_cluster",
+      "el_ridiculoso_gordo",
+      "minidash",
+      "org_final",
+      "tuning"
+    ],
+    "private_ips": [
+
+    ],
+    "public_ips": [
+
+    ],
+    "instance_id": "",
+    "instance_type": "",
+    "public_hostname": "",
+    "security_groups": [
+
+    ],
+    "description": "Ubuntu 11.04"
+  },
+  "java": {
+    "java_home": "/usr/lib/jvm/java-6-sun",
+    "install_flavor": "sun",
+    "jdk_version": "6",
+    "arch": "x86_64",
+    "jdk": {
+      "6": {
+        "x86_64": {
+          "url": "http://download.oracle.com/otn-pub/java/jdk/6u30-b12/jdk-6u30-linux-x64.bin",
+          "checksum": "928220f4e46c5dabef0440791c48023945629d8a23998e072157e04960d8a759"
+        },
+        "i586": {
+          "url": "http://download.oracle.com/otn-pub/java/jdk/6u30-b12/jdk-6u30-linux-i586.bin",
+          "checksum": "b551be83a690bc9fec0107d9aa4f828cd47e150fa54cbedbfa8f80c99e2f18b5"
+        }
+      },
+      "7": {
+        "x86_64": {
+          "url": "http://download.oracle.com/otn-pub/java/jdk/7u2-b13/jdk-7u2-linux-x64.tar.gz",
+          "checksum": "411a204122c5e45876d6edae1a031b718c01e6175833740b406e8aafc37bc82d"
+        },
+        "i586": {
+          "url": "http://download.oracle.com/otn-pub/java/jdk/7u2-b13/jdk-7u2-linux-i586.tar.gz",
+          "checksum": "74faad48fef2c368276dbd1fd6c02520b0e9ebdcb1621916c1af345fc3ba65d1"
+        }
+      }
+    }
+  },
+  "announces": {
+    "el_ridiculoso-cassandra-seed": {
+      "sys": "cassandra",
+      "subsys": "seed",
+      "name": "cassandra_seed",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-cassandra-server": {
+      "sys": "cassandra",
+      "subsys": "server",
+      "name": "cassandra_server",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-zookeeper-server": {
+      "sys": "zookeeper",
+      "subsys": "server",
+      "name": "zookeeper_server",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-flume-master": {
+      "sys": "flume",
+      "subsys": "master",
+      "name": "flume_master",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-ganglia-server": {
+      "sys": "ganglia",
+      "subsys": "server",
+      "name": "ganglia_server",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-hadoop-namenode": {
+      "sys": "hadoop",
+      "subsys": "namenode",
+      "name": "hadoop_namenode",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-hadoop-jobtracker": {
+      "sys": "hadoop",
+      "subsys": "jobtracker",
+      "name": "hadoop_jobtracker",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-hadoop-secondarynn": {
+      "sys": "hadoop",
+      "subsys": "secondarynn",
+      "name": "hadoop_secondarynn",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-hbase-master": {
+      "sys": "hbase",
+      "subsys": "master",
+      "name": "hbase_master",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-redis-server": {
+      "sys": "redis",
+      "subsys": "server",
+      "name": "redis_server",
+      "realm": "el_ridiculoso",
+      "info": {
+        "port": "6379",
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-hadoop-datanode": {
+      "sys": "hadoop",
+      "subsys": "datanode",
+      "name": "hadoop_datanode",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-hadoop-tasktracker": {
+      "sys": "hadoop",
+      "subsys": "tasktracker",
+      "name": "hadoop_tasktracker",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-flume-agent": {
+      "sys": "flume",
+      "subsys": "agent",
+      "name": "flume_agent",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-ganglia-agent": {
+      "sys": "ganglia",
+      "subsys": "agent",
+      "name": "ganglia_agent",
+      "realm": "el_ridiculoso",
+      "info": {
+        "monitor_group": "el_ridiculoso",
+        "rcv_port": 8649,
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-hbase-regionserver": {
+      "sys": "hbase",
+      "subsys": "regionserver",
+      "name": "hbase_regionserver",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    },
+    "el_ridiculoso-hbase-stargate": {
+      "sys": "hbase",
+      "subsys": "stargate",
+      "name": "hbase_stargate",
+      "realm": "el_ridiculoso",
+      "info": {
+        "realm": "el_ridiculoso"
+      },
+      "daemons": {
+      },
+      "ports": {
+      },
+      "dashboards": {
+      },
+      "logs": {
+      },
+      "directories": {
+      },
+      "exporteds": {
+      }
+    }
+  },
+  "jruby": {
+    "exported_jars": [
+      "/usr/local/share/jruby/lib/jruby.jar"
+    ],
+    "exported_confs": [
+
+    ]
+  },
+  "emacs": {
+    "packages": [
+      "emacs23-nox"
+    ]
+  },
+  "ntp": {
+    "service": "ntp",
+    "root_group": "root",
+    "is_server": false,
+    "servers": [
+      "0.pool.ntp.org",
+      "1.pool.ntp.org",
+      "2.pool.ntp.org",
+      "3.pool.ntp.org"
+    ],
+    "peers": [
+
+    ],
+    "restrictions": [
+
+    ]
+  },
+  "nfs": {
+    "exports": {
+    },
+    "portmap_port": 111,
+    "nfsd_port": 2049,
+    "mountd_port": 45560,
+    "statd_port": 56785,
+    "mounts": [
+      [
+        "/home",
+        {
+          "owner": "root",
+          "remote_path": "/home"
+        }
+      ]
+    ]
+  },
+  "firewall": {
+    "port_scan": {
+      "portmap": {
+        "port": 111,
+        "window": 20,
+        "max_conns": 15
+      },
+      "nfsd": {
+        "port": 2049,
+        "window": 20,
+        "max_conns": 15
+      },
+      "mountd": {
+        "port": 45560,
+        "window": 20,
+        "max_conns": 15
+      },
+      "statd": {
+        "port": 56785,
+        "window": 20,
+        "max_conns": 15
+      },
+      "ssh": {
+        "port": 111,
+        "window": 20,
+        "max_conns": 15
+      }
+    }
+  },
+  "silverware": {
+    "conf_dir": "/etc/silverware",
+    "log_dir": "/var/log/silverware",
+    "home_dir": "/etc/silverware",
+    "user": "root",
+    "aws_credential_source": "data_bag",
+    "aws_credential_handle": "main"
+  },
+  "users": {
+    "root": {
+      "primary_group": "root"
+    },
+    "hdfs": {
+      "uid": 302
+    },
+    "mapred": {
+      "uid": 303
+    }
+  },
+  "discovers": {
+    "nfs": {
+      "server": "sandbox"
+    },
+    "zabbix": {
+      "server": "sandbox"
+    }
+  },
+  "groups": {
+    "hadoop": {
+      "gid": 300
+    },
+    "supergroup": {
+      "gid": 301
+    },
+    "hdfs": {
+      "gid": 302
+    },
+    "mapred": {
+      "gid": 303
+    }
+  },
+  "apt": {
+    "cloudera": {
+      "force_distro": "maverick",
+      "release_name": "cdh3u2"
+    }
+  },
+  "cluster_size": 5,
+  "apt_cacher": {
+    "port": 3142
+  },
+  "route53": {
+    "zone": "YOURDOMAIN.com"
+  },
+  "aws": {
+    "aws_access_key": null,
+    "aws_access_key_id": null,
+    "aws_secret_access_key": null
+  },
+  "recipe": [
+    "cloud_utils::pickle_node",
+    "hadoop_cluster::config_files"
+  ],
+  "role": [
+    "systemwide",
+    "chef_client",
+    "ssh",
+    "nfs_client",
+    "volumes",
+    "package_set",
+    "org_base",
+    "org_users",
+    "hadoop",
+    "hadoop_s3_keys",
+    "el_ridiculoso_cluster",
+    "el_ridiculoso_gordo",
+    "minidash",
+    "org_final",
+    "tuning"
+  ],
+  "run_list": [
+    "role[systemwide]",
+    "role[chef_client]",
+    "role[ssh]",
+    "role[nfs_client]",
+    "role[volumes]",
+    "role[package_set]",
+    "role[org_base]",
+    "role[org_users]",
+    "role[hadoop]",
+    "role[hadoop_s3_keys]",
+    "recipe[cloud_utils::pickle_node]",
+    "role[el_ridiculoso_cluster]",
+    "role[el_ridiculoso_gordo]",
+    "role[minidash]",
+    "role[org_final]",
+    "recipe[hadoop_cluster::config_files]",
+    "role[tuning]"
+  ]
+}

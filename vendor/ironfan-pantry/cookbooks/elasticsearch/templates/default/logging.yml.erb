@@ -1,0 +1,64 @@
+rootLogger: <%= node[:elasticsearch][:log_level][:overall] %>, console, file
+
+#
+# Put the name of any module -- using its config path -- in the section below.
+#
+logger:
+  # log action execution errors for easier debugging
+  action:       <%= node[:elasticsearch][:log_level][:default] %>
+
+  indices:
+    recovery:   <%= node[:elasticsearch][:log_level][:default] %>
+  discovery:    <%= node[:elasticsearch][:log_level][:default] %>
+
+  additivity:
+    index.search.slowlog: false
+
+  index:
+    search:
+      slowlog:  TRACE, index_search_slow_log_file
+    store:      <%= node[:elasticsearch][:log_level][:index_store] %>
+    gateway:    <%= node[:elasticsearch][:log_level][:gateway] %>
+    #
+    shard:
+      recovery: <%= node[:elasticsearch][:log_level][:default] %>
+    engine:     <%= node[:elasticsearch][:log_level][:default] %>
+    merge:      <%= node[:elasticsearch][:log_level][:default] %>
+    translog:   <%= node[:elasticsearch][:log_level][:default] %>
+
+  cluster:
+    service:    <%= node[:elasticsearch][:log_level][:cluster_service] %>
+    action:
+      shard:    <%= node[:elasticsearch][:log_level][:action_shard] %>
+
+  gateway:      <%= node[:elasticsearch][:log_level][:gateway] %>
+  jmx:          <%= node[:elasticsearch][:log_level][:default] %>
+  node:         <%= node[:elasticsearch][:log_level][:default] %>
+  plugins:      <%= node[:elasticsearch][:log_level][:default] %>
+
+  # Volume for these is insane if below the levels given:
+  httpclient:    INFO
+  com.amazonaws: WARN
+  org.apache:    INFO
+
+  
+appender:
+  console:
+    type: console
+    layout:
+      type: consolePattern
+      conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
+
+  file:
+    type: file
+    file: ${path.logs}/${cluster.name}.log
+    layout:
+      type: pattern
+      conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
+
+  index_search_slow_log_file:
+    type: file
+    file: ${path.logs}/${cluster.name}_index_search_slowlog.log
+    layout:
+      type: pattern
+      conversionPattern: "[%d{ISO8601}][%-5p][%-25c] %m%n"
