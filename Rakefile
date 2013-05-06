@@ -75,7 +75,7 @@ module Ironfan
     class Loader
       include Gorillib::Builder
       field     :path,          String
-      
+
       def initialize
         super
         raise "Couldn't find #{path}" unless File.exists? path
@@ -126,6 +126,7 @@ module Ironfan
 
     class Pull < Ironfan::Messhall::Context
       def execute(loader)
+        test_for_clean_tree
         @linked_paths = []
         %x[git reset]
         super
@@ -136,7 +137,6 @@ module Ironfan
       # Get squashed checkout of url into path
       # https://github.com/apenwarr/git-subtree/blob/master/git-subtree.txt
       def vendor(url)
-        test_for_clean_tree
         path = vendored_path(url)
         if path.exist?
           %x[git subtree pull --prefix=#{path} --squash #{url} master]

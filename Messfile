@@ -1,9 +1,14 @@
 # 
-# Development pantries
+# Cookbooks from pantries
 # 
 vendor  'git://github.com/infochimps-labs/ironfan-pantry.git'
-# vendor  'git@github.com:your_org_here/ironfan-pantry.git'
 link    'vendor/ironfan-pantry/cookbooks/*/',   :into => 'cookbooks'
+# vendor  'git@github.com:your_org/your-pantry.git'
+# link    'vendor/your-pantry/cookbooks/*/',    :into => 'cookbooks'
+
+#
+# Cookbooks from homebase
+#
 link    'org_cookbooks/*/',                     :into => 'cookbooks'
 
 #
