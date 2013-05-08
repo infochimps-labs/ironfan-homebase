@@ -84,7 +84,7 @@ GEM
     highline (1.6.18)
     i18n (0.6.1)
     ipaddress (0.8.0)
-    ironfan (4.10.0)
+    ironfan (4.10.1)
       chef (~> 10.16)
       fog (~> 1.2)
       formatador (~> 0.2)
@@ -172,7 +172,7 @@ GEM
     ruby-hmac (0.4.0)
     ruby_gntp (0.3.4)
     slop (3.4.4)
-    solve (0.4.3)
+    solve (0.4.4)
       json
     systemu (2.5.2)
     thor (0.18.1)
