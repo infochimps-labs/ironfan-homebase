@@ -78,8 +78,8 @@ Ironfan.cluster 'tri' do
 
     recipe        'dds::install_from_git'
     role          :storm_worker           ; cloud(:ec2).security_group(:kafka_client)
-    facet_role.override_attributes({
-      dds: { deploy_pack: 'git@github.com:infochimps/whaleshark-logdelivery.git' }
-    })
+    # facet_role.override_attributes({
+    #   # dds: { deploy_pack: 'git@github.com:[deploypack].git' }
+    # })
   end
 end
