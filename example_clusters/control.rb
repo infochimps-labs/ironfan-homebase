@@ -1,12 +1,10 @@
 #
 # Command and control cluster
 #
-# take note that permanent true is commented out, this may or may not not be ideal for you
 
 
 Ironfan.cluster 'control' do
   cloud(:ec2) do
-    # permanent           true
     availability_zones ['us-east-1c']
     flavor              't1.micro'
     backing             'ebs'
@@ -59,7 +57,6 @@ Ironfan.cluster 'control' do
     end
   end
 
-# facet copied from awsdemo
   facet :dashpot do
     instances           1
     cloud(:ec2).permanent false
@@ -108,6 +105,7 @@ Ironfan.cluster 'control' do
     })
   end
 
+# add zabbix usernames to override_attributess
 
   facet :zabbix do
     cloud(:ec2).flavor 'm1.large'
@@ -115,16 +113,15 @@ Ironfan.cluster 'control' do
     role :web_server
     recipe 'nginx'
     role :zabbix_server
-    facet_role.override_attributes({
-      :zabbix_integration => {
-        :active_users => ['temujin9','dhruv','aseever','huston'],
-        :user_groups  => {
-          'First responders'  => {:users => %w[temujin9]},
-          'Second responders' => {:users => %w[aseever]}
-        }
-      }
+    # facet_role.override_attributes({
+    #   :zabbix_integration => {
+    #     :active_users => ['username'],
+    #     :user_groups  => {
+    #       'First responders'  => {:users => %w[username]},
+    #       'Second responders' => {:users => %w[username]}
+    #     }
+    #   }
     })
   end
-
 
 end

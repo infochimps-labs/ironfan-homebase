@@ -1,7 +1,6 @@
 #
 # HBase with persisten EBS-backed storage.
 #
-# Copied from neptune cluster (spongecell-homebase)
 # For serious use, you will want to go to larger nodes (`m1.xlarge` works well
 # for us) and should NOT use EBS-backed storage. We assume that for initial
 # experimentation you'll want to start/stop this, so it comes out of the box

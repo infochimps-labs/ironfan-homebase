@@ -44,7 +44,6 @@ Ironfan.cluster 'zk' do
 
   role                  :tuning,        :last
 
-  #copied original zookeeper cluster and changed instances from 1 to 3 due to the comment at the beginning of this cluster defintion that recommends having 3 or 5 instances
   facet :zookeeper do
     instances           3
     role                :zookeeper_server

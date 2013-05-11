@@ -1,9 +1,7 @@
 # Elasticsearch cluster
-# take note that permanent true is commented out, this may or may not not be ideal for you
 
 Ironfan.cluster 'es' do
   cloud(:ec2) do
-    # permanent           true
     availability_zones ['us-east-1c']
     flavor              't1.micro'
     backing             'ebs'

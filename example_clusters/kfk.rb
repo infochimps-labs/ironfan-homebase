@@ -1,7 +1,6 @@
 #
 # Kafka cluster
 #
-# Copied from discoveryone wcg cluster
 
 Ironfan.cluster 'kfk' do
   cloud(:ec2) do
@@ -52,7 +51,6 @@ Ironfan.cluster 'kfk' do
     role                :kafka_contrib
     role                :hadoop_datanode
 
-    ##need to set up a WCG S3 bucket
     facet_role.override_attributes({
         :hadoop => { :datanode => { :run_state => :stop }},
         :kafka => {
@@ -65,7 +63,7 @@ Ironfan.cluster 'kfk' do
                 :run_state => :nothing,
                 :topic =>     'raw',
                 :options => {
-                  :bucket => 'archive.wcg.chimpy.us',
+                  # :bucket => '[archive bucket]',
                   :batch_size => (10 * 2 ** 10),
                 }
               },

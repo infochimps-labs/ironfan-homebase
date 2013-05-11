@@ -1,6 +1,6 @@
 # 
 # Storm cluster
-# Copied from niobe cluster (whaleshark-homebase)
+# 
 
 Ironfan.cluster 'tri' do
   cloud(:ec2) do
