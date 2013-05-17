@@ -6,7 +6,7 @@ source "http://rubygems.org"
 
 gem 'ironfan',         "~> 4.10"
 
-gem 'berkshelf',       ">= 1.0.1"     # FIXME: pins chef to the 10.16 branch.
+gem 'berkshelf',       "= 1.4.2"     # FIXME: pins chef to the 10.16 branch.
 gem 'parseconfig'
 
 #
