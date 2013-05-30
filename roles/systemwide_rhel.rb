@@ -7,6 +7,8 @@ run_list *%w[
   zsh
   emacs
   ntp
+  chef_handler
+  chef_handler::json_file
   ]
 
 default_attributes({
