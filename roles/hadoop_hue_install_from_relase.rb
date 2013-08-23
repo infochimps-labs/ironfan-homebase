@@ -1,4 +1,4 @@
-name 'hadoop_hue'
+name 'hadoop_hue_install_from_release'
 description 'Installs hadoop_hue.'
 
 run_list %w[
