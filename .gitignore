@@ -58,6 +58,7 @@ knife/*-credentials
 knife-user-*.rb
 knife/checksums/*
 knife/plugins
+knife/.completion_cache/*
 
 vagrants/*
 .rbenv-version
