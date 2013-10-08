@@ -4,9 +4,16 @@ source "http://rubygems.org"
 # Chef
 #
 
-gem 'ironfan',         "~> 4.11.3"
+gem 'ironfan',         "~> 4.12.2"
+gem 'chef',            "~> 11.6.0"
+gem 'berkshelf',       "~> 2.0.10" 
 
-gem 'berkshelf',       "= 1.4.2"     # FIXME: pins chef to the 10.16 branch.
+# Yet again json versioning gets you, now with Berkshelf
+# https://github.com/RiotGames/berkshelf/issues/676
+# This can hopefully be unpinned from being so specific with future
+# berkshelf or Chef 11 udpates. R. Berger Oct 7, 2013
+gem 'json',            "1.7.7" 
+
 gem 'parseconfig'
 
 #
