@@ -16,9 +16,9 @@ end
 # ENV['USE_LOCAL']       = nil                                 # This is already default
 ENV['LOCAL_PATH']        = "vendor"                            unless ENV['LOCAL_PATH']
 ENV['PANTRY_REPO']       = 'infochimps-labs/ironfan-pantry'    unless ENV['PANTRY_REPO']
-ENV['PANTRY_BRANCH']     = 'master'                            unless ENV['PANTRY_BRANCH']
+ENV['PANTRY_BRANCH']     = 'release_6.1'                       unless ENV['PANTRY_BRANCH']
 ENV['COMMUNITY_REPO']    = 'infochimps-labs/community-pantry'  unless ENV['COMMUNITY_REPO']
-ENV['COMMUNITY_BRANCH']  = 'master'                            unless ENV['COMMUNITY_BRANCH']
+ENV['COMMUNITY_BRANCH']  = 'release_6.1'                       unless ENV['COMMUNITY_BRANCH']
 
 def github_cookbook(name, repo, rel, branch)
   if ! ENV['USE_LOCAL'].nil?
