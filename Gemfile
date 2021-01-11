@@ -17,7 +17,7 @@ group :test do
   gem 'rake'
   gem 'bundler',       "~> 1"
   gem 'rspec',         "~> 2.5"
-  gem 'redcarpet',   "~> 2"
+  gem 'redcarpet',   "~> 3"
   gem 'cucumber',      "~> 1.1"
 end
 
