@@ -215,7 +215,7 @@ GEM
     trollop (2.0)
     tzinfo (0.3.37)
     uuidtools (2.1.4)
-    yajl-ruby (1.1.0)
+    yajl-ruby (1.4.2)
     yard (0.8.7)
 
 PLATFORMS
@@ -225,7 +225,7 @@ DEPENDENCIES
   berkshelf (= 1.4.2)
   bundler (~> 1)
   cucumber (~> 1.1)
-  ironfan (~> 4.11.2)
+  ironfan (~> 4.11.3)
   jeweler
   parseconfig
   pry
